@@ -1,6 +1,6 @@
 package br.com.poo.banco.pessoas;
 
-public class Presidente {
+public class Presidente extends Funcionario {
 
 	private int senha;
 	private String atributosExclusivos;
