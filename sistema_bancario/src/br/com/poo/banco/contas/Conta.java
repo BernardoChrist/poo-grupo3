@@ -8,14 +8,14 @@ public class Conta {
 	private String tipoConta;
 	private String titularConta;
 	private String senhaConta;
-	private int numeroConta;
+	private Integer numeroConta;
 	private Double saldoConta;
 	private String numeroCartao;
 	private String cpf;
 
 	public static Map<String, Conta> mapaContas = new HashMap<>();
 
-	public Conta(String tipoConta, String titularConta, String senhaConta, int numeroConta, Double saldoConta,
+	public Conta(String tipoConta, String titularConta, String senhaConta, Integer numeroConta, Double saldoConta,
 			String numeroCartao, String cpf) {
 		super();
 		this.tipoConta = tipoConta;
@@ -57,7 +57,7 @@ public class Conta {
 		this.senhaConta = senhaConta;
 	}
 
-	public int getNumeroConta() {
+	public Integer getNumeroConta() {
 		return numeroConta;
 	}
 
@@ -72,4 +72,26 @@ public class Conta {
 	public String getTipoConta() {
 		return tipoConta;
 	}
+	
+	// Método para depositar dinheiro
+    public void depositar(double valor) {
+        saldoConta += valor;
+    }
+    
+    // Método para consultar saldo ou GetSaldoConta
+    public double consultarSaldo() {
+        return saldoConta;
+    }
+
+    
+    // Método para sacar dinheiro
+    public boolean sacar(double valor) {
+        if (saldoConta >= valor) {
+            saldoConta -= valor;
+            return true; // Saque bem-sucedido
+        } else {
+            return false; // Saldo insuficiente
+        }
+    }
+    
 }
