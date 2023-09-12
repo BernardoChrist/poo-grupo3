@@ -1,4 +1,4 @@
-package br.com.poo.banco;
+package br.com.poo.banco.views;
 
 import java.awt.EventQueue;
 
@@ -17,6 +17,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFormattedTextField;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class TelaLogin extends JFrame {
 
@@ -43,6 +46,7 @@ public class TelaLogin extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaLogin() {
+		setTitle("Tela Login");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -53,28 +57,28 @@ public class TelaLogin extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Login");
-		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 25));
-		lblNewLabel.setBounds(180, 7, 69, 44);
-		contentPane.add(lblNewLabel);
+		JLabel TextLogin = new JLabel("Login");
+		TextLogin.setFont(new Font("Arial", Font.PLAIN, 25));
+		TextLogin.setBounds(180, 7, 69, 44);
+		contentPane.add(TextLogin);
 		
 		JTextPane textCPF = new JTextPane();
-		textCPF.setBounds(100, 139, 228, 20);
+		textCPF.setBounds(101, 109, 228, 20);
 		contentPane.add(textCPF);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("CPF");
-		lblNewLabel_1_1.setFont(new Font("Calibri", Font.PLAIN, 14));
-		lblNewLabel_1_1.setBounds(100, 117, 27, 28);
-		contentPane.add(lblNewLabel_1_1);
+		JLabel TextUsuario = new JLabel("Usuario");
+		TextUsuario.setFont(new Font("Calibri", Font.PLAIN, 14));
+		TextUsuario.setBounds(101, 87, 48, 28);
+		contentPane.add(TextUsuario);
 		
 		pwd = new JPasswordField();
-		pwd.setBounds(100, 182, 228, 20);
+		pwd.setBounds(101, 152, 228, 20);
 		contentPane.add(pwd);
 		
-		JLabel lblNewLabel_1_1_1 = new JLabel("Senha");
-		lblNewLabel_1_1_1.setFont(new Font("Calibri", Font.PLAIN, 12));
-		lblNewLabel_1_1_1.setBounds(100, 161, 48, 28);
-		contentPane.add(lblNewLabel_1_1_1);
+		JLabel TextSenha = new JLabel("Senha");
+		TextSenha.setFont(new Font("Calibri", Font.PLAIN, 12));
+		TextSenha.setBounds(101, 131, 48, 28);
+		contentPane.add(TextSenha);
 		
 		JButton btnBotaozin = new JButton("Entrar");
 		btnBotaozin.addActionListener(new ActionListener() {
@@ -95,11 +99,23 @@ public class TelaLogin extends JFrame {
 		btnBotaozin.setBounds(178, 224, 69, 23);
 		contentPane.add(btnBotaozin);
 		
-		JComboBox comboBoxOpcoes = new JComboBox();
-		comboBoxOpcoes.setToolTipText("<Selecione uma das opções >");
-		comboBoxOpcoes.setModel(new DefaultComboBoxModel(new String[] {"<Selecione uma das opções >", "Cliente", "Funcionário", "Gerente", "Diretor", "Presidente"}));
-		comboBoxOpcoes.setMaximumRowCount(6);
-		comboBoxOpcoes.setBounds(100, 74, 228, 22);
-		contentPane.add(comboBoxOpcoes);
+		JLabel LinkNovoCadastro = new JLabel("Novo Cadastro");
+		LinkNovoCadastro.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
+		LinkNovoCadastro.setForeground(new Color(0, 0, 160));
+		LinkNovoCadastro.setBackground(new Color(0, 0, 160));
+		LinkNovoCadastro.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		LinkNovoCadastro.setBounds(101, 178, 109, 13);
+		contentPane.add(LinkNovoCadastro);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setToolTipText("Cliente\r\nFuncionario\r\nGerente\r\nDiretor\r\nPresidente");
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Cliente", "Funcionario", "Gerente", "Diretor", "Presidente"}));
+		comboBox.setSelectedIndex(5);
+		comboBox.setBounds(101, 58, 148, 21);
+		contentPane.add(comboBox);
 	}
 }
