@@ -1,4 +1,4 @@
-package br.com.poo.banco.contas;
+ package br.com.poo.banco.contas;
 
 
 
@@ -11,8 +11,9 @@ public class ContaCorrente extends Conta {
 		super();
 	}
 
-	public ContaCorrente(double limiteCredito, boolean chequeEspecial) {
-		super();
+	public ContaCorrente(String tipoConta, String titularConta, String senhaConta, int numeroConta, 
+	Double saldoConta, String numeroCartao, String cpf, Double limiteCredito, boolean chequeEspecial) {
+		super(tipoConta, titularConta, senhaConta, numeroConta, saldoConta, numeroCartao, cpf);
 		this.limiteCredito = limiteCredito;
 		this.chequeEspecial = chequeEspecial;
 	}

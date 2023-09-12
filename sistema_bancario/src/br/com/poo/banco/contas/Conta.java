@@ -1,20 +1,30 @@
 package br.com.poo.banco.contas;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Conta {
 
+	private String tipoConta;
 	private String titularConta;
 	private String senhaConta;
 	private int numeroConta;
-	private double saldoConta;
+	private Double saldoConta;
 	private String numeroCartao;
-	
-	public Conta(String titularConta, String senhaConta, int numeroConta, double saldoConta, String numeroCartao) {
+	private String cpf;
+
+	public static Map<String, Conta> mapaContas = new HashMap<>();
+
+	public Conta(String tipoConta, String titularConta, String senhaConta, int numeroConta, Double saldoConta,
+			String numeroCartao, String cpf) {
 		super();
+		this.tipoConta = tipoConta;
 		this.titularConta = titularConta;
 		this.senhaConta = senhaConta;
 		this.numeroConta = numeroConta;
 		this.saldoConta = saldoConta;
 		this.numeroCartao = numeroCartao;
+		this.cpf = cpf;
 	}
 
 	public Conta() {
@@ -27,7 +37,9 @@ public class Conta {
 				+ "]";
 	}
 
-	
+	public String getCpf() {
+		return cpf;
+	}
 
 	public String getTitularConta() {
 		return titularConta;
@@ -49,11 +61,15 @@ public class Conta {
 		return numeroConta;
 	}
 
-	public double getSaldoConta() {
+	public Double getSaldoConta() {
 		return saldoConta;
 	}
 
 	public String getNumeroCartao() {
 		return numeroCartao;
+	}
+
+	public String getTipoConta() {
+		return tipoConta;
 	}
 }
