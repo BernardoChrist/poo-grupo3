@@ -10,10 +10,10 @@ public class ContaPoupanca extends Conta {
 		super();
 	}
 
-	public ContaPoupanca(String tipoConta, String titularConta, String senhaConta, 
-	int numeroConta, Double saldoConta, String numeroCartao, String cpf) {
+	public ContaPoupanca(String tipoConta, String senhaConta, 
+	String numeroConta, Double saldoConta, String cpfConta) {
 		
-		super(tipoConta,  titularConta, senhaConta, numeroConta, saldoConta, numeroCartao, cpf);
+		super(tipoConta, senhaConta, numeroConta, saldoConta, cpfConta);
 		
 	}
 	

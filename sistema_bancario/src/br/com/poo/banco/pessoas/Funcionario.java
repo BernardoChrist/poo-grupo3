@@ -1,37 +1,35 @@
 package br.com.poo.banco.pessoas;
 
-public class Funcionario {
-
-	private String nomeFuncionario;
+public class Funcionario{
+	
+	private String cargo;
+	private String nome;
 	private String cpf;
-	private String dataNascimento;
 	private double salario;
 
 	@Override
 	public String toString() {
-		return "Funcionario [nomeFuncionario=" + nomeFuncionario + ", cpf=" + cpf + ", dataNascimento=" + dataNascimento
-				+ "]";
+		return " [nome =" + nome + ", cpf =" + cpf + "]";
 	}
 
-	public Funcionario(String nomeFuncionario, String cpf, String dataNascimento, double salario) {
+	public Funcionario(String cargo, String nome, String cpf, double salario) {
 		super();
-		this.nomeFuncionario = nomeFuncionario;
+		this.cargo = cargo;
+		this.nome = nome;
 		this.cpf = cpf;
-		this.dataNascimento = dataNascimento;
 		this.salario = salario;
 	}
 
 	public Funcionario() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public String getNomeFuncionario() {
-		return nomeFuncionario;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNomeFuncionario(String nomeFuncionario) {
-		this.nomeFuncionario = nomeFuncionario;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public double getSalario() {
@@ -46,8 +44,8 @@ public class Funcionario {
 		return cpf;
 	}
 
-	public String getDataNascimento() {
-		return dataNascimento;
+	public String getCargo() {
+		return cargo;
 	}
 
 }

@@ -4,60 +4,47 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Conta {
-
+	
 	private String tipoConta;
-	private String titularConta;
 	private String senhaConta;
-	private Integer numeroConta;
+	private String numeroConta;
 	private Double saldoConta;
-	private String numeroCartao;
-	private String cpf;
-
-	public static Map<String, Conta> mapaContas = new HashMap<>();
-
-	public Conta(String tipoConta, String titularConta, String senhaConta, Integer numeroConta, Double saldoConta,
-			String numeroCartao, String cpf) {
-		super();
+	private String cpfConta;
+	
+	public Conta(String tipoConta, String numeroConta, String cpfConta, Double saldoConta, String senhaConta) {
+		
 		this.tipoConta = tipoConta;
-		this.titularConta = titularConta;
 		this.senhaConta = senhaConta;
 		this.numeroConta = numeroConta;
 		this.saldoConta = saldoConta;
-		this.numeroCartao = numeroCartao;
-		this.cpf = cpf;
+		this.cpfConta = cpfConta;
+		
+	}
+	
+	// Método para sacar dinheiro
+	public boolean sacar(double valor) {
+		if (saldoConta >= valor) {
+			saldoConta -= valor;
+			return true; // Saque bem-sucedido
+		} else {
+			return false; // Saldo insuficiente
+		}
+	}
+	
+	// Método para depositar dinheiro
+	public void depositar(double valor) {
+		saldoConta += valor;
 	}
 
-	public Conta() {
-		super();
-	}
-
-	@Override
-	public String toString() {
-		return "Conta [titularConta=" + titularConta + ", senhaConta=" + senhaConta + ", numeroCartao=" + numeroCartao
-				+ "]";
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public String getTitularConta() {
-		return titularConta;
-	}
-
-	public void setTitularConta(String titularConta) {
-		this.titularConta = titularConta;
+	public String getTipoConta() {
+		return tipoConta;
 	}
 
 	public String getSenhaConta() {
 		return senhaConta;
 	}
 
-	public void setSenhaConta(String senhaConta) {
-		this.senhaConta = senhaConta;
-	}
-
-	public Integer getNumeroConta() {
+	public String getNumeroConta() {
 		return numeroConta;
 	}
 
@@ -65,12 +52,23 @@ public class Conta {
 		return saldoConta;
 	}
 
-	public String getNumeroCartao() {
-		return numeroCartao;
+	public String getCpfConta() {
+		return cpfConta;
 	}
 
-	public String getTipoConta() {
-		return tipoConta;
+	public static Map<String, Conta> getMapaContas() {
+		return mapaContas;
+	}
+
+
+	public static Map<String, Conta> mapaContas = new HashMap<>();
+
+	public Conta() {
+		
 	}
     
+    @Override
+	public String toString() {
+    	return "Conta [numConta=" + numeroConta + ", cpf=" + cpfConta + ", saldo=" + saldoConta + "]\n";
+	}
 }

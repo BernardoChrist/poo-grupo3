@@ -1,21 +1,29 @@
 package br.com.poo.banco.pessoas;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Cliente {
 
+	private final String TIPO_PESSOA = "Cliente";
 	private String nome;
 	private String cpf;
-	private String dataNascimento;
+	private Integer senha;
 	
-	public Cliente(String nome, String cpf, String dataNascimento) {
-		super();
-		this.nome = nome;
-		this.cpf = cpf;
-		this.dataNascimento = dataNascimento;
-	}
-
+	public static Map<String, Cliente> mapaClientes = new HashMap<>();
+	
 	public Cliente() {
 		super();
 	}
+	
+	public Cliente(String TIPO_PESSOA, String nome, String cpf, Integer senha) {
+		super();
+		this.nome = nome;
+		this.cpf = cpf;
+		this.senha = senha;
+	}
+
+	
 
 	public String getNome() {
 		return nome;
@@ -29,7 +37,11 @@ public class Cliente {
 		return cpf;
 	}
 
-	public String getDataNascimento() {
-		return dataNascimento;
+	public Integer getSenha() {
+		return senha;
+	}
+
+	public String getTIPO_PESSOA() {
+		return TIPO_PESSOA;
 	}
 }

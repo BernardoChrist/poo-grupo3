@@ -53,7 +53,7 @@ public class TelaTransferencia extends JFrame {
 		contentPane.add(TextAreaTranferencia);
 		
 		JLabel TextDigiteoValor = new JLabel("Digite o valor que deseja Transferir");
-		TextDigiteoValor.setBounds(28, 90, 168, 13);
+		TextDigiteoValor.setBounds(28, 90, 186, 13);
 		contentPane.add(TextDigiteoValor);
 		
 		ValorField = new JTextField();
