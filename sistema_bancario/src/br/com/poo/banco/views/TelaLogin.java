@@ -24,7 +24,7 @@ import java.awt.event.MouseEvent;
 public class TelaLogin extends JFrame {
 
 	private JPanel contentPane;
-	private JPasswordField pwd;
+	private JPasswordField SenhaField;
 
 	/**
 	 * Launch the application.
@@ -62,60 +62,48 @@ public class TelaLogin extends JFrame {
 		TextLogin.setBounds(180, 7, 69, 44);
 		contentPane.add(TextLogin);
 		
-		JTextPane textCPF = new JTextPane();
-		textCPF.setBounds(101, 109, 228, 20);
-		contentPane.add(textCPF);
+		JTextPane UsuarioField = new JTextPane();
+		UsuarioField.setBounds(101, 109, 228, 20);
+		contentPane.add(UsuarioField);
 		
 		JLabel TextUsuario = new JLabel("Usuario");
 		TextUsuario.setFont(new Font("Calibri", Font.PLAIN, 14));
 		TextUsuario.setBounds(101, 87, 48, 28);
 		contentPane.add(TextUsuario);
 		
-		pwd = new JPasswordField();
-		pwd.setBounds(101, 152, 228, 20);
-		contentPane.add(pwd);
+		SenhaField = new JPasswordField();
+		SenhaField.setBounds(101, 152, 228, 20);
+		contentPane.add(SenhaField);
 		
 		JLabel TextSenha = new JLabel("Senha");
 		TextSenha.setFont(new Font("Calibri", Font.PLAIN, 12));
 		TextSenha.setBounds(101, 131, 48, 28);
 		contentPane.add(TextSenha);
 		
-		JButton btnBotaozin = new JButton("Entrar");
-		btnBotaozin.addActionListener(new ActionListener() {
+		JButton EntrarButton = new JButton("Entrar");
+		EntrarButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String cpf = textCPF.getText();
-				String senha = new String(pwd.getPassword());
+				String cpf = UsuarioField.getText();
+				String senha = new String(SenhaField.getPassword());
 				if(cpf!= null && senha != null && !cpf.isEmpty() && !senha.isEmpty()) {
-					JOptionPane.showMessageDialog(btnBotaozin, "Bem-Vindo!"); 
+					JOptionPane.showMessageDialog(EntrarButton, "Bem-Vindo!"); 
 				}
 				
 				else {
-					JOptionPane.showMessageDialog(btnBotaozin, "Todos os campos devem ser preenchidos.", "Aviso!", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(EntrarButton, "Todos os campos devem ser preenchidos.", "Aviso!", JOptionPane.WARNING_MESSAGE);
 				}
 				
 			}
 		});
-		btnBotaozin.setBounds(178, 224, 69, 23);
-		contentPane.add(btnBotaozin);
+		EntrarButton.setBounds(178, 224, 69, 23);
+		contentPane.add(EntrarButton);
 		
-		JLabel LinkNovoCadastro = new JLabel("Novo Cadastro");
-		LinkNovoCadastro.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			}
-		});
-		LinkNovoCadastro.setForeground(new Color(0, 0, 160));
-		LinkNovoCadastro.setBackground(new Color(0, 0, 160));
-		LinkNovoCadastro.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		LinkNovoCadastro.setBounds(101, 178, 109, 13);
-		contentPane.add(LinkNovoCadastro);
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setToolTipText("Cliente\r\nFuncionario\r\nGerente\r\nDiretor\r\nPresidente");
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Cliente", "Funcionario", "Gerente", "Diretor", "Presidente"}));
-		comboBox.setSelectedIndex(5);
-		comboBox.setBounds(101, 58, 148, 21);
-		contentPane.add(comboBox);
+		JComboBox comboBoxCargo = new JComboBox();
+		comboBoxCargo.setToolTipText("Cliente\r\nFuncionario\r\nGerente\r\nDiretor\r\nPresidente");
+		comboBoxCargo.setModel(new DefaultComboBoxModel(new String[] {"Cliente", "Gerente", "Diretor", "Presidente"}));
+		comboBoxCargo.setSelectedIndex(5);
+		comboBoxCargo.setBounds(101, 58, 148, 21);
+		contentPane.add(comboBoxCargo);
 	}
 }

@@ -12,14 +12,14 @@ import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.JPasswordField;
 
-public class TelaCadastro extends JFrame {
+public class TelaCadastroCliente extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField NomeField;
 	private JTextField NascField;
 	private JTextField CpfField;
-	private JPasswordField passwordField;
-	private JPasswordField passwordField_1;
+	private JPasswordField SenhaField;
+	private JPasswordField ConfirmacaoSenhaField;
 
 	/**
 	 * Launch the application.
@@ -28,7 +28,7 @@ public class TelaCadastro extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaCadastro frame = new TelaCadastro();
+					TelaCadastroCliente frame = new TelaCadastroCliente();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,10 +40,10 @@ public class TelaCadastro extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaCadastro() {
-		setTitle("Novo Cadastro");
+	public TelaCadastroCliente() {
+		setTitle("Novo Cadastro Cliente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 360, 450);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(85, 106, 95));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -51,8 +51,8 @@ public class TelaCadastro extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel TextNovoCadastro = new JLabel("Novo Cadastro");
-		TextNovoCadastro.setBounds(170, 10, 117, 16);
+		JLabel TextNovoCadastro = new JLabel("Novo Cadastro de Clientes");
+		TextNovoCadastro.setBounds(85, 10, 172, 16);
 		TextNovoCadastro.setFont(new Font("Tahoma", Font.BOLD, 13));
 		contentPane.add(TextNovoCadastro);
 		
@@ -92,19 +92,19 @@ public class TelaCadastro extends JFrame {
 		CpfField.setColumns(10);
 		
 		JButton NovaContaButton = new JButton("Criar Conta");
-		NovaContaButton.setBounds(68, 223, 85, 21);
+		NovaContaButton.setBounds(32, 300, 85, 21);
 		contentPane.add(NovaContaButton);
 		
 		JButton VoltarButton = new JButton("Voltar");
-		VoltarButton.setBounds(221, 223, 85, 21);
+		VoltarButton.setBounds(188, 300, 85, 21);
 		contentPane.add(VoltarButton);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(22, 185, 96, 19);
-		contentPane.add(passwordField);
+		SenhaField = new JPasswordField();
+		SenhaField.setBounds(22, 185, 96, 19);
+		contentPane.add(SenhaField);
 		
-		passwordField_1 = new JPasswordField();
-		passwordField_1.setBounds(189, 185, 108, 19);
-		contentPane.add(passwordField_1);
+		ConfirmacaoSenhaField = new JPasswordField();
+		ConfirmacaoSenhaField.setBounds(189, 185, 108, 19);
+		contentPane.add(ConfirmacaoSenhaField);
 	}
 }

@@ -14,7 +14,7 @@ import java.awt.Font;
 public class TelaGerente extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField ClienteField;
 
 	/**
 	 * Launch the application.
@@ -36,6 +36,7 @@ public class TelaGerente extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaGerente() {
+		setTitle("Tela Gerente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -45,36 +46,40 @@ public class TelaGerente extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Cadastrar Cliente");
-		btnNewButton.setBounds(170, 198, 111, 21);
-		contentPane.add(btnNewButton);
+		JButton CadastrarClienteButton = new JButton("Cadastrar Cliente");
+		CadastrarClienteButton.setBounds(24, 201, 126, 21);
+		contentPane.add(CadastrarClienteButton);
 		
-		JLabel lblNewLabel = new JLabel("Tela Gerente");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel.setBounds(170, 10, 96, 13);
-		contentPane.add(lblNewLabel);
+		JLabel TextPaineldoGerente = new JLabel("Painel do Gerente");
+		TextPaineldoGerente.setFont(new Font("Tahoma", Font.BOLD, 12));
+		TextPaineldoGerente.setBounds(158, 10, 121, 13);
+		contentPane.add(TextPaineldoGerente);
 		
-		JLabel lblNewLabel_1 = new JLabel("Total de Contas:");
-		lblNewLabel_1.setBounds(57, 49, 76, 13);
-		contentPane.add(lblNewLabel_1);
+		JLabel TextTotalContas = new JLabel("Total de Contas:");
+		TextTotalContas.setBounds(47, 50, 76, 13);
+		contentPane.add(TextTotalContas);
 		
-		JLabel lblNewLabel_2 = new JLabel("Procurar Cliente:");
-		lblNewLabel_2.setBounds(57, 89, 101, 13);
-		contentPane.add(lblNewLabel_2);
+		JLabel TextProcurarCliente = new JLabel("Procurar Cliente:");
+		TextProcurarCliente.setBounds(47, 72, 101, 13);
+		contentPane.add(TextProcurarCliente);
 		
-		textField = new JTextField();
-		textField.setBounds(57, 103, 96, 19);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		ClienteField = new JTextField();
+		ClienteField.setBounds(47, 87, 96, 19);
+		contentPane.add(ClienteField);
+		ClienteField.setColumns(10);
 		
-		JLabel lblNewLabel_3 = new JLabel("\"Numero de contas\"");
-		lblNewLabel_3.setBounds(143, 49, 111, 13);
-		contentPane.add(lblNewLabel_3);
+		JLabel TotalContas = new JLabel("\"Numero de contas\"");
+		TotalContas.setBounds(138, 50, 111, 13);
+		contentPane.add(TotalContas);
 		
-		JButton btnNewButton_1 = new JButton("Pesquisar");
-		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		btnNewButton_1.setBounds(57, 132, 76, 13);
-		contentPane.add(btnNewButton_1);
+		JButton PesquisarButton = new JButton("Pesquisar");
+		PesquisarButton.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		PesquisarButton.setBounds(47, 116, 76, 13);
+		contentPane.add(PesquisarButton);
+		
+		JButton SairButton = new JButton("Sair");
+		SairButton.setBounds(164, 232, 85, 21);
+		contentPane.add(SairButton);
 	}
 
 }
