@@ -72,26 +72,5 @@ public class Conta {
 	public String getTipoConta() {
 		return tipoConta;
 	}
-	
-	// Método para depositar dinheiro
-    public void depositar(double valor) {
-        saldoConta += valor;
-    }
-    
-    // Método para consultar saldo ou GetSaldoConta
-    public double consultarSaldo() {
-        return saldoConta;
-    }
-
-    
-    // Método para sacar dinheiro
-    public boolean sacar(double valor) {
-        if (saldoConta >= valor) {
-            saldoConta -= valor;
-            return true; // Saque bem-sucedido
-        } else {
-            return false; // Saldo insuficiente
-        }
-    }
     
 }

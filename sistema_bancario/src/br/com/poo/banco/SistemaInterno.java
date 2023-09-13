@@ -24,6 +24,7 @@ public class SistemaInterno {
 		Util.customizer();
 		Util.setupLogger().log(Level.INFO,
 				() -> "Titular: " + c1.getTitularConta() + "\nSaldo: " + df.format(c1.getSaldoConta()));
+	
 	}
 
 }
