@@ -1,5 +1,8 @@
 package br.com.poo.banco.pessoas;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Funcionario{
 	
 	private String cargo;
@@ -11,6 +14,8 @@ public class Funcionario{
 	public String toString() {
 		return " [nome =" + nome + ", cpf =" + cpf + "]";
 	}
+	
+	public static Map<String, Funcionario> mapaFuncionarios = new HashMap<>();
 
 	public Funcionario(String cargo, String nome, String cpf, double salario) {
 		super();

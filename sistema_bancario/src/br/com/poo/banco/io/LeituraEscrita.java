@@ -13,6 +13,7 @@ import br.com.poo.banco.contas.Conta;
 import br.com.poo.banco.contas.ContaPoupanca;
 import br.com.poo.banco.enums.ContaEnum;
 import br.com.poo.banco.pessoas.Cliente;
+import br.com.poo.banco.pessoas.Funcionario;
 
 public class LeituraEscrita {
 
@@ -40,17 +41,23 @@ public class LeituraEscrita {
 					Conta.mapaContas.put(dados[2], cp);
 					System.out.println(cp);
 				} else if (dados[0].equalsIgnoreCase("CORRENTE")) {
-					
+					//String tipoConta, String senhaConta, String numeroConta, double saldoConta, String cpfConta
+					Conta conta = new Conta(dados[0], dados[1], dados[2], Double.parseDouble(dados[3]), dados[4]);
+					Conta.mapaContas.put(dados[1], conta);
 				} else if (dados[0].equalsIgnoreCase("CLIENTE")) {
 					//String TIPO_PESSOA, String nome, String cpf, Integer senha
 					Cliente c = new Cliente(dados [0], dados[1], dados[2], Integer.parseInt(dados[3]));
 					Cliente.mapaClientes.put(dados [2], c);
 				} else if (dados[0].equalsIgnoreCase("GERENTE")) {
-
+					//String cargo, String nome, String cpf, double salario
+					Funcionario f = new Funcionario(dados [0], dados[1], dados[2], Double.parseDouble(dados[3]));
+					Funcionario.mapaFuncionarios.put(dados[2], f);
 				} else if (dados[0].equalsIgnoreCase("DIRETOR")) {
-
+					Funcionario f = new Funcionario(dados [0], dados[1], dados[2], Double.parseDouble(dados[3]));
+					Funcionario.mapaFuncionarios.put(dados[2], f);
 				} else if (dados[0].equalsIgnoreCase("PRESIDENTE")) {
-
+					Funcionario f = new Funcionario(dados [0], dados[1], dados[2], Double.parseDouble(dados[3]));
+					Funcionario.mapaFuncionarios.put(dados[2], f);
 				}
 			} else {
 				break;
