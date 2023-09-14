@@ -11,15 +11,24 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.JPasswordField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.UIManager;
+import java.awt.Canvas;
+import javax.swing.ImageIcon;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 public class TelaCadastroCliente extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField NomeField;
-	private JTextField NascField;
-	private JTextField CpfField;
-	private JPasswordField SenhaField;
-	private JPasswordField ConfirmacaoSenhaField;
+	private JTextField textNomeCad;
+	private JTextField textDatNasCad;
+	private JTextField textCpfCad;
+	private final Action action = new SwingAction();
+	private JPasswordField passwordSenhaCad;
+	private JPasswordField passwordConSenhaCad;
 
 	/**
 	 * Launch the application.
@@ -41,70 +50,139 @@ public class TelaCadastroCliente extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaCadastroCliente() {
-		setTitle("Novo Cadastro Cliente");
+		setResizable(false);
+		setTitle("Novo Cliente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 360, 450);
+		setBounds(100, 100, 930, 630);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(85, 106, 95));
+		contentPane.setBackground(new Color(235, 235, 235));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel TextNovoCadastro = new JLabel("Novo Cadastro de Clientes");
-		TextNovoCadastro.setBounds(85, 10, 172, 16);
-		TextNovoCadastro.setFont(new Font("Tahoma", Font.BOLD, 13));
-		contentPane.add(TextNovoCadastro);
 		
 		JLabel TextNome = new JLabel("Nome");
-		TextNome.setBounds(22, 30, 45, 13);
+		TextNome.setFont(new Font("Tahoma", Font.BOLD, 13));
+		TextNome.setBounds(46, 239, 45, 13);
 		contentPane.add(TextNome);
 		
-		JLabel TextCpf = new JLabel("Cpf");
-		TextCpf.setBounds(22, 121, 45, 13);
-		contentPane.add(TextCpf);
+		textNomeCad = new JTextField();
+		textNomeCad.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		textNomeCad.setBounds(44, 258, 286, 20);
+		contentPane.add(textNomeCad);
+		textNomeCad.setColumns(10);
 		
-		JLabel TextDtNascimento = new JLabel("Data de Nacimento");
-		TextDtNascimento.setBounds(22, 76, 86, 13);
-		contentPane.add(TextDtNascimento);
+		JButton btnCriaConta = new JButton("Criar Conta");
+		btnCriaConta.setForeground(new Color(255, 255, 255));
+		btnCriaConta.setFont(new Font("Lato", Font.BOLD, 16));
+		btnCriaConta.setBackground(new Color(255, 0, 0));
+		btnCriaConta.setBounds(639, 499, 200, 60);
+		contentPane.add(btnCriaConta);
 		
-		JLabel TextSenha = new JLabel("Senha");
-		TextSenha.setBounds(22, 167, 45, 13);
-		contentPane.add(TextSenha);
+		JLabel TextNome_1 = new JLabel("Data de Nascimento");
+		TextNome_1.setFont(new Font("Tahoma", Font.BOLD, 13));
+		TextNome_1.setBounds(46, 332, 142, 13);
+		contentPane.add(TextNome_1);
 		
-		JLabel TextConfSenha = new JLabel("Digite sua senha novamente");
-		TextConfSenha.setBounds(189, 167, 129, 13);
-		contentPane.add(TextConfSenha);
+		textDatNasCad = new JTextField();
+		textDatNasCad.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		textDatNasCad.setColumns(10);
+		textDatNasCad.setBounds(44, 349, 286, 20);
+		contentPane.add(textDatNasCad);
 		
-		NomeField = new JTextField();
-		NomeField.setBounds(22, 47, 96, 19);
-		contentPane.add(NomeField);
-		NomeField.setColumns(10);
+		JLabel TextNome_2 = new JLabel("CPF");
+		TextNome_2.setFont(new Font("Tahoma", Font.BOLD, 13));
+		TextNome_2.setBounds(46, 288, 45, 13);
+		contentPane.add(TextNome_2);
 		
-		NascField = new JTextField();
-		NascField.setBounds(22, 92, 96, 19);
-		contentPane.add(NascField);
-		NascField.setColumns(10);
+		textCpfCad = new JTextField();
+		textCpfCad.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		textCpfCad.setColumns(10);
+		textCpfCad.setBounds(44, 305, 286, 20);
+		contentPane.add(textCpfCad);
 		
-		CpfField = new JTextField();
-		CpfField.setBounds(22, 138, 96, 19);
-		contentPane.add(CpfField);
-		CpfField.setColumns(10);
+		JLabel TextNome_3 = new JLabel("Senha");
+		TextNome_3.setFont(new Font("Tahoma", Font.BOLD, 13));
+		TextNome_3.setBounds(616, 241, 45, 13);
+		contentPane.add(TextNome_3);
 		
-		JButton NovaContaButton = new JButton("Criar Conta");
-		NovaContaButton.setBounds(32, 300, 85, 21);
-		contentPane.add(NovaContaButton);
+		JLabel TextNome_4 = new JLabel("Confirmação de Senha");
+		TextNome_4.setFont(new Font("Tahoma", Font.BOLD, 13));
+		TextNome_4.setBounds(618, 332, 150, 13);
+		contentPane.add(TextNome_4);
 		
-		JButton VoltarButton = new JButton("Voltar");
-		VoltarButton.setBounds(188, 300, 85, 21);
-		contentPane.add(VoltarButton);
+		JLabel TextNovoCadastro = new JLabel("Cadastro de Clientes");
+		TextNovoCadastro.setForeground(new Color(255, 255, 255));
+		TextNovoCadastro.setBackground(new Color(255, 255, 255));
+		TextNovoCadastro.setBounds(380, 161, 154, 30);
+		TextNovoCadastro.setFont(new Font("Lato", Font.BOLD, 15));
+		contentPane.add(TextNovoCadastro);
+
+		JLabel textLinhaVermelha = new JLabel("__________________________________");
+		textLinhaVermelha.setForeground(new Color(198, 43, 26));
+		textLinhaVermelha.setFont(new Font("Tahoma", Font.PLAIN, 46));
+		textLinhaVermelha.setBackground(UIManager.getColor("Button.background"));
+		textLinhaVermelha.setBounds(32, 50, 850, 53);
+		contentPane.add(textLinhaVermelha);
 		
-		SenhaField = new JPasswordField();
-		SenhaField.setBounds(22, 185, 96, 19);
-		contentPane.add(SenhaField);
+		JLabel lblMazeBank = new JLabel("MAZE BANK");
+		lblMazeBank.setFont(new Font("Sylfaen", Font.PLAIN, 40));
+		lblMazeBank.setBackground(UIManager.getColor("Button.background"));
+		lblMazeBank.setBounds(94, 30, 236, 53);
+		contentPane.add(lblMazeBank);
 		
-		ConfirmacaoSenhaField = new JPasswordField();
-		ConfirmacaoSenhaField.setBounds(189, 185, 108, 19);
-		contentPane.add(ConfirmacaoSenhaField);
+		JLabel lblOfPetrpolisCity = new JLabel("OF PETRÓPOLIS CITY");
+		lblOfPetrpolisCity.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblOfPetrpolisCity.setBackground(UIManager.getColor("Button.background"));
+		lblOfPetrpolisCity.setBounds(96, 62, 150, 16);
+		contentPane.add(lblOfPetrpolisCity);
+		
+		JLabel TextUsuarioCadastrador = new JLabel("(Usuario Cadastrador)");
+		TextUsuarioCadastrador.setForeground(Color.WHITE);
+		TextUsuarioCadastrador.setFont(new Font("Lato", Font.BOLD, 18));
+		TextUsuarioCadastrador.setBackground(Color.WHITE);
+		TextUsuarioCadastrador.setBounds(37, 133, 179, 30);
+		contentPane.add(TextUsuarioCadastrador);
+		
+		JLabel lblMazeBankBarra = new JLabel("");
+		lblMazeBankBarra.setIcon(new ImageIcon("C:\\mazebankbarra.png"));
+		lblMazeBankBarra.setBounds(32, 127, 850, 60);
+		contentPane.add(lblMazeBankBarra);
+		
+		JLabel lblMzBkLogo = new JLabel("logo");
+		lblMzBkLogo.setIcon(new ImageIcon("C:\\mazebanklogo.png"));
+		lblMzBkLogo.setForeground(new Color(0, 0, 0));
+		lblMzBkLogo.setFont(new Font("Tahoma", Font.PLAIN, 5));
+		lblMzBkLogo.setBounds(32, 23, 60, 60);
+		contentPane.add(lblMzBkLogo);
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setForeground(new Color(255, 255, 255));
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnVoltar.setFont(new Font("Lato", Font.BOLD, 16));
+		btnVoltar.setBackground(new Color(255, 32, 32));
+		btnVoltar.setBounds(94, 499, 200, 60);
+		contentPane.add(btnVoltar);
+		
+		passwordSenhaCad = new JPasswordField();
+		passwordSenhaCad.setBounds(616, 259, 257, 20);
+		contentPane.add(passwordSenhaCad);
+		
+		passwordConSenhaCad = new JPasswordField();
+		passwordConSenhaCad.setBounds(616, 350, 257, 20);
+		contentPane.add(passwordConSenhaCad);
+		
+	}
+	private class SwingAction extends AbstractAction {
+		public SwingAction() {
+			putValue(NAME, "SwingAction");
+			putValue(SHORT_DESCRIPTION, "Some short description");
+		}
+		public void actionPerformed(ActionEvent e) {
+		}
 	}
 }

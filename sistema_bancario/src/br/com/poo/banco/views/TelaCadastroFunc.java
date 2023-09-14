@@ -11,16 +11,18 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.JPasswordField;
+import javax.swing.UIManager;
+import javax.swing.ImageIcon;
 
 public class TelaCadastroFunc extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField NomeField;
-	private JTextField NascField;
-	private JTextField CpfField;
-	private JPasswordField SenhaField;
-	private JPasswordField ConfirmacaoSenhaField;
-	private JTextField AgenciaField;
+	private JTextField textNomeFu;
+	private JTextField textDatNascFu;
+	private JTextField textCpfFu;
+	private JTextField textAgeFu;
+	private JPasswordField passwordSenhaFu;
+	private JPasswordField passwordConSenhaFu;
 
 	/**
 	 * Launch the application.
@@ -42,79 +44,137 @@ public class TelaCadastroFunc extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaCadastroFunc() {
-		setTitle("Novo Cadastro Funcionario");
+		setResizable(false);
+		setTitle("Novo Funcionario");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 360, 450);
+		setBounds(100, 100, 930, 630);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(85, 106, 95));
+		contentPane.setBackground(new Color(235, 235, 235));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel TextNovoCadastroGer = new JLabel("Novo Cadastro de Funcionario");
-		TextNovoCadastroGer.setBounds(75, 10, 194, 16);
-		TextNovoCadastroGer.setFont(new Font("Tahoma", Font.BOLD, 13));
-		contentPane.add(TextNovoCadastroGer);
+		JLabel TextNome_5 = new JLabel("Nome");
+		TextNome_5.setFont(new Font("Tahoma", Font.BOLD, 13));
+		TextNome_5.setBounds(34, 241, 45, 13);
+		contentPane.add(TextNome_5);
 		
-		JLabel TextNome = new JLabel("Nome");
-		TextNome.setBounds(22, 30, 45, 13);
-		contentPane.add(TextNome);
+		textNomeFu = new JTextField();
+		textNomeFu.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		textNomeFu.setColumns(10);
+		textNomeFu.setBounds(32, 260, 286, 20);
+		contentPane.add(textNomeFu);
 		
-		JLabel TextCpf = new JLabel("Cpf");
-		TextCpf.setBounds(22, 121, 45, 13);
-		contentPane.add(TextCpf);
+		JButton btnCriaConta = new JButton("Criar Conta");
+		btnCriaConta.setForeground(new Color(255, 255, 255));
+		btnCriaConta.setFont(new Font("Lato", Font.BOLD, 16));
+		btnCriaConta.setBackground(Color.RED);
+		btnCriaConta.setBounds(642, 502, 200, 60);
+		contentPane.add(btnCriaConta);
 		
-		JLabel TextDtNascimento = new JLabel("Data de Nacimento");
-		TextDtNascimento.setBounds(22, 76, 86, 13);
-		contentPane.add(TextDtNascimento);
+		JLabel TextNome_1_2 = new JLabel("Data de Nascimento");
+		TextNome_1_2.setFont(new Font("Tahoma", Font.BOLD, 13));
+		TextNome_1_2.setBounds(34, 334, 136, 13);
+		contentPane.add(TextNome_1_2);
 		
-		JLabel TextSenha = new JLabel("Senha");
-		TextSenha.setBounds(22, 211, 45, 13);
-		contentPane.add(TextSenha);
+		textDatNascFu = new JTextField();
+		textDatNascFu.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		textDatNascFu.setColumns(10);
+		textDatNascFu.setBounds(32, 351, 286, 20);
+		contentPane.add(textDatNascFu);
 		
-		JLabel TextConfSenha = new JLabel("Digite sua senha novamente");
-		TextConfSenha.setBounds(189, 211, 129, 13);
-		contentPane.add(TextConfSenha);
+		JLabel TextNome_2_1 = new JLabel("CPF");
+		TextNome_2_1.setFont(new Font("Tahoma", Font.BOLD, 13));
+		TextNome_2_1.setBounds(34, 290, 45, 13);
+		contentPane.add(TextNome_2_1);
 		
-		NomeField = new JTextField();
-		NomeField.setBounds(22, 47, 96, 19);
-		contentPane.add(NomeField);
-		NomeField.setColumns(10);
+		textCpfFu = new JTextField();
+		textCpfFu.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		textCpfFu.setColumns(10);
+		textCpfFu.setBounds(32, 307, 286, 20);
+		contentPane.add(textCpfFu);
 		
-		NascField = new JTextField();
-		NascField.setBounds(22, 92, 96, 19);
-		contentPane.add(NascField);
-		NascField.setColumns(10);
+		JLabel TextNome_3_1 = new JLabel("Senha");
+		TextNome_3_1.setFont(new Font("Tahoma", Font.BOLD, 13));
+		TextNome_3_1.setBounds(625, 291, 45, 13);
+		contentPane.add(TextNome_3_1);
 		
-		CpfField = new JTextField();
-		CpfField.setBounds(22, 138, 96, 19);
-		contentPane.add(CpfField);
-		CpfField.setColumns(10);
+		JLabel TextNome_4_1 = new JLabel("Confirmação de Senha");
+		TextNome_4_1.setFont(new Font("Tahoma", Font.BOLD, 13));
+		TextNome_4_1.setBounds(625, 335, 150, 13);
+		contentPane.add(TextNome_4_1);
 		
-		JButton NovaContaButton = new JButton("Criar Conta");
-		NovaContaButton.setBounds(32, 300, 85, 21);
-		contentPane.add(NovaContaButton);
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setForeground(new Color(255, 255, 255));
+		btnVoltar.setFont(new Font("Lato", Font.BOLD, 16));
+		btnVoltar.setBackground(new Color(255, 32, 32));
+		btnVoltar.setBounds(97, 502, 200, 60);
+		contentPane.add(btnVoltar);
 		
-		JButton VoltarButton = new JButton("Voltar");
-		VoltarButton.setBounds(188, 300, 85, 21);
-		contentPane.add(VoltarButton);
+		JLabel TextNome_4_1_1 = new JLabel("Agencia");
+		TextNome_4_1_1.setFont(new Font("Tahoma", Font.BOLD, 13));
+		TextNome_4_1_1.setBounds(625, 241, 150, 16);
+		contentPane.add(TextNome_4_1_1);
 		
-		SenhaField = new JPasswordField();
-		SenhaField.setBounds(22, 229, 96, 19);
-		contentPane.add(SenhaField);
+		textAgeFu = new JTextField();
+		textAgeFu.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		textAgeFu.setColumns(10);
+		textAgeFu.setBounds(623, 261, 259, 20);
+		contentPane.add(textAgeFu);
 		
-		ConfirmacaoSenhaField = new JPasswordField();
-		ConfirmacaoSenhaField.setBounds(189, 229, 108, 19);
-		contentPane.add(ConfirmacaoSenhaField);
+		passwordSenhaFu = new JPasswordField();
+		passwordSenhaFu.setBounds(625, 308, 257, 20);
+		contentPane.add(passwordSenhaFu);
 		
-		JLabel TextAgencia = new JLabel("Agencia");
-		TextAgencia.setBounds(22, 167, 45, 13);
-		contentPane.add(TextAgencia);
+		passwordConSenhaFu = new JPasswordField();
+		passwordConSenhaFu.setBounds(625, 352, 257, 20);
+		contentPane.add(passwordConSenhaFu);
 		
-		AgenciaField = new JTextField();
-		AgenciaField.setBounds(22, 182, 96, 19);
-		contentPane.add(AgenciaField);
-		AgenciaField.setColumns(10);
+		JLabel TextNovoCadastro = new JLabel("Cadastro de Funcionário");
+		TextNovoCadastro.setForeground(new Color(255, 255, 255));
+		TextNovoCadastro.setBackground(new Color(255, 255, 255));
+		TextNovoCadastro.setBounds(373, 161, 167, 30);
+		TextNovoCadastro.setFont(new Font("Lato", Font.BOLD, 15));
+		contentPane.add(TextNovoCadastro);
+
+		JLabel textLinhaVermelha = new JLabel("__________________________________");
+		textLinhaVermelha.setForeground(new Color(198, 43, 26));
+		textLinhaVermelha.setFont(new Font("Tahoma", Font.PLAIN, 46));
+		textLinhaVermelha.setBackground(UIManager.getColor("Button.background"));
+		textLinhaVermelha.setBounds(32, 50, 850, 53);
+		contentPane.add(textLinhaVermelha);
+		
+		JLabel lblMazeBank = new JLabel("MAZE BANK");
+		lblMazeBank.setFont(new Font("Sylfaen", Font.PLAIN, 40));
+		lblMazeBank.setBackground(UIManager.getColor("Button.background"));
+		lblMazeBank.setBounds(94, 30, 236, 53);
+		contentPane.add(lblMazeBank);
+		
+		JLabel lblOfPetrpolisCity = new JLabel("OF PETRÓPOLIS CITY");
+		lblOfPetrpolisCity.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblOfPetrpolisCity.setBackground(UIManager.getColor("Button.background"));
+		lblOfPetrpolisCity.setBounds(96, 62, 150, 16);
+		contentPane.add(lblOfPetrpolisCity);
+		
+		JLabel TextUsuarioCadastrador = new JLabel("(Usuario Cadastrador)");
+		TextUsuarioCadastrador.setForeground(Color.WHITE);
+		TextUsuarioCadastrador.setFont(new Font("Lato", Font.BOLD, 18));
+		TextUsuarioCadastrador.setBackground(Color.WHITE);
+		TextUsuarioCadastrador.setBounds(37, 133, 179, 30);
+		contentPane.add(TextUsuarioCadastrador);
+		
+		JLabel lblMazeBankBarra = new JLabel("");
+		lblMazeBankBarra.setIcon(new ImageIcon("C:\\mazebankbarra.png"));
+		lblMazeBankBarra.setBounds(32, 127, 850, 60);
+		contentPane.add(lblMazeBankBarra);
+		
+		JLabel lblMzBkLogo = new JLabel("logo");
+		lblMzBkLogo.setIcon(new ImageIcon("C:\\mazebanklogo.png"));
+		lblMzBkLogo.setForeground(new Color(0, 0, 0));
+		lblMzBkLogo.setFont(new Font("Tahoma", Font.PLAIN, 5));
+		lblMzBkLogo.setBounds(32, 23, 60, 60);
+		contentPane.add(lblMzBkLogo);
+		
 	}
 }

@@ -4,19 +4,18 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
-import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.UIManager;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import java.awt.Color;
 
-public class TelaDeposito extends JFrame {
+public class TelaContaCorrente extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField ValorField;
 
 	/**
 	 * Launch the application.
@@ -25,7 +24,7 @@ public class TelaDeposito extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaDeposito frame = new TelaDeposito();
+					TelaContaCorrente frame = new TelaContaCorrente();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,9 +36,9 @@ public class TelaDeposito extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaDeposito() {
+	public TelaContaCorrente() {
 		setResizable(false);
-		setTitle("Depósito");
+		setTitle("Conta Corrente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 930, 630);
 		contentPane = new JPanel();
@@ -49,29 +48,48 @@ public class TelaDeposito extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel TextDigiteoValor = new JLabel("Digite o valor que deseja depositar:");
-		TextDigiteoValor.setFont(new Font("Lato", Font.BOLD, 20));
-		TextDigiteoValor.setBounds(291, 284, 321, 30);
-		contentPane.add(TextDigiteoValor);
+		JButton btnSaqueCP = new JButton("Saque");
+		btnSaqueCP.setForeground(new Color(255, 255, 255));
+		btnSaqueCP.setBackground(new Color(233, 65, 69));
+		btnSaqueCP.setFont(new Font("Lato", Font.BOLD, 14));
+		btnSaqueCP.setBounds(540, 240, 320, 60);
+		contentPane.add(btnSaqueCP);
 		
-		ValorField = new JTextField();
-		ValorField.setBounds(291, 325, 321, 25);
-		contentPane.add(ValorField);
-		ValorField.setColumns(10);
+		JButton btnTransferenciaCC = new JButton("Tranferencia");
+		btnTransferenciaCC.setForeground(new Color(255, 255, 255));
+		btnTransferenciaCC.setBackground(new Color(233, 65, 69));
+		btnTransferenciaCC.setFont(new Font("Lato", Font.BOLD, 14));
+		btnTransferenciaCC.setBounds(54, 340, 320, 60);
+		contentPane.add(btnTransferenciaCC);
 		
-		JButton btnConfirmar = new JButton("Confirmar");
-		btnConfirmar.setForeground(new Color(255, 255, 255));
-		btnConfirmar.setFont(new Font("Lato", Font.BOLD, 14));
-		btnConfirmar.setBackground(new Color(233, 65, 69));
-		btnConfirmar.setBounds(565, 471, 220, 60);
-		contentPane.add(btnConfirmar);
+		JButton btnDepositoCC = new JButton("Deposito");
+		btnDepositoCC.setForeground(new Color(255, 255, 255));
+		btnDepositoCC.setBackground(new Color(233, 65, 69));
+		btnDepositoCC.setFont(new Font("Lato", Font.BOLD, 14));
+		btnDepositoCC.setBounds(54, 240, 320, 60);
+		contentPane.add(btnDepositoCC);
 		
-		JButton btnVoltar = new JButton("Voltar");
-		btnVoltar.setForeground(new Color(255, 255, 255));
-		btnVoltar.setFont(new Font("Lato", Font.BOLD, 14));
-		btnVoltar.setBackground(new Color(233, 65, 69));
-		btnVoltar.setBounds(130, 472, 220, 60);
-		contentPane.add(btnVoltar);
+		JButton btnConPou = new JButton("Ir para Poupança");
+		btnConPou.setEnabled(false);
+		btnConPou.setForeground(new Color(255, 255, 255));
+		btnConPou.setBackground(new Color(233, 65, 69));
+		btnConPou.setFont(new Font("Lato", Font.BOLD, 14));
+		btnConPou.setBounds(540, 440, 320, 60);
+		contentPane.add(btnConPou);
+		
+		JButton btnExtrato = new JButton("Extrato");
+		btnExtrato.setForeground(new Color(255, 255, 255));
+		btnExtrato.setBackground(new Color(233, 65, 69));
+		btnExtrato.setFont(new Font("Lato", Font.BOLD, 14));
+		btnExtrato.setBounds(54, 440, 320, 60);
+		contentPane.add(btnExtrato);
+		
+		JButton btnSegVida = new JButton("Seg. de Vida");
+		btnSegVida.setForeground(new Color(255, 255, 255));
+		btnSegVida.setBackground(new Color(233, 65, 69));
+		btnSegVida.setFont(new Font("Lato", Font.BOLD, 14));
+		btnSegVida.setBounds(540, 340, 320, 60);
+		contentPane.add(btnSegVida);
 		
 		JLabel TextNovoCadastro = new JLabel("Conta Corrente");
 		TextNovoCadastro.setForeground(new Color(255, 255, 255));
@@ -113,11 +131,18 @@ public class TelaDeposito extends JFrame {
 		lblMzBkLogo.setBounds(32, 23, 60, 60);
 		contentPane.add(lblMzBkLogo);
 		
+		JLabel TextSaldoCC = new JLabel("Cheque Esp: R$500,00");
+		TextSaldoCC.setForeground(new Color(0, 0, 0));
+		TextSaldoCC.setFont(new Font("Lato", Font.BOLD, 15));
+		TextSaldoCC.setBackground(Color.WHITE);
+		TextSaldoCC.setBounds(707, 71, 211, 30);
+		contentPane.add(TextSaldoCC);
+		
 		JLabel lblChequeEsp = new JLabel("Saldo: R$10.000,00");
 		lblChequeEsp.setForeground(Color.BLACK);
 		lblChequeEsp.setFont(new Font("Lato", Font.BOLD, 15));
 		lblChequeEsp.setBackground(Color.WHITE);
-		lblChequeEsp.setBounds(706, 64, 192, 30);
+		lblChequeEsp.setBounds(727, 53, 192, 30);
 		contentPane.add(lblChequeEsp);
 		
 		JButton btnSair = new JButton("Sair");
@@ -138,5 +163,6 @@ public class TelaDeposito extends JFrame {
 		lblNewLabel.setIcon(new ImageIcon("C:\\mazebankbarra.png"));
 		lblNewLabel.setBounds(32, 127, 850, 60);
 		contentPane.add(lblNewLabel);
+		
 	}
 }
