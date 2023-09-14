@@ -7,6 +7,7 @@ import java.util.logging.Level;
 import br.com.poo.banco.contas.Conta;
 import br.com.poo.banco.io.LeituraEscrita;
 import br.com.poo.banco.util.Util;
+import br.com.poo.banco.views.TelaLogin;
 
 public class SistemaInterno {
 
@@ -14,7 +15,12 @@ public class SistemaInterno {
 
 		LeituraEscrita.leitor("banco");
 		//LeituraEscrita.escritor("banco");
-
+		
+		TelaLogin telaLogin = new TelaLogin();
+		telaLogin.setLocationRelativeTo(telaLogin);
+		telaLogin.setVisible(true);
+		
+		
 		DecimalFormat df = new DecimalFormat("#0,000.00");
 		Conta c1 = new Conta("Corrente", "123456-7", "132.456.789-11", 10000.20, null);
 		System.out.println("Antes " + c1.getSaldoConta());
