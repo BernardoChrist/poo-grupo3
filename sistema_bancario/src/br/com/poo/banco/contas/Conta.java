@@ -60,7 +60,6 @@ public class Conta {
 		return mapaContas;
 	}
 
-
 	public static Map<String, Conta> mapaContas = new HashMap<>();
 
 	public Conta() {
