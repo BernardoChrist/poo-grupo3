@@ -12,8 +12,8 @@ public class ContaCorrente extends Conta {
 	}
 
 	public ContaCorrente(String tipoConta, String senhaConta, String numeroConta, 
-	Double saldoConta, String cpfconta, Double limiteCredito, boolean chequeEspecial) {
-	//	super(tipoConta, senhaConta, numeroConta, saldoConta, cpfConta);*
+	Double saldoConta, String cpfConta, Double limiteCredito, boolean chequeEspecial) {
+		super(tipoConta, senhaConta, numeroConta, saldoConta, cpfConta);
 		this.limiteCredito = limiteCredito;
 		this.chequeEspecial = chequeEspecial;
 	}
@@ -30,4 +30,33 @@ public class ContaCorrente extends Conta {
 		return chequeEspecial;
 	}
 	
+	//Método para depositar dinheiro
+	public void depositar(double valor) {
+		Double txDepositar = 0.10;
+		Double valorDeposito;
+		double saldoConta = this.getSaldoConta();
+		
+		valorDeposito = valor - txDepositar;
+		
+		saldoConta += valorDeposito;
+	}
+	
+	
+	// Método para sacar dinheiro
+	public boolean sacar(double valor) {
+		Double txSacar = 0.10;
+		Double valorSaque;
+		double saldoConta = this.getSaldoConta();
+		
+		valorSaque = valor - txSacar;
+		
+
+		if (saldoConta >= valorSaque) {
+			saldoConta -= valorSaque;
+			return true; // Saque bem sucedido
+
+		} else {
+			return false; // Saldo não suficiente para sacar
+		}
+	}
 }
