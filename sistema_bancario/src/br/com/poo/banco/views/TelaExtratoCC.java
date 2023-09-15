@@ -13,15 +13,14 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-<<<<<<< HEAD
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-=======
 import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
->>>>>>> bf2c53c96fb663df12f87049d0a48b3462d18bf3
+
 
 public class TelaExtratoCC extends JFrame {
 
@@ -117,12 +116,6 @@ public class TelaExtratoCC extends JFrame {
 		JButton btnSair = new JButton("Sair");
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-				dispose();
-				TelaLogin log = new TelaLogin();
-				log.setVisible(true);
-				log.setLocationRelativeTo(log);
-=======
 				int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação de Saída",
 						JOptionPane.YES_NO_OPTION);
 				if (resposta == JOptionPane.YES_OPTION) {
@@ -130,7 +123,6 @@ public class TelaExtratoCC extends JFrame {
 //						TelaContaCorrente Conta = new TelaContaCorrente();
 //						Conta.setVisible(true);
 				}
->>>>>>> bf2c53c96fb663df12f87049d0a48b3462d18bf3
 			}
 		});
 		btnSair.setForeground(Color.WHITE);

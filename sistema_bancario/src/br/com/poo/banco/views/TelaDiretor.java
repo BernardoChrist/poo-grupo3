@@ -59,15 +59,8 @@ public class TelaDiretor extends JFrame {
 		JButton btnCadCli = new JButton("Cadastrar Cliente");
 		btnCadCli.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-				dispose();
-				TelaCadastroCliente cadc = new TelaCadastroCliente();
-				cadc.setVisible(true);
-				cadc.setLocationRelativeTo(cadc);
-=======
 				TelaCadastroCliente Cadastro = new TelaCadastroCliente(funcionario);
 				Cadastro.setVisible(true);
->>>>>>> bf2c53c96fb663df12f87049d0a48b3462d18bf3
 			}
 		});
 		btnCadCli.setForeground(new Color(255, 255, 255));
@@ -78,17 +71,9 @@ public class TelaDiretor extends JFrame {
 		
 		JButton btnCadGer = new JButton("Cadastrar Gerente");
 		btnCadGer.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-				dispose();
-				TelaCadastroFunc cadg = new TelaCadastroFunc();
-				cadg.setVisible(true);
-				cadg.setLocationRelativeTo(cadg);
-				
-=======
+			public void actionPerformed(ActionEvent e) {		
 				TelaCadastroFunc gerenteCad = new TelaCadastroFunc(funcionario);
 				gerenteCad.setVisible(true);
->>>>>>> bf2c53c96fb663df12f87049d0a48b3462d18bf3
 			}
 		});
 		btnCadGer.setForeground(new Color(255, 255, 255));
@@ -140,14 +125,6 @@ public class TelaDiretor extends JFrame {
 		JButton btnSair = new JButton("Sair");
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-				dispose();
-				TelaLogin log = new TelaLogin();
-				log.setVisible(true);
-				log.setLocationRelativeTo(log);
-			}
-		});
-=======
 				int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação de Saída", JOptionPane.YES_NO_OPTION);
                 if (resposta == JOptionPane.YES_OPTION) {
 						dispose();
@@ -155,8 +132,6 @@ public class TelaDiretor extends JFrame {
 						login.setVisible(true);
 						}
 		}});
-		
->>>>>>> bf2c53c96fb663df12f87049d0a48b3462d18bf3
 		btnSair.setForeground(Color.WHITE);
 		btnSair.setFont(new Font("Lato", Font.BOLD, 14));
 		btnSair.setBackground(new Color(233, 65, 69));

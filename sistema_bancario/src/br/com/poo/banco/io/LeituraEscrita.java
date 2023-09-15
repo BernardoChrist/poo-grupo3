@@ -53,15 +53,10 @@ public class LeituraEscrita {
 					Cliente c = new Cliente(dados[0], dados[1], dados[2], dados[3], dados[4]);
 					Cliente.mapaClientes.put(dados[2], c);
 				} else if (dados[0].equalsIgnoreCase(PessoaEnum.GERENTE.name())) {
-<<<<<<< HEAD
-					//String cargo, double salario, String numAgencia, String cpf, String nome
-					Funcionario f = new Funcionario(dados [0], Double.parseDouble(dados[1]), dados[2], dados[3], dados[4], dados[5];
-=======
 					// String cargo, double salario, String numAgencia, String cpf, String nome
 					
 					Funcionario f = new Funcionario(dados[0], Double.parseDouble(dados[1]), dados[2], dados[3],
 							dados[4], dados[5]);
->>>>>>> bf2c53c96fb663df12f87049d0a48b3462d18bf3
 					Funcionario.mapaFuncionarios.put(dados[3], f);
 				} else if (dados[0].equalsIgnoreCase(PessoaEnum.DIRETOR.name())) {
 					Funcionario f = new Funcionario(dados[0], Double.parseDouble(dados[1]), dados[2], dados[3],

@@ -95,7 +95,7 @@ public class TelaContaPoupanca extends JFrame {
 		btnContaCorrente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				TelaContaCorrente tcc = new TelaContaCorrente();
+				TelaContaCorrente tcc = new TelaContaCorrente(cp, cp, cliente, contaPoupanca, contaPoupanca);
 				tcc.setVisible(true);
 				tcc.setLocationRelativeTo(tcc);
 			}
@@ -178,14 +178,6 @@ public class TelaContaPoupanca extends JFrame {
 		JButton btnSair_1 = new JButton("Sair");
 		btnSair_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-				dispose();
-				TelaLogin log = new TelaLogin();
-				log.setVisible(true);
-				log.setLocationRelativeTo(log);
-			}
-		});
-=======
 				int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação de Saída", JOptionPane.YES_NO_OPTION);
                 if (resposta == JOptionPane.YES_OPTION) {
 						dispose();
@@ -193,7 +185,7 @@ public class TelaContaPoupanca extends JFrame {
 						login.setVisible(true);
 						}
 		}});
->>>>>>> bf2c53c96fb663df12f87049d0a48b3462d18bf3
+
 		btnSair_1.setForeground(Color.WHITE);
 		btnSair_1.setFont(new Font("Lato", Font.BOLD, 14));
 		btnSair_1.setBackground(new Color(233, 65, 69));

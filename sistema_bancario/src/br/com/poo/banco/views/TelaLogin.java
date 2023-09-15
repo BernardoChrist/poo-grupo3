@@ -187,14 +187,11 @@ public class TelaLogin extends JFrame {
 		JButton btnSair = new JButton("Sair");
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-=======
 				int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação de Saída",
 						JOptionPane.YES_NO_OPTION);
 				if (resposta == JOptionPane.YES_OPTION) {
 					System.exit(0);
 				}
->>>>>>> bf2c53c96fb663df12f87049d0a48b3462d18bf3
 			}
 		});
 		btnSair.setForeground(Color.WHITE);

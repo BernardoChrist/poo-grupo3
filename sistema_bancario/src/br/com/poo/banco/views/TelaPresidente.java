@@ -16,15 +16,12 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
-<<<<<<< HEAD
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-=======
+
 import javax.swing.border.EmptyBorder;
 
 import br.com.poo.banco.pessoas.Cliente;
 import br.com.poo.banco.pessoas.Funcionario;
->>>>>>> bf2c53c96fb663df12f87049d0a48b3462d18bf3
+
 
 public class TelaPresidente extends JFrame {
 
@@ -86,14 +83,6 @@ public class TelaPresidente extends JFrame {
 		JButton btnSair = new JButton("Sair");
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-				dispose();
-				TelaLogin log = new TelaLogin();
-				log.setVisible(true);
-				log.setLocationRelativeTo(log);
-			}
-		});
-=======
 				int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação de Saída", JOptionPane.YES_NO_OPTION);
                 if (resposta == JOptionPane.YES_OPTION) {
 						dispose();
@@ -101,7 +90,6 @@ public class TelaPresidente extends JFrame {
 						login.setVisible(true);
 						}
 		}});
->>>>>>> bf2c53c96fb663df12f87049d0a48b3462d18bf3
 		btnSair.setForeground(Color.WHITE);
 		btnSair.setFont(new Font("Lato", Font.BOLD, 14));
 		btnSair.setBackground(new Color(233, 65, 69));
@@ -137,16 +125,8 @@ public class TelaPresidente extends JFrame {
 		JButton btnCadCli = new JButton("Cadastrar Cliente");
 		btnCadCli.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-				dispose();
-				TelaCadastroCliente cadc = new TelaCadastroCliente();
-				cadc.setVisible(true);
-				cadc.setLocationRelativeTo(cadc);
-				
-=======
 				TelaCadastroCliente CadastroCli = new TelaCadastroCliente(funcionario);
 				CadastroCli.setVisible(true);
->>>>>>> bf2c53c96fb663df12f87049d0a48b3462d18bf3
 			}
 		});
 		btnCadCli.setForeground(Color.WHITE);
@@ -192,15 +172,8 @@ public class TelaPresidente extends JFrame {
 		JButton btnCadGer = new JButton("Cadastrar Gerente");
 		btnCadGer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-				dispose();
-				TelaCadastroFunc cadf = new TelaCadastroFunc();
-				cadf.setVisible(true);
-				cadf.setLocationRelativeTo(cadf);
-=======
 				TelaCadastroFunc gerente = new TelaCadastroFunc(funcionario);
 				gerente.setVisible(true);
->>>>>>> bf2c53c96fb663df12f87049d0a48b3462d18bf3
 			}
 		});
 		btnCadGer.setForeground(Color.WHITE);
@@ -212,15 +185,8 @@ public class TelaPresidente extends JFrame {
 		JButton btnCadDir = new JButton("Cadastrar Diretor");
 		btnCadDir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-				dispose();
-				TelaCadastroFunc cadf = new TelaCadastroFunc();
-				cadf.setVisible(true);
-				cadf.setLocationRelativeTo(cadf);
-=======
 				TelaCadastroFunc Diretor = new TelaCadastroFunc(funcionario);
 				Diretor.setVisible(true);
->>>>>>> bf2c53c96fb663df12f87049d0a48b3462d18bf3
 			}
 		});
 		btnCadDir.setForeground(Color.WHITE);
