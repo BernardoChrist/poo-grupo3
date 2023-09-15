@@ -20,6 +20,8 @@ public class SistemaInterno {
 		telaLogin.setLocationRelativeTo(telaLogin);
 		telaLogin.setVisible(true);
 		
+	
+		
 		
 		
 //		DecimalFormat df = new DecimalFormat("#0,000.00");

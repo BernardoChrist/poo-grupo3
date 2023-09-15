@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
@@ -165,7 +166,7 @@ public class TelaResultadoRendimentosCP extends JFrame {
 		contentPane.add(TextUsuarioCC);
 
 		JLabel lblMzBkLogo = new JLabel("logo");
-		lblMzBkLogo.setIcon(new ImageIcon("C:\\\\dev\\\\POO\\\\Workspace\\\\poo-grupo3\\\\sistema_bancario\\\\imagens maze bank\\\\mazebanklogo.png"));
+		lblMzBkLogo.setIcon(new ImageIcon("./imagens maze bank/mazebanklogo.png"));
 		lblMzBkLogo.setForeground(new Color(0, 0, 0));
 		lblMzBkLogo.setFont(new Font("Tahoma", Font.PLAIN, 5));
 		lblMzBkLogo.setBounds(32, 23, 60, 60);
@@ -181,12 +182,22 @@ public class TelaResultadoRendimentosCP extends JFrame {
 		JButton btnSair = new JButton("Sair");
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
 				dispose();
 				TelaLogin log = new TelaLogin();
 				log.setVisible(true);
 				log.setLocationRelativeTo(log);
 			}
 		});
+=======
+//				int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação de Saída", JOptionPane.YES_NO_OPTION);
+//                if (resposta == JOptionPane.YES_OPTION) {
+//						dispose();
+//						TelaContaPoupanca pouP = new TelaContaPoupanca();
+//						pouP.setVisible(true);
+//						}
+		}});
+>>>>>>> bf2c53c96fb663df12f87049d0a48b3462d18bf3
 		btnSair.setForeground(Color.WHITE);
 		btnSair.setFont(new Font("Lato", Font.BOLD, 14));
 		btnSair.setBackground(new Color(233, 65, 69));
@@ -194,7 +205,7 @@ public class TelaResultadoRendimentosCP extends JFrame {
 		contentPane.add(btnSair);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\\\dev\\\\POO\\\\Workspace\\\\poo-grupo3\\\\sistema_bancario\\\\imagens maze bank\\\\mazebankbarra.png"));
+		lblNewLabel.setIcon(new ImageIcon("./imagens maze bank/mazebankbarra.png"));
 		lblNewLabel.setBounds(32, 127, 850, 60);
 		contentPane.add(lblNewLabel);
 	}

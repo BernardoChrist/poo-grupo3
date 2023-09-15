@@ -1,53 +1,47 @@
 package br.com.poo.banco.views;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JButton;
 import java.awt.Color;
-import javax.swing.JPasswordField;
-import java.awt.event.ActionListener;
+import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
-import javax.swing.UIManager;
-import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
+
+import br.com.poo.banco.pessoas.Funcionario;
 
 public class TelaCadastroCliente extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textNomeCad;
-	private JTextField textDatNasCad;
+	private JTextField textEndereco;
 	private JTextField textCpfCad;
 	private final Action action = new SwingAction();
 	private JPasswordField passwordSenhaCad;
-	private JPasswordField passwordConSenhaCad;
+	private JTextField textTelefone;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaCadastroCliente frame = new TelaCadastroCliente();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
-	public TelaCadastroCliente() {
+	public TelaCadastroCliente(Funcionario funcionario) {
 		setResizable(false);
 		setTitle("Novo Cliente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -72,22 +66,56 @@ public class TelaCadastroCliente extends JFrame {
 		textNomeCad.setColumns(10);
 		
 		JButton btnCriaConta = new JButton("Criar Conta");
+		btnCriaConta.addActionListener(new ActionListener() {
+			static final String PATH_BASICO = "./temp/";
+            static final String EXTENSAO = ".txt";
+			public void actionPerformed(ActionEvent e) {
+				 
+				String nome = textNomeCad.getText();
+	                String textendereco = textEndereco.getText();
+	                String cpf = textCpfCad.getText();
+	                String senha = new String(passwordSenhaCad.getPassword());
+	                String textTelefone = new String();
+
+	                // Cria uma string com os dados do cliente
+	                String dadosCliente = "\nCliente;" + nome + ";" +
+	                                      textEndereco + ";" +
+	                                        cpf + ";" +
+	                                      senha + ";";
+	                
+	                if(nome == null || textEndereco == null || cpf == null || senha == null) {
+	                	 JOptionPane.showMessageDialog(null, "Preencha todos os espaços vazios.");
+	                	 return;
+	                }
+	               
+
+	                try (BufferedWriter writer = new BufferedWriter(new FileWriter(PATH_BASICO + "banco" + EXTENSAO, true))) {
+	                    // Escreve os dados do cliente no arquivo
+	                    writer.write(dadosCliente);
+	                    writer.close();
+	                } catch (IOException ex) {
+	                    ex.printStackTrace();
+	                }
+
+	                JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso.");
+	            }
+	        });
 		btnCriaConta.setForeground(new Color(255, 255, 255));
 		btnCriaConta.setFont(new Font("Lato", Font.BOLD, 16));
 		btnCriaConta.setBackground(new Color(233, 65, 69));
 		btnCriaConta.setBounds(639, 499, 200, 60);
 		contentPane.add(btnCriaConta);
 		
-		JLabel TextNome_1 = new JLabel("Data de Nascimento");
+		JLabel TextNome_1 = new JLabel("Endereço");
 		TextNome_1.setFont(new Font("Tahoma", Font.BOLD, 13));
 		TextNome_1.setBounds(46, 332, 142, 13);
 		contentPane.add(TextNome_1);
 		
-		textDatNasCad = new JTextField();
-		textDatNasCad.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		textDatNasCad.setColumns(10);
-		textDatNasCad.setBounds(44, 349, 286, 20);
-		contentPane.add(textDatNasCad);
+		textEndereco = new JTextField();
+		textEndereco.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		textEndereco.setColumns(10);
+		textEndereco.setBounds(44, 349, 286, 20);
+		contentPane.add(textEndereco);
 		
 		JLabel lblStaff = new JLabel("(STAFF)");
 		lblStaff.setFont(new Font("Sylfaen", Font.PLAIN, 14));
@@ -108,13 +136,8 @@ public class TelaCadastroCliente extends JFrame {
 		
 		JLabel TextNome_3 = new JLabel("Senha");
 		TextNome_3.setFont(new Font("Tahoma", Font.BOLD, 13));
-		TextNome_3.setBounds(616, 241, 45, 13);
+		TextNome_3.setBounds(590, 287, 45, 13);
 		contentPane.add(TextNome_3);
-		
-		JLabel TextNome_4 = new JLabel("Confirmação de Senha");
-		TextNome_4.setFont(new Font("Tahoma", Font.BOLD, 13));
-		TextNome_4.setBounds(618, 332, 150, 13);
-		contentPane.add(TextNome_4);
 		
 		JLabel TextNovoCadastro = new JLabel("Cadastro de Clientes");
 		TextNovoCadastro.setForeground(new Color(255, 255, 255));
@@ -142,7 +165,7 @@ public class TelaCadastroCliente extends JFrame {
 		lblOfPetrpolisCity.setBounds(96, 62, 150, 16);
 		contentPane.add(lblOfPetrpolisCity);
 		
-		JLabel TextUsuarioCadastrador = new JLabel("(Usuario Cadastrador)");
+		JLabel TextUsuarioCadastrador = new JLabel(funcionario.getNome());
 		TextUsuarioCadastrador.setForeground(Color.WHITE);
 		TextUsuarioCadastrador.setFont(new Font("Lato", Font.BOLD, 18));
 		TextUsuarioCadastrador.setBackground(Color.WHITE);
@@ -150,12 +173,12 @@ public class TelaCadastroCliente extends JFrame {
 		contentPane.add(TextUsuarioCadastrador);
 		
 		JLabel lblMazeBankBarra = new JLabel("");
-		lblMazeBankBarra.setIcon(new ImageIcon("C:\\\\dev\\\\POO\\\\Workspace\\\\poo-grupo3\\\\sistema_bancario\\\\imagens maze bank\\\\mazebankbarra.png"));
+		lblMazeBankBarra.setIcon(new ImageIcon("./imagens maze bank/mazebankbarra.png"));
 		lblMazeBankBarra.setBounds(32, 127, 850, 60);
 		contentPane.add(lblMazeBankBarra);
 		
 		JLabel lblMzBkLogo = new JLabel("logo");
-		lblMzBkLogo.setIcon(new ImageIcon("C:\\\\dev\\\\POO\\\\Workspace\\\\poo-grupo3\\\\sistema_bancario\\\\imagens maze bank\\\\mazebanklogo.png"));
+		lblMzBkLogo.setIcon(new ImageIcon("./imagens maze bank/mazebanklogo.png"));
 		lblMzBkLogo.setForeground(new Color(0, 0, 0));
 		lblMzBkLogo.setFont(new Font("Tahoma", Font.PLAIN, 5));
 		lblMzBkLogo.setBounds(32, 23, 60, 60);
@@ -165,6 +188,7 @@ public class TelaCadastroCliente extends JFrame {
 		btnVoltar.setForeground(new Color(255, 255, 255));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
 			}
 		});
 		btnVoltar.setFont(new Font("Lato", Font.BOLD, 16));
@@ -173,12 +197,19 @@ public class TelaCadastroCliente extends JFrame {
 		contentPane.add(btnVoltar);
 		
 		passwordSenhaCad = new JPasswordField();
-		passwordSenhaCad.setBounds(616, 259, 257, 20);
+		passwordSenhaCad.setBounds(587, 305, 286, 20);
 		contentPane.add(passwordSenhaCad);
 		
-		passwordConSenhaCad = new JPasswordField();
-		passwordConSenhaCad.setBounds(616, 350, 257, 20);
-		contentPane.add(passwordConSenhaCad);
+		JLabel TextNome_3_1 = new JLabel("Telefone");
+		TextNome_3_1.setFont(new Font("Tahoma", Font.BOLD, 13));
+		TextNome_3_1.setBounds(588, 239, 60, 13);
+		contentPane.add(TextNome_3_1);
+		
+		textTelefone = new JTextField();
+		textTelefone.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		textTelefone.setColumns(10);
+		textTelefone.setBounds(587, 259, 286, 20);
+		contentPane.add(textTelefone);
 		
 	}
 	private class SwingAction extends AbstractAction {

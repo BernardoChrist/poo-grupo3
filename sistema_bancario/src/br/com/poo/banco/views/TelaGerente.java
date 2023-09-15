@@ -1,45 +1,42 @@
 package br.com.poo.banco.views;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JTextField;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
 
+<<<<<<< HEAD
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+=======
+import br.com.poo.banco.pessoas.Cliente;
+import br.com.poo.banco.pessoas.Funcionario;
+>>>>>>> bf2c53c96fb663df12f87049d0a48b3462d18bf3
 
 public class TelaGerente extends JFrame {
 
-	private JPanel contentPane;
-
 	/**
-	 * Launch the application.
+	 * 
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaGerente frame = new TelaGerente();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
 
 	/**
 	 * Create the frame.
 	 */
-	public TelaGerente() {
+	public TelaGerente(Funcionario funcionario) {
 		setTitle("Gerente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 930, 630);
@@ -65,10 +62,15 @@ public class TelaGerente extends JFrame {
 		JButton btnCadCli = new JButton("Cadastrar Cliente");
 		btnCadCli.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
 				dispose();
 				TelaCadastroCliente cadc = new telaCadastroCliente();
 				cadc.setVisible(true);
 				cadc.setLocationRelativeTo(cadc);
+=======
+			   TelaCadastroCliente cadastroCli = new TelaCadastroCliente(funcionario);
+			   cadastroCli.setVisible(true);
+>>>>>>> bf2c53c96fb663df12f87049d0a48b3462d18bf3
 			}
 		});
 		btnCadCli.setForeground(new Color(255, 255, 255));
@@ -103,7 +105,7 @@ public class TelaGerente extends JFrame {
 		lblOfPetrpolisCity.setBounds(96, 62, 150, 16);
 		contentPane.add(lblOfPetrpolisCity);
 		
-		JLabel TextUsuarioCC = new JLabel("(Usuario)");
+		JLabel TextUsuarioCC = new JLabel(funcionario.getNome());
 		TextUsuarioCC.setForeground(Color.WHITE);
 		TextUsuarioCC.setFont(new Font("Lato", Font.BOLD, 18));
 		TextUsuarioCC.setBackground(Color.WHITE);
@@ -111,7 +113,7 @@ public class TelaGerente extends JFrame {
 		contentPane.add(TextUsuarioCC);
 		
 		JLabel lblMzBkLogo = new JLabel("logo");
-		lblMzBkLogo.setIcon(new ImageIcon("C:C:\\\\dev\\\\POO\\\\Workspace\\\\poo-grupo3\\\\sistema_bancario\\\\imagens maze bank\\\\mazebanklogo.png"));
+		lblMzBkLogo.setIcon(new ImageIcon("./imagens maze bank/mazebanklogo.png"));
 		lblMzBkLogo.setForeground(new Color(0, 0, 0));
 		lblMzBkLogo.setFont(new Font("Tahoma", Font.PLAIN, 5));
 		lblMzBkLogo.setBounds(32, 23, 60, 60);
@@ -120,12 +122,22 @@ public class TelaGerente extends JFrame {
 		JButton btnSair = new JButton("Sair");
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
 				dispose();
 				TelaLogin log = new TelaLogin();
 				log.setVisible(true);
 				log.setLocationRelativeTo(log);
 			}
 		});
+=======
+				int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação de Saída", JOptionPane.YES_NO_OPTION);
+                if (resposta == JOptionPane.YES_OPTION) {
+						dispose();
+						TelaLogin login = new TelaLogin();
+						login.setVisible(true);
+						}
+		}});
+>>>>>>> bf2c53c96fb663df12f87049d0a48b3462d18bf3
 		btnSair.setForeground(Color.WHITE);
 		btnSair.setFont(new Font("Lato", Font.BOLD, 14));
 		btnSair.setBackground(new Color(233, 65, 69));
@@ -133,7 +145,7 @@ public class TelaGerente extends JFrame {
 		contentPane.add(btnSair);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\\\dev\\\\POO\\\\Workspace\\\\poo-grupo3\\\\sistema_bancario\\\\imagens maze bank\\\\mazebankbarra.png"));
+		lblNewLabel.setIcon(new ImageIcon("./imagens maze bank/mazebankbarra.png"));
 		lblNewLabel.setBounds(32, 127, 850, 60);
 		contentPane.add(lblNewLabel);
 		

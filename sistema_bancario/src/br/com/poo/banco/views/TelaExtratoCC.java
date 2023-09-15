@@ -1,24 +1,27 @@
 package br.com.poo.banco.views;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.UIManager;
-import javax.swing.border.EmptyBorder;
 import java.awt.Color;
-import javax.swing.JLabel;
+import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JTable;
-import javax.swing.border.TitledBorder;
-import javax.swing.JScrollBar;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+<<<<<<< HEAD
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+=======
+import javax.swing.JTable;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+>>>>>>> bf2c53c96fb663df12f87049d0a48b3462d18bf3
 
 public class TelaExtratoCC extends JFrame {
 
@@ -69,54 +72,65 @@ public class TelaExtratoCC extends JFrame {
 		textLinhaVermelha.setBackground(UIManager.getColor("Button.background"));
 		textLinhaVermelha.setBounds(32, 50, 850, 53);
 		contentPane.add(textLinhaVermelha);
-		
+
 		JLabel lblMazeBank = new JLabel("MAZE BANK");
 		lblMazeBank.setFont(new Font("Sylfaen", Font.PLAIN, 40));
 		lblMazeBank.setBackground(UIManager.getColor("Button.background"));
 		lblMazeBank.setBounds(94, 30, 236, 53);
 		contentPane.add(lblMazeBank);
-		
+
 		JLabel lblOfPetrpolisCity = new JLabel("OF PETRÓPOLIS CITY");
 		lblOfPetrpolisCity.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblOfPetrpolisCity.setBackground(UIManager.getColor("Button.background"));
 		lblOfPetrpolisCity.setBounds(96, 62, 150, 16);
 		contentPane.add(lblOfPetrpolisCity);
-		
+
 		JLabel TextUsuarioCC = new JLabel("(Usuario)");
 		TextUsuarioCC.setForeground(Color.WHITE);
 		TextUsuarioCC.setFont(new Font("Lato", Font.BOLD, 18));
 		TextUsuarioCC.setBackground(Color.WHITE);
 		TextUsuarioCC.setBounds(37, 133, 180, 30);
 		contentPane.add(TextUsuarioCC);
-		
+
 		JLabel lblMzBkLogo = new JLabel("logo");
-		lblMzBkLogo.setIcon(new ImageIcon("C:\\\\dev\\\\POO\\\\Workspace\\\\poo-grupo3\\\\sistema_bancario\\\\imagens maze bank\\\\mazebanklogo.png"));
+		lblMzBkLogo.setIcon(new ImageIcon(
+				"./imagens maze bank/mazebanklogo.png"));
 		lblMzBkLogo.setForeground(new Color(0, 0, 0));
 		lblMzBkLogo.setFont(new Font("Tahoma", Font.PLAIN, 5));
 		lblMzBkLogo.setBounds(32, 23, 60, 60);
 		contentPane.add(lblMzBkLogo);
-		
+
 		JLabel TextSaldoCC = new JLabel("Cheque Esp: R$500,00");
 		TextSaldoCC.setForeground(new Color(0, 0, 0));
 		TextSaldoCC.setFont(new Font("Lato", Font.BOLD, 15));
 		TextSaldoCC.setBackground(Color.WHITE);
 		TextSaldoCC.setBounds(707, 71, 211, 30);
 		contentPane.add(TextSaldoCC);
-		
+
 		JLabel lblChequeEsp = new JLabel("Saldo: R$10.000,00");
 		lblChequeEsp.setForeground(Color.BLACK);
 		lblChequeEsp.setFont(new Font("Lato", Font.BOLD, 15));
 		lblChequeEsp.setBackground(Color.WHITE);
 		lblChequeEsp.setBounds(727, 53, 192, 30);
 		contentPane.add(lblChequeEsp);
-		
+
 		JButton btnSair = new JButton("Sair");
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
 				dispose();
 				TelaLogin log = new TelaLogin();
 				log.setVisible(true);
 				log.setLocationRelativeTo(log);
+=======
+				int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação de Saída",
+						JOptionPane.YES_NO_OPTION);
+				if (resposta == JOptionPane.YES_OPTION) {
+//						dispose();
+//						TelaContaCorrente Conta = new TelaContaCorrente();
+//						Conta.setVisible(true);
+				}
+>>>>>>> bf2c53c96fb663df12f87049d0a48b3462d18bf3
 			}
 		});
 		btnSair.setForeground(Color.WHITE);
@@ -124,56 +138,40 @@ public class TelaExtratoCC extends JFrame {
 		btnSair.setBackground(new Color(233, 65, 69));
 		btnSair.setBounds(760, 145, 100, 30);
 		contentPane.add(btnSair);
-		
+
 		JLabel lblConta = new JLabel("Conta: 123456-7");
 		lblConta.setForeground(Color.WHITE);
 		lblConta.setFont(new Font("Lato", Font.BOLD, 13));
 		lblConta.setBackground(Color.WHITE);
 		lblConta.setBounds(38, 155, 165, 30);
 		contentPane.add(lblConta);
-		
+
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\\\dev\\\\POO\\\\Workspace\\\\poo-grupo3\\\\sistema_bancario\\\\imagens maze bank\\\\mazebankbarra.png"));
+		lblNewLabel.setIcon(new ImageIcon(
+				"./imagens maze bank/mazebankbarra.png"));
 		lblNewLabel.setBounds(32, 127, 850, 60);
 		contentPane.add(lblNewLabel);
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(31, 222, 851, 201);
 		contentPane.add(scrollPane);
-		
+
 		tableExtraCC = new JTable();
 		tableExtraCC.setFont(new Font("Lato", Font.BOLD, 14));
 		scrollPane.setViewportView(tableExtraCC);
 		tableExtraCC.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-			},
-			new String[] {
-				"Data da Opera\u00E7\u00E3o", "Valor R$", "Saldo R$"
-			}
-		) {
-			boolean[] columnEditables = new boolean[] {
-				false, false, false
-			};
+				new Object[][] { { null, null, null }, { null, null, null }, { null, null, null }, { null, null, null },
+						{ null, null, null }, { null, null, null }, { null, null, null }, { null, null, null },
+						{ null, null, null }, { null, null, null }, { null, null, null }, { null, null, null },
+						{ null, null, null }, { null, null, null }, { null, null, null }, },
+				new String[] { "Data da Opera\u00E7\u00E3o", "Valor R$", "Saldo R$" }) {
+			boolean[] columnEditables = new boolean[] { false, false, false };
+
 			public boolean isCellEditable(int row, int column) {
 				return columnEditables[column];
 			}
 		});
-		
+
 		JButton btnImpExtra = new JButton("Imprimir");
 		btnImpExtra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

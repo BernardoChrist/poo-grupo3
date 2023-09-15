@@ -1,4 +1,5 @@
 Poupanca;7842;753198-4;83745.36;487.926.513-24;5971-2;
+Poupanca;1910;759423-4;65784.00;172.161.267-00;1647-2;
 Poupanca;5968;620437-9;49621.74;639.518.247-82;3268-2;
 Poupanca;3217;489562-1;58234.09;214.753.869-05;1489-2;
 Poupanca;4509;367829-5;31467.58;867.321.594-76;7043-2;
@@ -68,11 +69,13 @@ Cliente;Matilde Gonçalves;726.183.495-67;Avenida do Cerrado, 456 - Bairro Cerra
 Cliente;Lucas Sousa;149.572.834-20;Travessa das Dunas, 789 - Bairro Duna Dourada, Lages, SC;(49)90234-5678;
 Cliente;Rita Ferreira;982.734.610-98;Alameda das Castanhas, 101 - Bairro Castanheira, Patos de Minas, MG;(34)90567-8901;
 Cliente;Samuel Martins;365.217.894-56;Rua do Sol, 234 - Bairro Sol Nascente, Tubarão, SC;(48)90678-9012;
-Gerente;10000.00;2648-5;849.275.631-40;Sofia Martins;
-Gerente;10000.00;1328-4;362.518.704-96;Pedro Silva;
-Gerente;10000.00;1274-3;207.946.583-12;Ana Pereira;
-Gerente;10000.00;8963-2;514.329.687-27;João Santos;
-Gerente;10000.00;1739-1;695.182.734-58;Maria Fernandes;
-Diretor;25000.00;9876-6;178.463.925-63;André Oliveira;
-Diretor;25000.00;1597-7;426.759.318-20;Carolina Rodrigues;
-Presidente;50000.00;1345-9;983.726.514-37;Daniel Sousa;
+Gerente;10000.00;2648-5;849.275.631-40;Sofia Martins;1234;
+Gerente;10000.00;1328-4;362.518.704-96;Pedro Silva;1234;
+Gerente;10000.00;1274-3;207.946.583-12;Ana Pereira;1234;
+Gerente;10000.00;8963-2;514.329.687-27;João Santos;1234;
+Gerente;10000.00;1739-1;695.182.734-58;Maria Fernandes;1234;
+Diretor;25000.00;9876-6;178.463.925-63;André Oliveira;1234;
+Diretor;25000.00;1597-7;426.759.318-20;Carolina Rodrigues;1234;
+Presidente;50000.00;1345-9;983.726.514-37;Daniel Sousa;1234;
+Cliente;Irineu;123.333.554-92;Rua Castelanea;(11)232342487-44;
+Poupanca;4321;753198-4;83745.36;123.333.554-92;5971-7;

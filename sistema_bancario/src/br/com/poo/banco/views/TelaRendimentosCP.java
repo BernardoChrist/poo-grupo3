@@ -150,7 +150,7 @@ public class TelaRendimentosCP extends JFrame {
 		contentPane.add(TextUsuarioCP);
 		
 		JLabel lblMzBkLogo = new JLabel("logo");
-		lblMzBkLogo.setIcon(new ImageIcon("C:\\\\dev\\\\POO\\\\Workspace\\\\poo-grupo3\\\\sistema_bancario\\\\imagens maze bank\\\\mazebanklogo.png"));
+		lblMzBkLogo.setIcon(new ImageIcon("./imagens maze bank/mazebanklogo.png"));
 		lblMzBkLogo.setForeground(new Color(0, 0, 0));
 		lblMzBkLogo.setFont(new Font("Tahoma", Font.PLAIN, 5));
 		lblMzBkLogo.setBounds(32, 23, 60, 60);
@@ -179,7 +179,7 @@ public class TelaRendimentosCP extends JFrame {
 		contentPane.add(btnSair);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\\\dev\\\\POO\\\\Workspace\\\\poo-grupo3\\\\sistema_bancario\\\\imagens maze bank\\\\mazebankbarra.png"));
+		lblNewLabel.setIcon(new ImageIcon("./imagens maze bank/mazebankbarra.png"));
 		lblNewLabel.setBounds(32, 127, 850, 60);
 		contentPane.add(lblNewLabel);
 	}

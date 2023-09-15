@@ -8,10 +8,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+
+import br.com.poo.banco.pessoas.Cliente;
+import br.com.poo.banco.pessoas.Funcionario;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -24,25 +29,9 @@ public class TelaDiretor extends JFrame {
 	private JPanel btnInfoClie;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaDiretor frame = new TelaDiretor();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
-	public TelaDiretor() {
+	public TelaDiretor(Funcionario funcionario) {
 		setResizable(false);
 		setTitle("Diretor");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -70,10 +59,15 @@ public class TelaDiretor extends JFrame {
 		JButton btnCadCli = new JButton("Cadastrar Cliente");
 		btnCadCli.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
 				dispose();
 				TelaCadastroCliente cadc = new TelaCadastroCliente();
 				cadc.setVisible(true);
 				cadc.setLocationRelativeTo(cadc);
+=======
+				TelaCadastroCliente Cadastro = new TelaCadastroCliente(funcionario);
+				Cadastro.setVisible(true);
+>>>>>>> bf2c53c96fb663df12f87049d0a48b3462d18bf3
 			}
 		});
 		btnCadCli.setForeground(new Color(255, 255, 255));
@@ -85,11 +79,16 @@ public class TelaDiretor extends JFrame {
 		JButton btnCadGer = new JButton("Cadastrar Gerente");
 		btnCadGer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
 				dispose();
 				TelaCadastroFunc cadg = new TelaCadastroFunc();
 				cadg.setVisible(true);
 				cadg.setLocationRelativeTo(cadg);
 				
+=======
+				TelaCadastroFunc gerenteCad = new TelaCadastroFunc(funcionario);
+				gerenteCad.setVisible(true);
+>>>>>>> bf2c53c96fb663df12f87049d0a48b3462d18bf3
 			}
 		});
 		btnCadGer.setForeground(new Color(255, 255, 255));
@@ -124,7 +123,7 @@ public class TelaDiretor extends JFrame {
 		lblOfPetrpolisCity.setBounds(96, 62, 150, 16);
 		btnInfoClie.add(lblOfPetrpolisCity);
 		
-		JLabel TextUsuarioCC = new JLabel("(Usuario)");
+		JLabel TextUsuarioCC = new JLabel(funcionario.getNome());
 		TextUsuarioCC.setForeground(Color.WHITE);
 		TextUsuarioCC.setFont(new Font("Lato", Font.BOLD, 18));
 		TextUsuarioCC.setBackground(Color.WHITE);
@@ -132,7 +131,7 @@ public class TelaDiretor extends JFrame {
 		btnInfoClie.add(TextUsuarioCC);
 		
 		JLabel lblMzBkLogo = new JLabel("logo");
-		lblMzBkLogo.setIcon(new ImageIcon("C:\\\\dev\\\\POO\\\\Workspace\\\\poo-grupo3\\\\sistema_bancario\\\\imagens maze bank\\\\mazebanklogo.png"));
+		lblMzBkLogo.setIcon(new ImageIcon("./imagens maze bank/mazebanklogo.png"));
 		lblMzBkLogo.setForeground(new Color(0, 0, 0));
 		lblMzBkLogo.setFont(new Font("Tahoma", Font.PLAIN, 5));
 		lblMzBkLogo.setBounds(32, 23, 60, 60);
@@ -141,12 +140,23 @@ public class TelaDiretor extends JFrame {
 		JButton btnSair = new JButton("Sair");
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
 				dispose();
 				TelaLogin log = new TelaLogin();
 				log.setVisible(true);
 				log.setLocationRelativeTo(log);
 			}
 		});
+=======
+				int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação de Saída", JOptionPane.YES_NO_OPTION);
+                if (resposta == JOptionPane.YES_OPTION) {
+						dispose();
+						TelaLogin login = new TelaLogin();
+						login.setVisible(true);
+						}
+		}});
+		
+>>>>>>> bf2c53c96fb663df12f87049d0a48b3462d18bf3
 		btnSair.setForeground(Color.WHITE);
 		btnSair.setFont(new Font("Lato", Font.BOLD, 14));
 		btnSair.setBackground(new Color(233, 65, 69));
@@ -154,7 +164,7 @@ public class TelaDiretor extends JFrame {
 		btnInfoClie.add(btnSair);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\\\dev\\\\POO\\\\Workspace\\\\poo-grupo3\\\\sistema_bancario\\\\imagens maze bank\\\\mazebankbarra.png"));
+		lblNewLabel.setIcon(new ImageIcon("./imagens maze bank/mazebankbarra.png"));
 		lblNewLabel.setBounds(32, 127, 850, 60);
 		btnInfoClie.add(lblNewLabel);
 		
