@@ -5,6 +5,12 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import br.com.poo.banco.contas.Conta;
+import br.com.poo.banco.enums.ContaEnum;
+import br.com.poo.banco.enums.PessoaEnum;
+import br.com.poo.banco.pessoas.Cliente;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -23,27 +29,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JFormattedTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class TelaLogin extends JFrame {
 
 	private JPanel contentPane;
 	private JPasswordField SenhaField;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaLogin frame = new TelaLogin();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -66,6 +60,7 @@ public class TelaLogin extends JFrame {
 		TextLogin.setBounds(422, 196, 69, 44);
 		contentPane.add(TextLogin);
 		
+
 		JTextPane UsuarioField = new JTextPane();
 		UsuarioField.setBounds(343, 334, 228, 23);
 		contentPane.add(UsuarioField);
@@ -84,21 +79,53 @@ public class TelaLogin extends JFrame {
 		TextSenha.setBounds(435, 366, 42, 28);
 		contentPane.add(TextSenha);
 		
+		JComboBox<String> comboBoxCargo = new JComboBox<>();
+		comboBoxCargo.setSelectedIndex(3);
+		comboBoxCargo.setMaximumRowCount(3);
+		comboBoxCargo.setToolTipText("Cliente\r\nFuncionario\r\nGerente\r\nDiretor\r\nPresidente");
+		List<PessoaEnum> pessoas = Arrays.asList(PessoaEnum.values());
+		comboBoxCargo.addItem("Selecione o cargo");
+		for(PessoaEnum pEnum : pessoas) {
+			comboBoxCargo.addItem(pEnum.getTipoPessoa());
+		}
+		comboBoxCargo.setBounds(101, 58, 148, 21);
+		contentPane.add(comboBoxCargo);
+		
 		JButton EntrarButton = new JButton("Entrar");
 		EntrarButton.setForeground(new Color(255, 255, 255));
 		EntrarButton.setFont(new Font("Lato", Font.BOLD, 14));
 		EntrarButton.setBackground(new Color(233, 65, 69));
 		EntrarButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				String cpf = UsuarioField.getText();
+				String cpf = usuarioField.getText();
 				String senha = new String(SenhaField.getPassword());
-				if(cpf!= null && senha != null && !cpf.isEmpty() && !senha.isEmpty()) {
-					JOptionPane.showMessageDialog(EntrarButton, "Bem-Vindo!"); 
-				}
+				String tipoPessoa = comboBoxCargo.getSelectedItem().toString();
+				boolean verificaCC = false;
+				boolean verificaCP = false;
+				Cliente cliente = Cliente.mapaClientes.get(cpf);
 				
-				else {
-					JOptionPane.showMessageDialog(EntrarButton, "Todos os campos devem ser preenchidos.", "Aviso!", JOptionPane.WARNING_MESSAGE);
+				List<Conta> contas = new ArrayList<>();
+				for(Conta c : Conta.mapaContas.values()) {
+					if(c.getCpfConta().equals(cpf)) {
+						contas.add(c); 
+					}
+				} 
+				
+				if(tipoPessoa.equalsIgnoreCase(PessoaEnum.CLIENTE.getTipoPessoa())) {
+					if(cliente.getCpf().equals(cpf) && cliente.getSenha().equals(senha)) {
+						if(contas.size() > 1) {
+							verificaCC = true;
+							verificaCP = true;
+						}else if(contas.get(0).getTipoConta().equalsIgnoreCase(ContaEnum.CORRENTE.name())){
+							verificaCC = true;
+						}else if(contas.get(0).getTipoConta().equalsIgnoreCase(ContaEnum.POUPANCA.name())){
+							verificaCP = true;
+						}
+						dispose();
+						TelaCC telaCC = new TelaCC(verificaCC, verificaCP);
+						telaCC.setLocationRelativeTo(telaCC);
+						telaCC.setVisible(true);		
+					}
 				}
 				
 			}
@@ -106,6 +133,7 @@ public class TelaLogin extends JFrame {
 		EntrarButton.setBounds(347, 472, 220, 60);
 		contentPane.add(EntrarButton);
 		
+
 		JComboBox comboBoxCargo = new JComboBox();
 		comboBoxCargo.setMaximumRowCount(3);
 		comboBoxCargo.setToolTipText("Cliente\r\nFuncionario\r\nGerente\r\nDiretor\r\nPresidente");
