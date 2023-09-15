@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+import java.text.DecimalFormat;
 
 import br.com.poo.banco.contas.Conta;
 import br.com.poo.banco.contas.ContaPoupanca;
@@ -27,6 +28,8 @@ public class LeituraEscrita {
 
 		
 	//	System.out.println(linha);
+		DecimalFormat df = new DecimalFormat("#0,000.00");
+		
 		while (true) {
 			linha = buffRead.readLine();
 			if (linha != null) {
@@ -36,7 +39,7 @@ public class LeituraEscrita {
 				// Poupança String numConta, String cpf, double saldo
 				if (dados[0].equalsIgnoreCase(ContaEnum.POUPANCA.name())) {
 					ContaPoupanca cp = new ContaPoupanca(dados[0],
-							dados[1], dados[2], Double.parseDouble(dados[3]), dados[4],path);
+							dados[1], dados[2], (dados[3]), Double.parseDouble(dados[4]));
 
 					Conta.mapaContas.put(dados[2], cp);
 					System.out.println(cp);
