@@ -1,39 +1,35 @@
 package br.com.poo.banco.views;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
+import br.com.poo.banco.contas.Conta;
+import br.com.poo.banco.pessoas.Cliente;
+
 public class TelaContaPoupanca extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+
 	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaContaPoupanca frame = new TelaContaPoupanca();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-
 	/**
 	 * Create the frame.
 	 */
-	public TelaContaPoupanca() {
+	public TelaContaPoupanca(boolean cc, boolean cp, Cliente cliente, Conta contaPoupanca) {
 		setResizable(false);
 		setTitle("Conta Poupança");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -113,7 +109,7 @@ public class TelaContaPoupanca extends JFrame {
 		lblOfPetrpolisCity.setBounds(96, 62, 150, 16);
 		contentPane.add(lblOfPetrpolisCity);
 		
-		JLabel TextUsuarioCP = new JLabel("(Usuario)");
+		JLabel TextUsuarioCP = new JLabel(cliente.getNome());
 		TextUsuarioCP.setForeground(Color.WHITE);
 		TextUsuarioCP.setFont(new Font("Lato", Font.BOLD, 18));
 		TextUsuarioCP.setBackground(Color.WHITE);
@@ -121,13 +117,13 @@ public class TelaContaPoupanca extends JFrame {
 		contentPane.add(TextUsuarioCP);
 		
 		JLabel lblMzBkLogo = new JLabel("logo");
-		lblMzBkLogo.setIcon(new ImageIcon("C:\\\\dev\\\\POO\\\\Workspace\\\\poo-grupo3\\\\sistema_bancario\\\\imagens maze bank\\\\mazebanklogo.png"));
+		lblMzBkLogo.setIcon(new ImageIcon("./imagens maze bank/mazebanklogo.png"));
 		lblMzBkLogo.setForeground(new Color(0, 0, 0));
 		lblMzBkLogo.setFont(new Font("Tahoma", Font.PLAIN, 5));
 		lblMzBkLogo.setBounds(32, 23, 60, 60);
 		contentPane.add(lblMzBkLogo);
 		
-		JLabel TextSaldoCP = new JLabel("Saldo: R$10.000,00");
+		JLabel TextSaldoCP = new JLabel("Saldo: R$" + contaPoupanca.getSaldoConta());
 		TextSaldoCP.setForeground(new Color(0, 0, 0));
 		TextSaldoCP.setFont(new Font("Lato", Font.BOLD, 15));
 		TextSaldoCP.setBackground(Color.WHITE);
@@ -135,20 +131,29 @@ public class TelaContaPoupanca extends JFrame {
 		contentPane.add(TextSaldoCP);
 		
 		JButton btnSair_1 = new JButton("Sair");
+		btnSair_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação de Saída", JOptionPane.YES_NO_OPTION);
+                if (resposta == JOptionPane.YES_OPTION) {
+						dispose();
+						TelaLogin login = new TelaLogin();
+						login.setVisible(true);
+						}
+		}});
 		btnSair_1.setForeground(Color.WHITE);
 		btnSair_1.setFont(new Font("Lato", Font.BOLD, 14));
 		btnSair_1.setBackground(new Color(233, 65, 69));
 		btnSair_1.setBounds(760, 145, 100, 30);
 		contentPane.add(btnSair_1);
 		
-		JLabel lblNumAge = new JLabel("1234-5");
+		JLabel lblNumAge = new JLabel(contaPoupanca.getNumAgencia());
 		lblNumAge.setForeground(Color.WHITE);
 		lblNumAge.setFont(new Font("Lato", Font.BOLD, 13));
 		lblNumAge.setBackground(Color.WHITE);
 		lblNumAge.setBounds(201, 158, 54, 27);
 		contentPane.add(lblNumAge);
 		
-		JLabel lblNumConta = new JLabel("321654-7");
+		JLabel lblNumConta = new JLabel(contaPoupanca.getNumeroConta());
 		lblNumConta.setForeground(Color.WHITE);
 		lblNumConta.setFont(new Font("Lato", Font.BOLD, 13));
 		lblNumConta.setBackground(Color.WHITE);
@@ -169,9 +174,8 @@ public class TelaContaPoupanca extends JFrame {
 		lblConta.setBounds(38, 158, 46, 27);
 		contentPane.add(lblConta);
 
-		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\\\dev\\\\POO\\\\Workspace\\\\poo-grupo3\\\\sistema_bancario\\\\imagens maze bank\\\\mazebankbarra.png"));
+		lblNewLabel.setIcon(new ImageIcon("./imagens maze bank/mazebankbarra.png"));
 		lblNewLabel.setBounds(32, 127, 850, 60);
 		contentPane.add(lblNewLabel);
 	}

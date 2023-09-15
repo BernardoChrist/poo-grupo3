@@ -22,6 +22,8 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
+import br.com.poo.banco.pessoas.Funcionario;
+
 public class TelaCadastroCliente extends JFrame {
 
 	private JPanel contentPane;
@@ -30,28 +32,16 @@ public class TelaCadastroCliente extends JFrame {
 	private JTextField textCpfCad;
 	private final Action action = new SwingAction();
 	private JPasswordField passwordSenhaCad;
-	private JTextField textField;
+	private JTextField textTelefone;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaCadastroCliente frame = new TelaCadastroCliente();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
-	public TelaCadastroCliente() {
+	public TelaCadastroCliente(Funcionario funcionario) {
 		setResizable(false);
 		setTitle("Novo Cliente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -82,24 +72,18 @@ public class TelaCadastroCliente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				 
 				String nome = textNomeCad.getText();
-	                String dataNascimento = textDatNasCad.getText();
+	                String textendereco = textEndereco.getText();
 	                String cpf = textCpfCad.getText();
 	                String senha = new String(passwordSenhaCad.getPassword());
-	                String confirmacaoSenha = new String(passwordConSenhaCad.getPassword());
-
-	                // Verifica se as senhas coincidem
-	                if (!senha.equals(confirmacaoSenha)) {
-	                    JOptionPane.showMessageDialog(null, "As senhas não coincidem. Por favor, insira senhas iguais.");
-	                    return; // Encerra a ação sem salvar
-	                }
+	                String textTelefone = new String();
 
 	                // Cria uma string com os dados do cliente
 	                String dadosCliente = "\nCliente;" + nome + ";" +
-	                                      dataNascimento + ";" +
+	                                      textEndereco + ";" +
 	                                        cpf + ";" +
 	                                      senha + ";";
 	                
-	                if(nome == null || dataNascimento == null || cpf == null || senha == null) {
+	                if(nome == null || textEndereco == null || cpf == null || senha == null) {
 	                	 JOptionPane.showMessageDialog(null, "Preencha todos os espaços vazios.");
 	                	 return;
 	                }
@@ -112,13 +96,6 @@ public class TelaCadastroCliente extends JFrame {
 	                } catch (IOException ex) {
 	                    ex.printStackTrace();
 	                }
-
-	                // Limpa os campos do formulário após a conclusão do cadastro
-	                textNomeCad.setText("");
-	                textDatNasCad.setText("");
-	                textCpfCad.setText("");
-	                passwordSenhaCad.setText("");
-	                passwordConSenhaCad.setText("");
 
 	                JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso.");
 	            }
@@ -188,7 +165,7 @@ public class TelaCadastroCliente extends JFrame {
 		lblOfPetrpolisCity.setBounds(96, 62, 150, 16);
 		contentPane.add(lblOfPetrpolisCity);
 		
-		JLabel TextUsuarioCadastrador = new JLabel("(Usuario Cadastrador)");
+		JLabel TextUsuarioCadastrador = new JLabel(funcionario.);
 		TextUsuarioCadastrador.setForeground(Color.WHITE);
 		TextUsuarioCadastrador.setFont(new Font("Lato", Font.BOLD, 18));
 		TextUsuarioCadastrador.setBackground(Color.WHITE);
@@ -196,12 +173,12 @@ public class TelaCadastroCliente extends JFrame {
 		contentPane.add(TextUsuarioCadastrador);
 		
 		JLabel lblMazeBankBarra = new JLabel("");
-		lblMazeBankBarra.setIcon(new ImageIcon("C:\\\\dev\\\\POO\\\\Workspace\\\\poo-grupo3\\\\sistema_bancario\\\\imagens maze bank\\\\mazebankbarra.png"));
+		lblMazeBankBarra.setIcon(new ImageIcon("./imagens maze bank/mazebankbarra.png"));
 		lblMazeBankBarra.setBounds(32, 127, 850, 60);
 		contentPane.add(lblMazeBankBarra);
 		
 		JLabel lblMzBkLogo = new JLabel("logo");
-		lblMzBkLogo.setIcon(new ImageIcon("C:\\\\dev\\\\POO\\\\Workspace\\\\poo-grupo3\\\\sistema_bancario\\\\imagens maze bank\\\\mazebanklogo.png"));
+		lblMzBkLogo.setIcon(new ImageIcon("./imagens maze bank/mazebanklogo.png"));
 		lblMzBkLogo.setForeground(new Color(0, 0, 0));
 		lblMzBkLogo.setFont(new Font("Tahoma", Font.PLAIN, 5));
 		lblMzBkLogo.setBounds(32, 23, 60, 60);
@@ -228,11 +205,11 @@ public class TelaCadastroCliente extends JFrame {
 		TextNome_3_1.setBounds(588, 239, 60, 13);
 		contentPane.add(TextNome_3_1);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		textField.setColumns(10);
-		textField.setBounds(587, 259, 286, 20);
-		contentPane.add(textField);
+		textTelefone = new JTextField();
+		textTelefone.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		textTelefone.setColumns(10);
+		textTelefone.setBounds(587, 259, 286, 20);
+		contentPane.add(textTelefone);
 		
 	}
 	private class SwingAction extends AbstractAction {

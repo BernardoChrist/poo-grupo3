@@ -119,7 +119,7 @@ public class TelaLogin extends JFrame {
 					}
 					if (cliente.getCpf().equals(cpf) && contas.get(0).getSenhaConta().equals(senha) && verificaCP == true && verificaCC == false) {
 						dispose();
-						TelaContaPoupanca telaPP = new TelaContaPoupanca(verificaCC, verificaCP, cliente, contaPoupanca);
+						TelaContaPoupanca telaPP = new TelaContaPoupanca(verificaCP, verificaCC, cliente, contaPoupanca);
 						telaPP.setLocationRelativeTo(telaPP);
 						telaPP.setVisible(true);
 					}else if (cliente.getCpf().equals(cpf) && contas.get(0).getSenhaConta().equals(senha) && verificaCC== true) {
@@ -178,7 +178,7 @@ public class TelaLogin extends JFrame {
 
 		JLabel lblMzBkLogo = new JLabel("logo");
 		lblMzBkLogo.setIcon(new ImageIcon(
-				"C:\\dev\\POO\\Workspace\\poo-grupo3\\sistema_bancario\\imagens maze bank\\mazebanklogo.png"));
+				"./imagens maze bank/mazebanklogo.png"));
 		lblMzBkLogo.setForeground(new Color(0, 0, 0));
 		lblMzBkLogo.setFont(new Font("Tahoma", Font.PLAIN, 5));
 		lblMzBkLogo.setBounds(32, 23, 60, 60);
@@ -202,7 +202,7 @@ public class TelaLogin extends JFrame {
 
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(
-				"C:\\dev\\POO\\Workspace\\poo-grupo3\\sistema_bancario\\imagens maze bank\\mazebankbarra.png"));
+				"./imagens maze bank/mazebankbarra.png"));
 		lblNewLabel.setBounds(32, 127, 850, 60);
 		contentPane.add(lblNewLabel);
 	}
