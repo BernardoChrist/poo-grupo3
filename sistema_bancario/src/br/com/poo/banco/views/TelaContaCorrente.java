@@ -25,10 +25,6 @@ public class TelaContaCorrente extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	
 
 	/**
 	 * Create the frame.
@@ -46,6 +42,13 @@ public class TelaContaCorrente extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnSaqueCP = new JButton("Saque");
+		btnSaqueCP.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaSaque saque = new TelaSaque(cp, cp, cliente, contaCorrente, contaCorrente);
+				saque.setVisible(true);
+			}
+		});
 		btnSaqueCP.setForeground(new Color(255, 255, 255));
 		btnSaqueCP.setBackground(new Color(233, 65, 69));
 		btnSaqueCP.setFont(new Font("Lato", Font.BOLD, 14));
@@ -53,6 +56,13 @@ public class TelaContaCorrente extends JFrame {
 		contentPane.add(btnSaqueCP);
 		
 		JButton btnTransferenciaCC = new JButton("Transferência");
+		btnTransferenciaCC.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaTransferencia transf = new TelaTransferencia(cp, cp, cliente, contaCorrente, contaCorrente);
+				transf.setVisible(true);
+			}
+		});
 		btnTransferenciaCC.setForeground(new Color(255, 255, 255));
 		btnTransferenciaCC.setBackground(new Color(233, 65, 69));
 		btnTransferenciaCC.setFont(new Font("Lato", Font.BOLD, 14));
@@ -60,6 +70,13 @@ public class TelaContaCorrente extends JFrame {
 		contentPane.add(btnTransferenciaCC);
 		
 		JButton btnDepositoCC = new JButton("Depósito");
+		btnDepositoCC.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaDeposito deposito = new TelaDeposito(cp, cp, cliente, contaCorrente, contaCorrente);
+				deposito.setVisible(true);
+			}
+		});
 		btnDepositoCC.setForeground(new Color(255, 255, 255));
 		btnDepositoCC.setBackground(new Color(233, 65, 69));
 		btnDepositoCC.setFont(new Font("Lato", Font.BOLD, 14));
@@ -69,6 +86,9 @@ public class TelaContaCorrente extends JFrame {
 		JButton btnConPou = new JButton("Ir para Poupança");
 		btnConPou.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaContaPoupanca tcp = new TelaContaPoupanca(cp, cp, cliente, contaCorrente);
+				tcp.setVisible(true);
 			}
 		});
 		btnConPou.setForeground(new Color(255, 255, 255));
@@ -78,6 +98,13 @@ public class TelaContaCorrente extends JFrame {
 		contentPane.add(btnConPou);
 		
 		JButton btnExtrato = new JButton("Extrato");
+		btnExtrato.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaExtratoCC extrato = new TelaExtratoCC(cp, cp, cliente, contaCorrente, contaCorrente);
+				extrato.setVisible(true);
+			}
+		});
 		btnExtrato.setForeground(new Color(255, 255, 255));
 		btnExtrato.setBackground(new Color(233, 65, 69));
 		btnExtrato.setFont(new Font("Lato", Font.BOLD, 14));

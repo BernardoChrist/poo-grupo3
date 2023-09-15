@@ -21,32 +21,20 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import br.com.poo.banco.contas.Conta;
+import br.com.poo.banco.pessoas.Cliente;
+
 
 public class TelaExtratoCC extends JFrame {
 
 	private JPanel contentPane;
 	private JTable tableExtraCC;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaExtratoCC frame = new TelaExtratoCC();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
-	public TelaExtratoCC() {
+	public TelaExtratoCC(boolean cc, boolean cp, Cliente cliente, Conta contaPoupanca, Conta contaCorrente) {
 		setResizable(false);
 		setTitle("Extrato Conta Corrente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -84,7 +72,7 @@ public class TelaExtratoCC extends JFrame {
 		lblOfPetrpolisCity.setBounds(96, 62, 150, 16);
 		contentPane.add(lblOfPetrpolisCity);
 
-		JLabel TextUsuarioCC = new JLabel("(Usuario)");
+		JLabel TextUsuarioCC = new JLabel(cliente.getNome());
 		TextUsuarioCC.setForeground(Color.WHITE);
 		TextUsuarioCC.setFont(new Font("Lato", Font.BOLD, 18));
 		TextUsuarioCC.setBackground(Color.WHITE);
@@ -99,14 +87,14 @@ public class TelaExtratoCC extends JFrame {
 		lblMzBkLogo.setBounds(32, 23, 60, 60);
 		contentPane.add(lblMzBkLogo);
 
-		JLabel TextSaldoCC = new JLabel("Cheque Esp: R$500,00");
+		JLabel TextSaldoCC = new JLabel("");//preencher
 		TextSaldoCC.setForeground(new Color(0, 0, 0));
 		TextSaldoCC.setFont(new Font("Lato", Font.BOLD, 15));
 		TextSaldoCC.setBackground(Color.WHITE);
 		TextSaldoCC.setBounds(707, 71, 211, 30);
 		contentPane.add(TextSaldoCC);
 
-		JLabel lblChequeEsp = new JLabel("Saldo: R$10.000,00");
+		JLabel lblChequeEsp = new JLabel("");//preencher
 		lblChequeEsp.setForeground(Color.BLACK);
 		lblChequeEsp.setFont(new Font("Lato", Font.BOLD, 15));
 		lblChequeEsp.setBackground(Color.WHITE);
@@ -119,9 +107,9 @@ public class TelaExtratoCC extends JFrame {
 				int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação de Saída",
 						JOptionPane.YES_NO_OPTION);
 				if (resposta == JOptionPane.YES_OPTION) {
-//						dispose();
-//						TelaContaCorrente Conta = new TelaContaCorrente();
-//						Conta.setVisible(true);
+						dispose();
+						TelaContaCorrente Conta = new TelaContaCorrente(cp, cp, cliente, contaCorrente, contaCorrente);
+						Conta.setVisible(true);
 				}
 			}
 		});
@@ -131,7 +119,7 @@ public class TelaExtratoCC extends JFrame {
 		btnSair.setBounds(760, 145, 100, 30);
 		contentPane.add(btnSair);
 
-		JLabel lblConta = new JLabel("Conta: 123456-7");
+		JLabel lblConta = new JLabel("Conta: " + contaCorrente.getNumeroConta());
 		lblConta.setForeground(Color.WHITE);
 		lblConta.setFont(new Font("Lato", Font.BOLD, 13));
 		lblConta.setBackground(Color.WHITE);

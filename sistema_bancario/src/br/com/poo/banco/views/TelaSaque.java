@@ -15,6 +15,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+
+import br.com.poo.banco.contas.Conta;
+import br.com.poo.banco.pessoas.Cliente;
+
 import javax.swing.JPasswordField;
 
 public class TelaSaque extends JFrame {
@@ -24,25 +28,9 @@ public class TelaSaque extends JFrame {
 	private JPasswordField passwordSenha;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaSaque frame = new TelaSaque();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
-	public TelaSaque() {
+	public TelaSaque(boolean cc, boolean cp, Cliente cliente, Conta contaPoupanca, Conta contaCorrente) {
 		setResizable(false);
 		setTitle("Sacar");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,9 +48,9 @@ public class TelaSaque extends JFrame {
 				int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação de Saída",
 						JOptionPane.YES_NO_OPTION);
 				if (resposta == JOptionPane.YES_OPTION) {
-//						dispose();
-//						TelaContaCorrente contaC = new TelaContaCorrente();
-//						contaC.setVisible(true);
+						dispose();
+						TelaContaCorrente contaC = new TelaContaCorrente(cp, cp, cliente, contaCorrente, contaCorrente);
+						contaC.setVisible(true);
 				}
 			}
 		});
@@ -72,14 +60,14 @@ public class TelaSaque extends JFrame {
 		btnSair.setBounds(760, 145, 100, 30);
 		contentPane.add(btnSair);
 
-		JLabel lblNumAge = new JLabel("1234-5");
+		JLabel lblNumAge = new JLabel(contaCorrente.getNumAgencia());
 		lblNumAge.setForeground(Color.WHITE);
 		lblNumAge.setFont(new Font("Lato", Font.BOLD, 13));
 		lblNumAge.setBackground(Color.WHITE);
 		lblNumAge.setBounds(201, 158, 54, 27);
 		contentPane.add(lblNumAge);
 
-		JLabel lblNumConta = new JLabel("321654-7");
+		JLabel lblNumConta = new JLabel(contaCorrente.getNumeroConta());
 		lblNumConta.setForeground(Color.WHITE);
 		lblNumConta.setFont(new Font("Lato", Font.BOLD, 13));
 		lblNumConta.setBackground(Color.WHITE);
@@ -138,7 +126,7 @@ public class TelaSaque extends JFrame {
 		lblOfPetrpolisCity.setBounds(96, 62, 150, 16);
 		contentPane.add(lblOfPetrpolisCity);
 
-		JLabel TextUsuarioCC = new JLabel("(Usuario)");
+		JLabel TextUsuarioCC = new JLabel(cliente.getNome());
 		TextUsuarioCC.setForeground(Color.WHITE);
 		TextUsuarioCC.setFont(new Font("Lato", Font.BOLD, 18));
 		TextUsuarioCC.setBackground(Color.WHITE);
@@ -159,7 +147,7 @@ public class TelaSaque extends JFrame {
 		lblMzBkLogo.setBounds(32, 23, 60, 60);
 		contentPane.add(lblMzBkLogo);
 
-		JLabel TextSaldoCC = new JLabel("Saldo: R$10.000,00");
+		JLabel TextSaldoCC = new JLabel("Saldo: " + contaCorrente.getSaldoConta());
 		TextSaldoCC.setForeground(new Color(0, 0, 0));
 		TextSaldoCC.setFont(new Font("Lato", Font.BOLD, 15));
 		TextSaldoCC.setBackground(Color.WHITE);

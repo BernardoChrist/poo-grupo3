@@ -47,7 +47,7 @@ public class TelaContaPoupanca extends JFrame {
 		btnSaqueCP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				TelaSaque saq = new TelaSaque();
+				TelaSaque saq = new TelaSaque(cp, cp, cliente, contaPoupanca, contaPoupanca);
 				saq.setVisible(true);
 				saq.setLocationRelativeTo(saq);
 			}
@@ -62,7 +62,7 @@ public class TelaContaPoupanca extends JFrame {
 		btnTransCP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				TelaTransferencia trans = new TelaTransferencia();
+				TelaTransferencia trans = new TelaTransferencia(cp, cp, cliente, contaPoupanca, contaPoupanca);
 				trans.setVisible(true);
 				trans.setLocationRelativeTo(trans);
 						
@@ -78,7 +78,7 @@ public class TelaContaPoupanca extends JFrame {
 		btnDepoCP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				TelaDeposito dep = new TelaDeposito();
+				TelaDeposito dep = new TelaDeposito(cp, cp, cliente, contaPoupanca, contaPoupanca);
 				dep.setVisible(true);
 				dep.setLocationRelativeTo(dep);
 				
@@ -110,7 +110,7 @@ public class TelaContaPoupanca extends JFrame {
 		btnExtRend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				TelaExtratoCC ext = new TelaExtratoCC();
+				TelaExtratoCC ext = new TelaExtratoCC(cp, cp, cliente, contaPoupanca, contaPoupanca);
 				ext.setVisible(true);
 				ext.setLocationRelativeTo(ext);
 			}

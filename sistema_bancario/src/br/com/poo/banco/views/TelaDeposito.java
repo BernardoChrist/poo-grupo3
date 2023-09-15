@@ -5,6 +5,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import br.com.poo.banco.contas.Conta;
+import br.com.poo.banco.pessoas.Cliente;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -26,26 +30,11 @@ public class TelaDeposito extends JFrame {
 	private JPanel contentPane;
 	private JTextField textValor;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaDeposito frame = new TelaDeposito();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
-	public TelaDeposito() {
+	public TelaDeposito(boolean cc, boolean cp, Cliente cliente, Conta contaPoupanca, Conta contaCorrente) {
 		setResizable(false);
 		setTitle("Depósito");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -106,7 +95,7 @@ public class TelaDeposito extends JFrame {
 		lblOfPetrpolisCity.setBounds(96, 62, 150, 16);
 		contentPane.add(lblOfPetrpolisCity);
 
-		JLabel TextUsuarioCC = new JLabel("(Usuario)");
+		JLabel TextUsuarioCC = new JLabel(cliente.getNome());
 		TextUsuarioCC.setForeground(Color.WHITE);
 		TextUsuarioCC.setFont(new Font("Lato", Font.BOLD, 18));
 		TextUsuarioCC.setBackground(Color.WHITE);
@@ -121,7 +110,7 @@ public class TelaDeposito extends JFrame {
 		lblMzBkLogo.setBounds(32, 23, 60, 60);
 		contentPane.add(lblMzBkLogo);
 
-		JLabel lblChequeEsp = new JLabel("Saldo: R$10.000,00");
+		JLabel lblChequeEsp = new JLabel();
 		lblChequeEsp.setForeground(Color.BLACK);
 		lblChequeEsp.setFont(new Font("Lato", Font.BOLD, 15));
 		lblChequeEsp.setBackground(Color.WHITE);
@@ -134,10 +123,10 @@ public class TelaDeposito extends JFrame {
 				int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação de Saída",
 						JOptionPane.YES_NO_OPTION);
 				if (resposta == JOptionPane.YES_OPTION) {
-//						dispose();
-//						TelaContaCorrente conta = new TelaContaCorrente();
-//						conta.setLocationRelativeTo(conta);
-//						conta.setVisible(true);   
+						dispose();
+						TelaContaCorrente conta = new TelaContaCorrente(cp, cp, cliente, contaCorrente, contaCorrente);
+						conta.setLocationRelativeTo(conta);
+						conta.setVisible(true);   
 				}
 			}
 		});
@@ -147,14 +136,14 @@ public class TelaDeposito extends JFrame {
 		btnSair.setBounds(760, 145, 100, 30);
 		contentPane.add(btnSair);
 
-		JLabel lblNumAge = new JLabel("1234-5");
+		JLabel lblNumAge = new JLabel(contaCorrente.getNumAgencia());
 		lblNumAge.setForeground(Color.WHITE);
 		lblNumAge.setFont(new Font("Lato", Font.BOLD, 13));
 		lblNumAge.setBackground(Color.WHITE);
 		lblNumAge.setBounds(201, 158, 54, 27);
 		contentPane.add(lblNumAge);
 
-		JLabel lblNumConta = new JLabel("321654-7");
+		JLabel lblNumConta = new JLabel(contaCorrente.getNumeroConta());
 		lblNumConta.setForeground(Color.WHITE);
 		lblNumConta.setFont(new Font("Lato", Font.BOLD, 13));
 		lblNumConta.setBackground(Color.WHITE);
