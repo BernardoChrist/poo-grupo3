@@ -9,6 +9,7 @@ public class Funcionario{
 	private String nome;
 	private String cpf;
 	private double salario;
+	private String numAgencia;
 
 	@Override
 	public String toString() {
@@ -17,12 +18,13 @@ public class Funcionario{
 	
 	public static Map<String, Funcionario> mapaFuncionarios = new HashMap<>();
 
-	public Funcionario(String cargo, String nome, String cpf, double salario) {
+	public Funcionario(String cargo, double salario, String numAgencia, String cpf, String nome) {
 		super();
 		this.cargo = cargo;
 		this.nome = nome;
 		this.cpf = cpf;
 		this.salario = salario;
+		this.numAgencia = numAgencia;
 	}
 
 	public Funcionario() {

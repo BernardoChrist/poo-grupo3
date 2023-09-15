@@ -14,11 +14,9 @@ import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
-import java.awt.Canvas;
 import javax.swing.ImageIcon;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 public class TelaCadastroCliente extends JFrame {
 
