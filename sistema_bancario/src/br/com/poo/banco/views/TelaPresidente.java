@@ -18,30 +18,18 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
+import br.com.poo.banco.pessoas.Cliente;
+import br.com.poo.banco.pessoas.Funcionario;
+
 public class TelaPresidente extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaPresidente frame = new TelaPresidente();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
-	public TelaPresidente() {
+	public TelaPresidente(Funcionario funcionario) {
 		setResizable(false);
 		setTitle("Presidente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -76,7 +64,7 @@ public class TelaPresidente extends JFrame {
 		lblOfPetrpolisCity.setBounds(96, 62, 150, 16);
 		contentPane.add(lblOfPetrpolisCity);
 		
-		JLabel TextUsuarioCC = new JLabel("(Usuario)");
+		JLabel TextUsuarioCC = new JLabel(funcionario.getNome());
 		TextUsuarioCC.setForeground(Color.WHITE);
 		TextUsuarioCC.setFont(new Font("Lato", Font.BOLD, 18));
 		TextUsuarioCC.setBackground(Color.WHITE);
@@ -131,7 +119,7 @@ public class TelaPresidente extends JFrame {
 		JButton btnCadCli = new JButton("Cadastrar Cliente");
 		btnCadCli.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaCadastroCliente CadastroCli = new TelaCadastroCliente();
+				TelaCadastroCliente CadastroCli = new TelaCadastroCliente(funcionario);
 				CadastroCli.setVisible(true);
 			}
 		});
@@ -178,7 +166,7 @@ public class TelaPresidente extends JFrame {
 		JButton btnCadGer = new JButton("Cadastrar Gerente");
 		btnCadGer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaCadastroFunc gerente = new TelaCadastroFunc();
+				TelaCadastroFunc gerente = new TelaCadastroFunc(funcionario);
 				gerente.setVisible(true);
 			}
 		});
@@ -191,7 +179,7 @@ public class TelaPresidente extends JFrame {
 		JButton btnCadDir = new JButton("Cadastrar Diretor");
 		btnCadDir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaCadastroFunc Diretor = new TelaCadastroFunc();
+				TelaCadastroFunc Diretor = new TelaCadastroFunc(funcionario);
 				Diretor.setVisible(true);
 			}
 		});

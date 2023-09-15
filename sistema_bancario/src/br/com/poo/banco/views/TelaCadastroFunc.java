@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import br.com.poo.banco.pessoas.Funcionario;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -27,25 +30,9 @@ public class TelaCadastroFunc extends JFrame {
 	private JPasswordField passwordConSenhaFu;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaCadastroFunc frame = new TelaCadastroFunc();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
-	public TelaCadastroFunc() {
+	public TelaCadastroFunc(Funcionario funcionario) {
 		setResizable(false);
 		setTitle("Novo Funcionario");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -170,14 +157,14 @@ public class TelaCadastroFunc extends JFrame {
 		lblOfPetrpolisCity.setBounds(96, 62, 150, 16);
 		contentPane.add(lblOfPetrpolisCity);
 		
-		JLabel TextUsuarioCadastrador = new JLabel("(Usuario Cadastrador)");
+		JLabel TextUsuarioCadastrador = new JLabel(funcionario.getNome());
 		TextUsuarioCadastrador.setForeground(Color.WHITE);
 		TextUsuarioCadastrador.setFont(new Font("Lato", Font.BOLD, 18));
 		TextUsuarioCadastrador.setBackground(Color.WHITE);
 		TextUsuarioCadastrador.setBounds(37, 133, 179, 30);
 		contentPane.add(TextUsuarioCadastrador);
 		
-		JLabel lblMazeBankBarra = new JLabel("");
+		JLabel lblMazeBankBarra = new JLabel();
 		lblMazeBankBarra.setIcon(new ImageIcon("./imagens maze bank/mazebankbarra.png"));
 		lblMazeBankBarra.setBounds(32, 127, 850, 60);
 		contentPane.add(lblMazeBankBarra);

@@ -13,6 +13,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+
+import br.com.poo.banco.pessoas.Cliente;
+import br.com.poo.banco.pessoas.Funcionario;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -25,25 +29,9 @@ public class TelaDiretor extends JFrame {
 	private JPanel btnInfoClie;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaDiretor frame = new TelaDiretor();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
-	public TelaDiretor() {
+	public TelaDiretor(Funcionario funcionario) {
 		setResizable(false);
 		setTitle("Diretor");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -66,7 +54,7 @@ public class TelaDiretor extends JFrame {
 		JButton btnCadCli = new JButton("Cadastrar Cliente");
 		btnCadCli.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaCadastroCliente Cadastro = new TelaCadastroCliente();
+				TelaCadastroCliente Cadastro = new TelaCadastroCliente(funcionario);
 				Cadastro.setVisible(true);
 			}
 		});
@@ -79,7 +67,7 @@ public class TelaDiretor extends JFrame {
 		JButton btnCadGer = new JButton("Cadastrar Gerente");
 		btnCadGer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaCadastroFunc gerenteCad = new TelaCadastroFunc();
+				TelaCadastroFunc gerenteCad = new TelaCadastroFunc(funcionario);
 				gerenteCad.setVisible(true);
 			}
 		});
@@ -115,7 +103,7 @@ public class TelaDiretor extends JFrame {
 		lblOfPetrpolisCity.setBounds(96, 62, 150, 16);
 		btnInfoClie.add(lblOfPetrpolisCity);
 		
-		JLabel TextUsuarioCC = new JLabel("(Usuario)");
+		JLabel TextUsuarioCC = new JLabel(funcionario.getNome());
 		TextUsuarioCC.setForeground(Color.WHITE);
 		TextUsuarioCC.setFont(new Font("Lato", Font.BOLD, 18));
 		TextUsuarioCC.setBackground(Color.WHITE);

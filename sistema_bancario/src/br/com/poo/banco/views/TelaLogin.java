@@ -131,14 +131,14 @@ public class TelaLogin extends JFrame {
 				} else if (tipoPessoa.equalsIgnoreCase(PessoaEnum.GERENTE.getTipoPessoa())) {
 					if (funcionario.getCpf().equals(cpf) && funcionario.getSenha().equals(senha)) {
 						dispose();
-						TelaGerente telaG = new TelaGerente();
+						TelaGerente telaG = new TelaGerente(funcionario);
 						telaG.setLocationRelativeTo(telaG);
 						telaG.setVisible(true);
 					}
 				} else if (tipoPessoa.equalsIgnoreCase(PessoaEnum.DIRETOR.getTipoPessoa())) {
 					if (funcionario.getCpf().equals(cpf) && funcionario.getSenha().equals(senha)) {
 						dispose();
-						TelaDiretor telaD = new TelaDiretor();
+						TelaDiretor telaD = new TelaDiretor(funcionario);
 						telaD.setLocationRelativeTo(telaD);
 						telaD.setVisible(true);
 					}
@@ -146,7 +146,7 @@ public class TelaLogin extends JFrame {
 				} else if (tipoPessoa.equalsIgnoreCase(PessoaEnum.PRESIDENTE.getTipoPessoa())) {
 					if (funcionario.getCpf().equals(cpf) && funcionario.getSenha().equals(senha)) {
 						dispose();
-						TelaPresidente telaP = new TelaPresidente();
+						TelaPresidente telaP = new TelaPresidente(funcionario);
 						telaP.setLocationRelativeTo(telaP);
 						telaP.setVisible(true);
 					}

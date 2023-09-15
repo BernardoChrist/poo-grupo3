@@ -12,10 +12,9 @@ public class ContaCorrente extends Conta {
 	}
 	//Corrente;1234;384791-0;500.00;987.654.321-09;1358-0;54000.0;true;
 	public ContaCorrente(String tipoConta, String senhaConta, String numeroConta, 
-			Double chequeEspecial, String cpfConta, String numAgencia ,Double saldoConta, Double limiteCredito) {
+			double limiteCredito, String cpfConta, String numAgencia , double saldoConta, boolean chequeEspecial) {
 		super(tipoConta, numeroConta, numAgencia, cpfConta, saldoConta, senhaConta);
 		this.limiteCredito = limiteCredito;
-		this.chequeEspecial = chequeEspecial;
 	
 	}
 	

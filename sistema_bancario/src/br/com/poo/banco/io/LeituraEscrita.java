@@ -46,7 +46,7 @@ public class LeituraEscrita {
 				} else if (dados[0].equalsIgnoreCase(ContaEnum.CORRENTE.name())) {
 					// Corrente;1234;384791-0;500.00;987.654.321-09;1358-0;54000.0;true;
 					ContaCorrente conta = new ContaCorrente(dados[0], dados[1], dados[2], Double.parseDouble(dados[3]),
-							dados[4], dados[5], Double.parseDouble(dados[6]), Double.parseDouble(dados[7]));
+							dados[4], dados[5], Double.parseDouble(dados[6]), Boolean.parseBoolean(dados[7]));
 					Conta.mapaContas.put(dados[4], conta);
 				} else if (dados[0].equalsIgnoreCase(PessoaEnum.CLIENTE.name())) {
 					// String TIPO_PESSOA, String nome, String cpf, String endereco, String telefone

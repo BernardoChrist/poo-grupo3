@@ -165,7 +165,7 @@ public class TelaCadastroCliente extends JFrame {
 		lblOfPetrpolisCity.setBounds(96, 62, 150, 16);
 		contentPane.add(lblOfPetrpolisCity);
 		
-		JLabel TextUsuarioCadastrador = new JLabel(funcionario.);
+		JLabel TextUsuarioCadastrador = new JLabel(funcionario.getNome());
 		TextUsuarioCadastrador.setForeground(Color.WHITE);
 		TextUsuarioCadastrador.setFont(new Font("Lato", Font.BOLD, 18));
 		TextUsuarioCadastrador.setBackground(Color.WHITE);
