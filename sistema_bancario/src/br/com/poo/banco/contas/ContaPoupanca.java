@@ -11,10 +11,10 @@ public class ContaPoupanca extends Conta {
 	}
 
 	public ContaPoupanca(String tipoConta, String senhaConta, 
-	String numeroConta, Double saldoConta, String cpfConta) {
+	String numeroConta, Double saldoConta, String cpfConta, String numAgencia) {
 		
 		
-		super(tipoConta, senhaConta, numeroConta, saldoConta, cpfConta);
+		super(tipoConta, senhaConta, numeroConta, saldoConta, cpfConta, numAgencia);
 	
 	}
 	

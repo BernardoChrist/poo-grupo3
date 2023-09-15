@@ -9,6 +9,7 @@ public class Cliente {
 	private String nome;
 	private String cpf;
 	private Integer senha;
+
 	
 	public static Map<String, Cliente> mapaClientes = new HashMap<>();
 	

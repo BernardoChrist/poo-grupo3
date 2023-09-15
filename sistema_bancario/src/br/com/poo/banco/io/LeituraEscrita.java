@@ -36,13 +36,14 @@ public class LeituraEscrita {
 				// Poupança String numConta, String cpf, double saldo
 				if (dados[0].equalsIgnoreCase(ContaEnum.POUPANCA.name())) {
 					ContaPoupanca cp = new ContaPoupanca(dados[0],
-							dados[1], dados[2], Double.parseDouble(dados[3]), path);
+							dados[1], dados[2], Double.parseDouble(dados[3]), dados[4],path);
 
 					Conta.mapaContas.put(dados[2], cp);
 					System.out.println(cp);
 				} else if (dados[0].equalsIgnoreCase("CORRENTE")) {
 					//String tipoConta, String senhaConta, String numeroConta, double saldoConta, String cpfConta
-					Conta conta = new Conta(dados[0], dados[1], dados[2], Double.parseDouble(dados[3]), dados[4]);
+					Conta conta = new Conta(dados[0], dados[1], dados[2], Double.parseDouble(dados[3]), dados[4],
+							dados[5]);
 					Conta.mapaContas.put(dados[1], conta);
 				} else if (dados[0].equalsIgnoreCase("CLIENTE")) {
 					//String TIPO_PESSOA, String nome, String cpf, Integer senha
