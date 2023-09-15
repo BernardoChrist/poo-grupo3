@@ -1,22 +1,26 @@
 package br.com.poo.banco.views;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JButton;
 import java.awt.Color;
-import javax.swing.JPasswordField;
-import java.awt.event.ActionListener;
+import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
-import javax.swing.UIManager;
-import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
 
 public class TelaCadastroCliente extends JFrame {
 
@@ -72,6 +76,53 @@ public class TelaCadastroCliente extends JFrame {
 		textNomeCad.setColumns(10);
 		
 		JButton btnCriaConta = new JButton("Criar Conta");
+		btnCriaConta.addActionListener(new ActionListener() {
+			static final String PATH_BASICO = "./temp/";
+            static final String EXTENSAO = ".txt";
+			public void actionPerformed(ActionEvent e) {
+				 
+				String nome = textNomeCad.getText();
+	                String dataNascimento = textDatNasCad.getText();
+	                String cpf = textCpfCad.getText();
+	                String senha = new String(passwordSenhaCad.getPassword());
+	                String confirmacaoSenha = new String(passwordConSenhaCad.getPassword());
+
+	                // Verifica se as senhas coincidem
+	                if (!senha.equals(confirmacaoSenha)) {
+	                    JOptionPane.showMessageDialog(null, "As senhas não coincidem. Por favor, insira senhas iguais.");
+	                    return; // Encerra a ação sem salvar
+	                }
+
+	                // Cria uma string com os dados do cliente
+	                String dadosCliente = "\nCliente;" + nome + ";" +
+	                                      dataNascimento + ";" +
+	                                        cpf + ";" +
+	                                      senha + ";";
+	                
+	                if(nome == null || dataNascimento == null || cpf == null || senha == null) {
+	                	 JOptionPane.showMessageDialog(null, "Preencha todos os espaços vazios.");
+	                	 return;
+	                }
+	               
+
+	                try (BufferedWriter writer = new BufferedWriter(new FileWriter(PATH_BASICO + "banco" + EXTENSAO, true))) {
+	                    // Escreve os dados do cliente no arquivo
+	                    writer.write(dadosCliente);
+	                    writer.close();
+	                } catch (IOException ex) {
+	                    ex.printStackTrace();
+	                }
+
+	                // Limpa os campos do formulário após a conclusão do cadastro
+	                textNomeCad.setText("");
+	                textDatNasCad.setText("");
+	                textCpfCad.setText("");
+	                passwordSenhaCad.setText("");
+	                passwordConSenhaCad.setText("");
+
+	                JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso.");
+	            }
+	        });
 		btnCriaConta.setForeground(new Color(255, 255, 255));
 		btnCriaConta.setFont(new Font("Lato", Font.BOLD, 16));
 		btnCriaConta.setBackground(new Color(233, 65, 69));
@@ -165,6 +216,7 @@ public class TelaCadastroCliente extends JFrame {
 		btnVoltar.setForeground(new Color(255, 255, 255));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
 			}
 		});
 		btnVoltar.setFont(new Font("Lato", Font.BOLD, 16));

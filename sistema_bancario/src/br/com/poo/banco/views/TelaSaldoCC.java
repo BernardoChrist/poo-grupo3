@@ -9,6 +9,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaSaldoCC extends JFrame {
 
@@ -62,6 +64,10 @@ public class TelaSaldoCC extends JFrame {
 		contentPane.add(ImprimirExtratoButton);
 		
 		JButton AtributosButton = new JButton("Relatorio de tributos");
+		AtributosButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		AtributosButton.setBounds(212, 183, 125, 21);
 		contentPane.add(AtributosButton);
 		

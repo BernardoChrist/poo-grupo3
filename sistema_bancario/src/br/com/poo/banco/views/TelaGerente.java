@@ -1,21 +1,26 @@
 package br.com.poo.banco.views;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JTextField;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.UIManager;
-
-import java.awt.Color;
-import java.awt.Font;
+import javax.swing.border.EmptyBorder;
 
 public class TelaGerente extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
 	/**
@@ -57,6 +62,12 @@ public class TelaGerente extends JFrame {
 		contentPane.add(btnContAge);
 		
 		JButton btnCadCli = new JButton("Cadastrar Cliente");
+		btnCadCli.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			   TelaCadastroCliente cadastroCli = new TelaCadastroCliente();
+			   cadastroCli.setVisible(true);
+			}
+		});
 		btnCadCli.setForeground(new Color(255, 255, 255));
 		btnCadCli.setFont(new Font("Lato", Font.BOLD, 14));
 		btnCadCli.setBackground(new Color(233, 65, 69));
@@ -97,13 +108,22 @@ public class TelaGerente extends JFrame {
 		contentPane.add(TextUsuarioCC);
 		
 		JLabel lblMzBkLogo = new JLabel("logo");
-		lblMzBkLogo.setIcon(new ImageIcon("C:C:\\\\dev\\\\POO\\\\Workspace\\\\poo-grupo3\\\\sistema_bancario\\\\imagens maze bank\\\\mazebanklogo.png"));
+		lblMzBkLogo.setIcon(new ImageIcon("./imagens maze bank/mazebanklogo.png"));
 		lblMzBkLogo.setForeground(new Color(0, 0, 0));
 		lblMzBkLogo.setFont(new Font("Tahoma", Font.PLAIN, 5));
 		lblMzBkLogo.setBounds(32, 23, 60, 60);
 		contentPane.add(lblMzBkLogo);
 		
 		JButton btnSair = new JButton("Sair");
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação de Saída", JOptionPane.YES_NO_OPTION);
+                if (resposta == JOptionPane.YES_OPTION) {
+						dispose();
+						TelaLogin login = new TelaLogin();
+						login.setVisible(true);
+						}
+		}});
 		btnSair.setForeground(Color.WHITE);
 		btnSair.setFont(new Font("Lato", Font.BOLD, 14));
 		btnSair.setBackground(new Color(233, 65, 69));
@@ -111,7 +131,7 @@ public class TelaGerente extends JFrame {
 		contentPane.add(btnSair);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\\\dev\\\\POO\\\\Workspace\\\\poo-grupo3\\\\sistema_bancario\\\\imagens maze bank\\\\mazebankbarra.png"));
+		lblNewLabel.setIcon(new ImageIcon("./imagens maze bank/mazebankbarra.png"));
 		lblNewLabel.setBounds(32, 127, 850, 60);
 		contentPane.add(lblNewLabel);
 		

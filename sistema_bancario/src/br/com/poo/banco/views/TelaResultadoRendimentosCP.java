@@ -8,10 +8,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaResultadoRendimentosCP extends JFrame {
 
@@ -169,6 +172,15 @@ public class TelaResultadoRendimentosCP extends JFrame {
 		contentPane.add(lblSaldoCP);
 
 		JButton btnSair = new JButton("Sair");
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+//				int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação de Saída", JOptionPane.YES_NO_OPTION);
+//                if (resposta == JOptionPane.YES_OPTION) {
+//						dispose();
+//						TelaContaPoupanca pouP = new TelaContaPoupanca();
+//						pouP.setVisible(true);
+//						}
+		}});
 		btnSair.setForeground(Color.WHITE);
 		btnSair.setFont(new Font("Lato", Font.BOLD, 14));
 		btnSair.setBackground(new Color(233, 65, 69));
