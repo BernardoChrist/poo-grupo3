@@ -8,13 +8,15 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 
 public class TelaPresidente extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField ClienteField;
 
 	/**
 	 * Launch the application.
@@ -36,69 +38,123 @@ public class TelaPresidente extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaPresidente() {
-		setTitle("Tela Presidente");
+		setResizable(false);
+		setTitle("Presidente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 930, 630);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(85, 106, 95));
+		contentPane.setBackground(new Color(235, 235, 235));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		
+		JLabel TextNovoCadastro = new JLabel("Presidente");
+		TextNovoCadastro.setForeground(new Color(255, 255, 255));
+		TextNovoCadastro.setBackground(new Color(255, 255, 255));
+		TextNovoCadastro.setBounds(417, 161, 79, 30);
+		TextNovoCadastro.setFont(new Font("Lato", Font.BOLD, 15));
+		contentPane.add(TextNovoCadastro);
+
+		JLabel textLinhaVermelha = new JLabel("__________________________________");
+		textLinhaVermelha.setForeground(new Color(198, 43, 26));
+		textLinhaVermelha.setFont(new Font("Tahoma", Font.PLAIN, 46));
+		textLinhaVermelha.setBackground(UIManager.getColor("Button.background"));
+		textLinhaVermelha.setBounds(32, 50, 850, 53);
+		contentPane.add(textLinhaVermelha);
+		
+		JLabel lblMazeBank = new JLabel("MAZE BANK");
+		lblMazeBank.setFont(new Font("Sylfaen", Font.PLAIN, 40));
+		lblMazeBank.setBackground(UIManager.getColor("Button.background"));
+		lblMazeBank.setBounds(94, 30, 236, 53);
+		contentPane.add(lblMazeBank);
+		
+		JLabel lblOfPetrpolisCity = new JLabel("OF PETRÓPOLIS CITY");
+		lblOfPetrpolisCity.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblOfPetrpolisCity.setBackground(UIManager.getColor("Button.background"));
+		lblOfPetrpolisCity.setBounds(96, 62, 150, 16);
+		contentPane.add(lblOfPetrpolisCity);
+		
+		JLabel TextUsuarioCC = new JLabel("(Usuario)");
+		TextUsuarioCC.setForeground(Color.WHITE);
+		TextUsuarioCC.setFont(new Font("Lato", Font.BOLD, 18));
+		TextUsuarioCC.setBackground(Color.WHITE);
+		TextUsuarioCC.setBounds(37, 133, 180, 30);
+		contentPane.add(TextUsuarioCC);
+		
+		JLabel lblMzBkLogo = new JLabel("logo");
+		lblMzBkLogo.setIcon(new ImageIcon("C:\\mazebanklogo.png"));
+		lblMzBkLogo.setForeground(new Color(0, 0, 0));
+		lblMzBkLogo.setFont(new Font("Tahoma", Font.PLAIN, 5));
+		lblMzBkLogo.setBounds(32, 23, 60, 60);
+		contentPane.add(lblMzBkLogo);
+		
+		JButton btnSair = new JButton("Sair");
+		btnSair.setForeground(Color.WHITE);
+		btnSair.setFont(new Font("Lato", Font.BOLD, 14));
+		btnSair.setBackground(new Color(233, 65, 69));
+		btnSair.setBounds(760, 145, 100, 30);
+		contentPane.add(btnSair);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon("C:\\mazebankbarra.png"));
+		lblNewLabel.setBounds(32, 127, 850, 60);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblStaff = new JLabel("(STAFF)");
+		lblStaff.setFont(new Font("Sylfaen", Font.PLAIN, 14));
+		lblStaff.setBackground(UIManager.getColor("Button.background"));
+		lblStaff.setBounds(260, 64, 60, 21);
+		contentPane.add(lblStaff);
+
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel TextPainelPresidente = new JLabel("Painel do Presidente");
-		TextPainelPresidente.setFont(new Font("Tahoma", Font.BOLD, 12));
-		TextPainelPresidente.setBounds(158, 10, 129, 13);
-		contentPane.add(TextPainelPresidente);
+		JButton btnContAge = new JButton("Contas da Agência");
+		btnContAge.setForeground(Color.WHITE);
+		btnContAge.setFont(new Font("Lato", Font.BOLD, 14));
+		btnContAge.setBackground(new Color(233, 65, 69));
+		btnContAge.setBounds(32, 384, 220, 60);
+		contentPane.add(btnContAge);
 		
-		JButton ListarAgenciaButton = new JButton("Listar Agencias");
-		ListarAgenciaButton.setBounds(258, 86, 129, 21);
-		contentPane.add(ListarAgenciaButton);
+		JButton btnCadCli = new JButton("Cadastrar Cliente");
+		btnCadCli.setForeground(Color.WHITE);
+		btnCadCli.setFont(new Font("Lato", Font.BOLD, 14));
+		btnCadCli.setBackground(new Color(233, 65, 69));
+		btnCadCli.setBounds(32, 241, 220, 60);
+		contentPane.add(btnCadCli);
 		
-		JButton ResumoCapitalButton = new JButton("Resumo Capital");
-		ResumoCapitalButton.setBounds(258, 117, 129, 21);
-		contentPane.add(ResumoCapitalButton);
+		JButton btnLisDire = new JButton("Lista de Diretores");
+		btnLisDire.setForeground(Color.WHITE);
+		btnLisDire.setFont(new Font("Lato", Font.BOLD, 14));
+		btnLisDire.setBackground(new Color(233, 65, 69));
+		btnLisDire.setBounds(662, 384, 220, 60);
+		contentPane.add(btnLisDire);
 		
-		JButton CadastrarClienteButton = new JButton("Cadastrar Cliente");
-		CadastrarClienteButton.setBounds(24, 201, 126, 21);
-		contentPane.add(CadastrarClienteButton);
+		JButton btnCadGer = new JButton("Cadastrar Gerente");
+		btnCadGer.setForeground(Color.WHITE);
+		btnCadGer.setFont(new Font("Lato", Font.BOLD, 14));
+		btnCadGer.setBackground(new Color(233, 65, 69));
+		btnCadGer.setBounds(347, 241, 220, 60);
+		contentPane.add(btnCadGer);
 		
-		JButton CadastrarGerenteButton = new JButton("Cadasatrar Gerente");
-		CadastrarGerenteButton.setBounds(160, 201, 126, 21);
-		contentPane.add(CadastrarGerenteButton);
+		JButton btnCadDir = new JButton("Cadastrar Diretor");
+		btnCadDir.setForeground(Color.WHITE);
+		btnCadDir.setFont(new Font("Lato", Font.BOLD, 14));
+		btnCadDir.setBackground(new Color(233, 65, 69));
+		btnCadDir.setBounds(662, 241, 220, 60);
+		contentPane.add(btnCadDir);
 		
-		JButton CadastrarDiretorButton = new JButton("Cadastrar Diretor");
-		CadastrarDiretorButton.setBounds(296, 201, 117, 21);
-		contentPane.add(CadastrarDiretorButton);
+		JButton btnInfoClie = new JButton("Informações dos Clientes");
+		btnInfoClie.setForeground(Color.WHITE);
+		btnInfoClie.setFont(new Font("Lato", Font.BOLD, 14));
+		btnInfoClie.setBackground(new Color(233, 65, 69));
+		btnInfoClie.setBounds(347, 384, 220, 60);
+		contentPane.add(btnInfoClie);
 		
-		JLabel TextTotalContas = new JLabel("Total de Contas:");
-		TextTotalContas.setBounds(47, 50, 76, 13);
-		contentPane.add(TextTotalContas);
-		
-		JLabel TextProcurarCliente = new JLabel("Procurar Cliente:");
-		TextProcurarCliente.setBounds(47, 73, 101, 13);
-		contentPane.add(TextProcurarCliente);
-		
-		ClienteField = new JTextField();
-		ClienteField.setColumns(10);
-		ClienteField.setBounds(47, 87, 96, 19);
-		contentPane.add(ClienteField);
-		
-		JButton PesquisarButton = new JButton("Pesquisar");
-		PesquisarButton.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		PesquisarButton.setBounds(47, 116, 76, 13);
-		contentPane.add(PesquisarButton);
-		
-		JButton RelatorioClienteButton = new JButton("Relatorio de clientes");
-		RelatorioClienteButton.setBounds(47, 139, 129, 21);
-		contentPane.add(RelatorioClienteButton);
-		
-		JLabel TotalContas = new JLabel("Numero de contas");
-		TotalContas.setBounds(124, 50, 111, 13);
-		contentPane.add(TotalContas);
-		
-		JButton SairButton = new JButton("Sair");
-		SairButton.setBounds(164, 232, 85, 21);
-		contentPane.add(SairButton);
+		JButton btnCapitalArmazenado = new JButton("Capital Armazenado");
+		btnCapitalArmazenado.setForeground(Color.WHITE);
+		btnCapitalArmazenado.setFont(new Font("Lato", Font.BOLD, 14));
+		btnCapitalArmazenado.setBackground(new Color(233, 65, 69));
+		btnCapitalArmazenado.setBounds(347, 492, 220, 60);
+		contentPane.add(btnCapitalArmazenado);
 	}
 }

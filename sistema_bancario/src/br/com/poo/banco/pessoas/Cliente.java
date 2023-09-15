@@ -9,6 +9,9 @@ public class Cliente {
 	private String nome;
 	private String cpf;
 	private Integer senha;
+	private String endereco;
+	private String telefone;
+
 	
 	public static Map<String, Cliente> mapaClientes = new HashMap<>();
 	
@@ -16,11 +19,13 @@ public class Cliente {
 		super();
 	}
 	
-	public Cliente(String TIPO_PESSOA, String nome, String cpf, Integer senha) {
+	public Cliente(String TIPO_PESSOA, String nome, String cpf, String endereco, String telefone, Integer senha) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
 		this.senha = senha;
+		this.endereco = endereco;
+		this.telefone = telefone;
 	}
 
 	
@@ -39,6 +44,14 @@ public class Cliente {
 
 	public Integer getSenha() {
 		return senha;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public String getTelefone() {
+		return telefone;
 	}
 
 	public String getTIPO_PESSOA() {

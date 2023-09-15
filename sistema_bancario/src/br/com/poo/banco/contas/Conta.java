@@ -10,14 +10,16 @@ public class Conta {
 	private String numeroConta;
 	private Double saldoConta;
 	private String cpfConta;
+	private String numAgencia;
 	
-	public Conta(String tipoConta, String numeroConta, String cpfConta, Double saldoConta, String senhaConta) {
+	public Conta(String tipoConta, String numeroConta, String numAgencia, String cpfConta, Double saldoConta, String senhaConta) {
 		
 		this.tipoConta = tipoConta;
-		this.senhaConta = senhaConta;
 		this.numeroConta = numeroConta;
-		this.saldoConta = saldoConta;
+		this.numAgencia = numAgencia;
 		this.cpfConta = cpfConta;
+		this.saldoConta = saldoConta;
+		this.senhaConta = senhaConta;
 		
 	}
 	
@@ -54,6 +56,10 @@ public class Conta {
 
 	public String getCpfConta() {
 		return cpfConta;
+	}
+
+	public String getNumAgencia() {
+		return numAgencia;
 	}
 
 	public static Map<String, Conta> getMapaContas() {

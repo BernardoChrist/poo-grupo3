@@ -1,20 +1,26 @@
 package br.com.poo.banco.views;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.Color;
-import javax.swing.JLabel;
+import java.awt.EventQueue;
 import java.awt.Font;
-import javax.swing.JTextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JPasswordField;
 
 public class TelaSaque extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField SaqueField;
+	private JTextField txtValSaq;
+	private JPasswordField passwordSenha;
 
 	/**
 	 * Launch the application.
@@ -36,44 +42,132 @@ public class TelaSaque extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaSaque() {
-		setTitle("Tela Saque");
+		setResizable(false);
+		setTitle("Sacar");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 930, 630);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(85, 106, 95));
+		contentPane.setBackground(new Color(235, 235, 235));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel TextAreaSaque = new JLabel("Area de Saque");
-		TextAreaSaque.setFont(new Font("Tahoma", Font.BOLD, 12));
-		TextAreaSaque.setBounds(158, 10, 107, 13);
-		contentPane.add(TextAreaSaque);
+		JButton btnSair = new JButton("Sair");
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnSair.setForeground(Color.WHITE);
+		btnSair.setFont(new Font("Lato", Font.BOLD, 14));
+		btnSair.setBackground(new Color(233, 65, 69));
+		btnSair.setBounds(760, 145, 100, 30);
+		contentPane.add(btnSair);
 		
-		JLabel TextDigiteoValor = new JLabel("Digite o valor que deseja sacar");
-		TextDigiteoValor.setBounds(28, 86, 142, 13);
+		JLabel lblNumAge = new JLabel("1234-5");
+		lblNumAge.setForeground(Color.WHITE);
+		lblNumAge.setFont(new Font("Lato", Font.BOLD, 13));
+		lblNumAge.setBackground(Color.WHITE);
+		lblNumAge.setBounds(201, 158, 54, 27);
+		contentPane.add(lblNumAge);
+		
+		JLabel lblNumConta = new JLabel("321654-7");
+		lblNumConta.setForeground(Color.WHITE);
+		lblNumConta.setFont(new Font("Lato", Font.BOLD, 13));
+		lblNumConta.setBackground(Color.WHITE);
+		lblNumConta.setBounds(80, 158, 66, 27);
+		contentPane.add(lblNumConta);
+		
+		JLabel lblAgncia = new JLabel("Agência:");
+		lblAgncia.setForeground(Color.WHITE);
+		lblAgncia.setFont(new Font("Lato", Font.BOLD, 13));
+		lblAgncia.setBackground(Color.WHITE);
+		lblAgncia.setBounds(149, 158, 54, 27);
+		contentPane.add(lblAgncia);
+		
+		JLabel lblConta = new JLabel("Conta:");
+		lblConta.setForeground(Color.WHITE);
+		lblConta.setFont(new Font("Lato", Font.BOLD, 13));
+		lblConta.setBackground(Color.WHITE);
+		lblConta.setBounds(38, 158, 46, 27);
+		contentPane.add(lblConta);
+		
+		JLabel TextDigiteoValor = new JLabel("Digite a senha:");
+		TextDigiteoValor.setFont(new Font("Lato", Font.BOLD, 14));
+		TextDigiteoValor.setBounds(317, 350, 98, 18);
 		contentPane.add(TextDigiteoValor);
 		
-		SaqueField = new JTextField();
-		SaqueField.setBounds(28, 109, 96, 19);
-		contentPane.add(SaqueField);
-		SaqueField.setColumns(10);
-		
 		JButton ConfirmarButton = new JButton("Confirmar");
-		ConfirmarButton.setBounds(85, 232, 85, 21);
+		ConfirmarButton.setForeground(new Color(255, 255, 255));
+		ConfirmarButton.setBackground(new Color(233, 65, 69));
+		ConfirmarButton.setFont(new Font("Lato", Font.BOLD, 14));
+		ConfirmarButton.setBounds(347, 494, 220, 60);
 		contentPane.add(ConfirmarButton);
 		
-		JButton VoltarButton = new JButton("Voltar");
-		VoltarButton.setBounds(263, 232, 85, 21);
-		contentPane.add(VoltarButton);
+		JLabel TextNovoCadastro = new JLabel("Saque");
+		TextNovoCadastro.setForeground(new Color(255, 255, 255));
+		TextNovoCadastro.setBackground(new Color(255, 255, 255));
+		TextNovoCadastro.setBounds(434, 161, 46, 30);
+		TextNovoCadastro.setFont(new Font("Lato", Font.BOLD, 15));
+		contentPane.add(TextNovoCadastro);
+
+		JLabel textLinhaVermelha = new JLabel("__________________________________");
+		textLinhaVermelha.setForeground(new Color(198, 43, 26));
+		textLinhaVermelha.setFont(new Font("Tahoma", Font.PLAIN, 46));
+		textLinhaVermelha.setBackground(UIManager.getColor("Button.background"));
+		textLinhaVermelha.setBounds(32, 50, 850, 53);
+		contentPane.add(textLinhaVermelha);
 		
-		JLabel TextNumeroConta = new JLabel("Numero da conta :");
-		TextNumeroConta.setBounds(28, 42, 87, 13);
-		contentPane.add(TextNumeroConta);
+		JLabel lblMazeBank = new JLabel("MAZE BANK");
+		lblMazeBank.setFont(new Font("Sylfaen", Font.PLAIN, 40));
+		lblMazeBank.setBackground(UIManager.getColor("Button.background"));
+		lblMazeBank.setBounds(94, 30, 236, 53);
+		contentPane.add(lblMazeBank);
 		
-		JLabel NumeroConta = new JLabel("Numero conta");
-		NumeroConta.setBounds(125, 42, 71, 13);
-		contentPane.add(NumeroConta);
+		JLabel lblOfPetrpolisCity = new JLabel("OF PETRÓPOLIS CITY");
+		lblOfPetrpolisCity.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblOfPetrpolisCity.setBackground(UIManager.getColor("Button.background"));
+		lblOfPetrpolisCity.setBounds(96, 62, 150, 16);
+		contentPane.add(lblOfPetrpolisCity);
+		
+		JLabel TextUsuarioCC = new JLabel("(Usuario)");
+		TextUsuarioCC.setForeground(Color.WHITE);
+		TextUsuarioCC.setFont(new Font("Lato", Font.BOLD, 18));
+		TextUsuarioCC.setBackground(Color.WHITE);
+		TextUsuarioCC.setBounds(37, 133, 179, 30);
+		contentPane.add(TextUsuarioCC);
+		
+		JLabel lblMazeBankBarra = new JLabel("");
+		lblMazeBankBarra.setIcon(new ImageIcon("C:\\mazebankbarra.png"));
+		lblMazeBankBarra.setBounds(32, 127, 850, 60);
+		contentPane.add(lblMazeBankBarra);
+		
+		JLabel lblMzBkLogo = new JLabel("logo");
+		lblMzBkLogo.setIcon(new ImageIcon("C:\\mazebanklogo.png"));
+		lblMzBkLogo.setForeground(new Color(0, 0, 0));
+		lblMzBkLogo.setFont(new Font("Tahoma", Font.PLAIN, 5));
+		lblMzBkLogo.setBounds(32, 23, 60, 60);
+		contentPane.add(lblMzBkLogo);
+		
+		JLabel TextSaldoCC = new JLabel("Saldo: R$10.000,00");
+		TextSaldoCC.setForeground(new Color(0, 0, 0));
+		TextSaldoCC.setFont(new Font("Lato", Font.BOLD, 15));
+		TextSaldoCC.setBackground(Color.WHITE);
+		TextSaldoCC.setBounds(706, 64, 256, 30);
+		contentPane.add(TextSaldoCC);
+		
+		JLabel TextDigiteoValor_1 = new JLabel("Digite o valor que deseja sacar:");
+		TextDigiteoValor_1.setFont(new Font("Lato", Font.BOLD, 14));
+		TextDigiteoValor_1.setBounds(317, 285, 197, 18);
+		contentPane.add(TextDigiteoValor_1);
+		
+		txtValSaq = new JTextField();
+		txtValSaq.setColumns(10);
+		txtValSaq.setBounds(314, 306, 286, 20);
+		contentPane.add(txtValSaq);
+		
+		passwordSenha = new JPasswordField();
+		passwordSenha.setBounds(314, 368, 286, 20);
+		contentPane.add(passwordSenha);
 	}
 }

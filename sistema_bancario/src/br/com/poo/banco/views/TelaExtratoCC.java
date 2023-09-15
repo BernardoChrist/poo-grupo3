@@ -6,18 +6,22 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import java.awt.Color;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.JTable;
+import javax.swing.border.TitledBorder;
+import javax.swing.JScrollBar;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JScrollPane;
 
-public class TelaContaCorrente extends JFrame {
+public class TelaExtratoCC extends JFrame {
 
 	private JPanel contentPane;
+	private JTable tableExtraCC;
 
 	/**
 	 * Launch the application.
@@ -26,7 +30,7 @@ public class TelaContaCorrente extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaContaCorrente frame = new TelaContaCorrente();
+					TelaExtratoCC frame = new TelaExtratoCC();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,9 +42,9 @@ public class TelaContaCorrente extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaContaCorrente() {
+	public TelaExtratoCC() {
 		setResizable(false);
-		setTitle("Conta Corrente");
+		setTitle("Extrato Conta Corrente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 930, 630);
 		contentPane = new JPanel();
@@ -49,57 +53,11 @@ public class TelaContaCorrente extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JButton btnSaqueCP = new JButton("Saque");
-		btnSaqueCP.setForeground(new Color(255, 255, 255));
-		btnSaqueCP.setBackground(new Color(233, 65, 69));
-		btnSaqueCP.setFont(new Font("Lato", Font.BOLD, 14));
-		btnSaqueCP.setBounds(540, 240, 320, 60);
-		contentPane.add(btnSaqueCP);
-		
-		JButton btnTransferenciaCC = new JButton("Tranferencia");
-		btnTransferenciaCC.setForeground(new Color(255, 255, 255));
-		btnTransferenciaCC.setBackground(new Color(233, 65, 69));
-		btnTransferenciaCC.setFont(new Font("Lato", Font.BOLD, 14));
-		btnTransferenciaCC.setBounds(54, 340, 320, 60);
-		contentPane.add(btnTransferenciaCC);
-		
-		JButton btnDepositoCC = new JButton("Deposito");
-		btnDepositoCC.setForeground(new Color(255, 255, 255));
-		btnDepositoCC.setBackground(new Color(233, 65, 69));
-		btnDepositoCC.setFont(new Font("Lato", Font.BOLD, 14));
-		btnDepositoCC.setBounds(54, 240, 320, 60);
-		contentPane.add(btnDepositoCC);
-		
-		JButton btnConPou = new JButton("Ir para Poupança");
-		btnConPou.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnConPou.setForeground(new Color(255, 255, 255));
-		btnConPou.setBackground(new Color(233, 65, 69));
-		btnConPou.setFont(new Font("Lato", Font.BOLD, 14));
-		btnConPou.setBounds(540, 440, 320, 60);
-		contentPane.add(btnConPou);
-		
-		JButton btnExtrato = new JButton("Extrato");
-		btnExtrato.setForeground(new Color(255, 255, 255));
-		btnExtrato.setBackground(new Color(233, 65, 69));
-		btnExtrato.setFont(new Font("Lato", Font.BOLD, 14));
-		btnExtrato.setBounds(54, 440, 320, 60);
-		contentPane.add(btnExtrato);
-		
-		JButton btnSegVida = new JButton("Seg. de Vida");
-		btnSegVida.setForeground(new Color(255, 255, 255));
-		btnSegVida.setBackground(new Color(233, 65, 69));
-		btnSegVida.setFont(new Font("Lato", Font.BOLD, 14));
-		btnSegVida.setBounds(540, 340, 320, 60);
-		contentPane.add(btnSegVida);
-		
-		JLabel TextNovoCadastro = new JLabel("Conta Corrente");
+
+		JLabel TextNovoCadastro = new JLabel("Extrato da Conta");
 		TextNovoCadastro.setForeground(new Color(255, 255, 255));
 		TextNovoCadastro.setBackground(new Color(255, 255, 255));
-		TextNovoCadastro.setBounds(401, 161, 112, 30);
+		TextNovoCadastro.setBounds(388, 161, 137, 30);
 		TextNovoCadastro.setFont(new Font("Lato", Font.BOLD, 15));
 		contentPane.add(TextNovoCadastro);
 
@@ -157,39 +115,66 @@ public class TelaContaCorrente extends JFrame {
 		btnSair.setBounds(760, 145, 100, 30);
 		contentPane.add(btnSair);
 		
-		JLabel lblNumAge = new JLabel("1234-5");
-		lblNumAge.setForeground(Color.WHITE);
-		lblNumAge.setFont(new Font("Lato", Font.BOLD, 13));
-		lblNumAge.setBackground(Color.WHITE);
-		lblNumAge.setBounds(201, 158, 54, 27);
-		contentPane.add(lblNumAge);
-		
-		JLabel lblNumConta = new JLabel("321654-7");
-		lblNumConta.setForeground(Color.WHITE);
-		lblNumConta.setFont(new Font("Lato", Font.BOLD, 13));
-		lblNumConta.setBackground(Color.WHITE);
-		lblNumConta.setBounds(80, 158, 66, 27);
-		contentPane.add(lblNumConta);
-		
-		JLabel lblAgncia = new JLabel("Agência:");
-		lblAgncia.setForeground(Color.WHITE);
-		lblAgncia.setFont(new Font("Lato", Font.BOLD, 13));
-		lblAgncia.setBackground(Color.WHITE);
-		lblAgncia.setBounds(149, 158, 54, 27);
-		contentPane.add(lblAgncia);
-		
-		JLabel lblConta = new JLabel("Conta:");
+		JLabel lblConta = new JLabel("Conta: 123456-7");
 		lblConta.setForeground(Color.WHITE);
 		lblConta.setFont(new Font("Lato", Font.BOLD, 13));
 		lblConta.setBackground(Color.WHITE);
-		lblConta.setBounds(38, 158, 46, 27);
+		lblConta.setBounds(38, 155, 165, 30);
 		contentPane.add(lblConta);
-
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon("C:\\mazebankbarra.png"));
 		lblNewLabel.setBounds(32, 127, 850, 60);
 		contentPane.add(lblNewLabel);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(31, 222, 851, 201);
+		contentPane.add(scrollPane);
+		
+		tableExtraCC = new JTable();
+		tableExtraCC.setFont(new Font("Lato", Font.BOLD, 14));
+		scrollPane.setViewportView(tableExtraCC);
+		tableExtraCC.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+			},
+			new String[] {
+				"Data da Opera\u00E7\u00E3o", "Valor R$", "Saldo R$"
+			}
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		
+		JButton btnImpExtra = new JButton("Imprimir");
+		btnImpExtra.setForeground(Color.WHITE);
+		btnImpExtra.setFont(new Font("Lato", Font.BOLD, 14));
+		btnImpExtra.setBackground(new Color(233, 65, 69));
+		btnImpExtra.setBounds(347, 481, 220, 60);
+		contentPane.add(btnImpExtra);
+		tableExtraCC.getColumnModel().getColumn(0).setResizable(false);
+		tableExtraCC.getColumnModel().getColumn(0).setPreferredWidth(285);
+		tableExtraCC.getColumnModel().getColumn(1).setResizable(false);
+		tableExtraCC.getColumnModel().getColumn(1).setPreferredWidth(285);
+		tableExtraCC.getColumnModel().getColumn(2).setResizable(false);
+		tableExtraCC.getColumnModel().getColumn(2).setPreferredWidth(285);
 	}
 }

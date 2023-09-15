@@ -69,7 +69,7 @@ public class TelaCadastroFunc extends JFrame {
 		JButton btnCriaConta = new JButton("Criar Conta");
 		btnCriaConta.setForeground(new Color(255, 255, 255));
 		btnCriaConta.setFont(new Font("Lato", Font.BOLD, 16));
-		btnCriaConta.setBackground(Color.RED);
+		btnCriaConta.setBackground(new Color(233, 65, 69));
 		btnCriaConta.setBounds(642, 502, 200, 60);
 		contentPane.add(btnCriaConta);
 		
@@ -108,7 +108,7 @@ public class TelaCadastroFunc extends JFrame {
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.setForeground(new Color(255, 255, 255));
 		btnVoltar.setFont(new Font("Lato", Font.BOLD, 16));
-		btnVoltar.setBackground(new Color(255, 32, 32));
+		btnVoltar.setBackground(new Color(233, 65, 69));
 		btnVoltar.setBounds(97, 502, 200, 60);
 		contentPane.add(btnVoltar);
 		
@@ -150,6 +150,12 @@ public class TelaCadastroFunc extends JFrame {
 		lblMazeBank.setBackground(UIManager.getColor("Button.background"));
 		lblMazeBank.setBounds(94, 30, 236, 53);
 		contentPane.add(lblMazeBank);
+		
+		JLabel lblStaff = new JLabel("(STAFF)");
+		lblStaff.setFont(new Font("Sylfaen", Font.PLAIN, 14));
+		lblStaff.setBackground(UIManager.getColor("Button.background"));
+		lblStaff.setBounds(260, 64, 60, 21);
+		contentPane.add(lblStaff);
 		
 		JLabel lblOfPetrpolisCity = new JLabel("OF PETRÓPOLIS CITY");
 		lblOfPetrpolisCity.setFont(new Font("Tahoma", Font.PLAIN, 14));

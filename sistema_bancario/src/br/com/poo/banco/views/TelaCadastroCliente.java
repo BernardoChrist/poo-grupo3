@@ -14,11 +14,9 @@ import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
-import java.awt.Canvas;
 import javax.swing.ImageIcon;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 public class TelaCadastroCliente extends JFrame {
 
@@ -76,7 +74,7 @@ public class TelaCadastroCliente extends JFrame {
 		JButton btnCriaConta = new JButton("Criar Conta");
 		btnCriaConta.setForeground(new Color(255, 255, 255));
 		btnCriaConta.setFont(new Font("Lato", Font.BOLD, 16));
-		btnCriaConta.setBackground(new Color(255, 0, 0));
+		btnCriaConta.setBackground(new Color(233, 65, 69));
 		btnCriaConta.setBounds(639, 499, 200, 60);
 		contentPane.add(btnCriaConta);
 		
@@ -90,6 +88,12 @@ public class TelaCadastroCliente extends JFrame {
 		textDatNasCad.setColumns(10);
 		textDatNasCad.setBounds(44, 349, 286, 20);
 		contentPane.add(textDatNasCad);
+		
+		JLabel lblStaff = new JLabel("(STAFF)");
+		lblStaff.setFont(new Font("Sylfaen", Font.PLAIN, 14));
+		lblStaff.setBackground(UIManager.getColor("Button.background"));
+		lblStaff.setBounds(260, 64, 60, 21);
+		contentPane.add(lblStaff);
 		
 		JLabel TextNome_2 = new JLabel("CPF");
 		TextNome_2.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -164,7 +168,7 @@ public class TelaCadastroCliente extends JFrame {
 			}
 		});
 		btnVoltar.setFont(new Font("Lato", Font.BOLD, 16));
-		btnVoltar.setBackground(new Color(255, 32, 32));
+		btnVoltar.setBackground(new Color(233, 65, 69));
 		btnVoltar.setBounds(94, 499, 200, 60);
 		contentPane.add(btnVoltar);
 		
