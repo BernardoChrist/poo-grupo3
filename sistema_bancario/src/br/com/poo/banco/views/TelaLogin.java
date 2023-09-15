@@ -61,9 +61,9 @@ public class TelaLogin extends JFrame {
 		contentPane.add(TextLogin);
 		
 
-		JTextPane UsuarioField = new JTextPane();
-		UsuarioField.setBounds(343, 334, 228, 23);
-		contentPane.add(UsuarioField);
+		JTextPane usuarioField = new JTextPane();
+		usuarioField.setBounds(343, 334, 228, 23);
+		contentPane.add(usuarioField);
 		
 		JLabel TextUsuario = new JLabel("Usuario");
 		TextUsuario.setFont(new Font("Lato", Font.BOLD, 14));
@@ -79,17 +79,14 @@ public class TelaLogin extends JFrame {
 		TextSenha.setBounds(435, 366, 42, 28);
 		contentPane.add(TextSenha);
 		
-		JComboBox<String> comboBoxCargo = new JComboBox<>();
-		comboBoxCargo.setSelectedIndex(3);
-		comboBoxCargo.setMaximumRowCount(3);
-		comboBoxCargo.setToolTipText("Cliente\r\nFuncionario\r\nGerente\r\nDiretor\r\nPresidente");
-		List<PessoaEnum> pessoas = Arrays.asList(PessoaEnum.values());
-		comboBoxCargo.addItem("Selecione o cargo");
-		for(PessoaEnum pEnum : pessoas) {
-			comboBoxCargo.addItem(pEnum.getTipoPessoa());
+		JComboBox<String> comboBox = new JComboBox<>();
+		List<PessoaEnum> listaPessoas = Arrays.asList(PessoaEnum.values());
+		comboBox.addItem("<Selecione uma das opções>");
+		for (PessoaEnum p : listaPessoas) {
+			comboBox.addItem(p.getTipoPessoa());
 		}
-		comboBoxCargo.setBounds(101, 58, 148, 21);
-		contentPane.add(comboBoxCargo);
+		comboBox.setBounds(343, 240, 228, 23);
+		contentPane.add(comboBox);
 		
 		JButton EntrarButton = new JButton("Entrar");
 		EntrarButton.setForeground(new Color(255, 255, 255));
@@ -99,7 +96,7 @@ public class TelaLogin extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String cpf = usuarioField.getText();
 				String senha = new String(SenhaField.getPassword());
-				String tipoPessoa = comboBoxCargo.getSelectedItem().toString();
+				String tipoPessoa = comboBox.getSelectedItem().toString();
 				boolean verificaCC = false;
 				boolean verificaCP = false;
 				Cliente cliente = Cliente.mapaClientes.get(cpf);
@@ -112,7 +109,7 @@ public class TelaLogin extends JFrame {
 				} 
 				
 				if(tipoPessoa.equalsIgnoreCase(PessoaEnum.CLIENTE.getTipoPessoa())) {
-					if(cliente.getCpf().equals(cpf) && cliente.getSenha().equals(senha)) {
+					if(cliente.getCpf().equals(cpf) && contas.get(0).getSenhaConta().equals(senha)) {
 						if(contas.size() > 1) {
 							verificaCC = true;
 							verificaCP = true;
@@ -122,9 +119,9 @@ public class TelaLogin extends JFrame {
 							verificaCP = true;
 						}
 						dispose();
-						TelaCC telaCC = new TelaCC(verificaCC, verificaCP);
-						telaCC.setLocationRelativeTo(telaCC);
-						telaCC.setVisible(true);		
+						TelaContaPoupanca telaPP = new TelaContaPoupanca(verificaCC, verificaCP);
+						telaPP.setLocationRelativeTo(telaPP);
+						telaPP.setVisible(true);		
 					}
 				}
 				
@@ -134,13 +131,6 @@ public class TelaLogin extends JFrame {
 		contentPane.add(EntrarButton);
 		
 
-		JComboBox comboBoxCargo = new JComboBox();
-		comboBoxCargo.setMaximumRowCount(3);
-		comboBoxCargo.setToolTipText("Cliente\r\nFuncionario\r\nGerente\r\nDiretor\r\nPresidente");
-		comboBoxCargo.setModel(new DefaultComboBoxModel(new String[] {"Cliente", "Gerente", "Diretor", "Presidente"}));
-		comboBoxCargo.setSelectedIndex(3);
-		comboBoxCargo.setBounds(343, 240, 228, 23);
-		contentPane.add(comboBoxCargo);
 
 		JLabel textLinhaVermelha = new JLabel("__________________________________");
 		textLinhaVermelha.setForeground(new Color(198, 43, 26));

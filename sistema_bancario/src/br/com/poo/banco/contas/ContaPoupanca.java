@@ -6,9 +6,10 @@ public class ContaPoupanca extends Conta {
 	private double rendimento;
 	
 
-	public ContaPoupanca(String dados, String dados1, String dados2, String dados4, double d) {
+	public ContaPoupanca() {
 		super();
 	}
+//
 
 	public ContaPoupanca(String tipoConta, String senhaConta, 
 	String numeroConta, Double saldoConta, String cpfConta, String numAgencia) {

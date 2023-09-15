@@ -21,11 +21,12 @@ public class SistemaInterno {
 		telaLogin.setVisible(true);
 		
 		
+		
 		DecimalFormat df = new DecimalFormat("#0,000.00");
 		Conta c1 = new Conta("Corrente", "123456-7", "1234-5","132.456.789-11", 10000.20, "9000-4");
-		System.out.println("Antes " + c1.getSaldoConta());
+		//System.out.println("Antes " + c1.getSaldoConta());
 		LeituraEscrita.comprovanteSaque(c1, 50.00);
-		System.out.println("Depois " + c1.getSaldoConta());
+		//System.out.println("Depois " + c1.getSaldoConta());
 		
 		// Logger logger = Util.setupLogger();
 		Util.customizer();

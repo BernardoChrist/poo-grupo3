@@ -16,26 +16,11 @@ public class TelaContaPoupanca extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaContaPoupanca frame = new TelaContaPoupanca();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
-	public TelaContaPoupanca() {
+	public TelaContaPoupanca(boolean cc, boolean cp) {
 		setResizable(false);
 		setTitle("Conta Poupança");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

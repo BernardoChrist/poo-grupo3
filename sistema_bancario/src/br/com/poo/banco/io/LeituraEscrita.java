@@ -11,8 +11,10 @@ import java.util.Scanner;
 import java.text.DecimalFormat;
 
 import br.com.poo.banco.contas.Conta;
+import br.com.poo.banco.contas.ContaCorrente;
 import br.com.poo.banco.contas.ContaPoupanca;
 import br.com.poo.banco.enums.ContaEnum;
+import br.com.poo.banco.enums.PessoaEnum;
 import br.com.poo.banco.pessoas.Cliente;
 import br.com.poo.banco.pessoas.Funcionario;
 
@@ -35,33 +37,32 @@ public class LeituraEscrita {
 			if (linha != null) {
 				String[] dados = linha.split(";");
 
-				// Corrente String numConta, String cpf, double saldo, double chequeEspecial
-				// Poupança String numConta, String cpf, double saldo
+				// Poupanca;1234;678901-2;67890.12;126.662.292-62;9876-5;
 				if (dados[0].equalsIgnoreCase(ContaEnum.POUPANCA.name())) {
 					ContaPoupanca cp = new ContaPoupanca(dados[0],
-							dados[1], dados[2], (dados[3]), Double.parseDouble(dados[4]));
+							dados[1], dados[2], Double.parseDouble(dados[3]), dados[4], dados[5]);
 
-					Conta.mapaContas.put(dados[2], cp);
+					Conta.mapaContas.put(dados[4], cp);
 					System.out.println(cp);
-				} else if (dados[0].equalsIgnoreCase("CORRENTE")) {
-					//String tipoConta, String numeroConta, String numAgencia, String cpfConta, Double saldoConta, String senhaConta
-					Conta conta = new Conta(dados[0], dados[1], dados[2], dados[3], Double.parseDouble(dados[4]),
-							dados[5]);
-					Conta.mapaContas.put(dados[1], conta);
-				} else if (dados[0].equalsIgnoreCase("CLIENTE")) {
-					//String TIPO_PESSOA, String nome, String cpf, String endereco, String telefone, Integer senha
-					Cliente c = new Cliente(dados [0], dados[1], dados[2], dados[3],dados[4] ,Integer.parseInt(dados[5]));
-					Cliente.mapaClientes.put(dados [2], c);
-				} else if (dados[0].equalsIgnoreCase("GERENTE")) {
+				} else if (dados[0].equalsIgnoreCase(ContaEnum.CORRENTE.name())) {
+					//Corrente;1234;384791-0;500.00;987.654.321-09;1358-0;54000.0;true;
+					ContaCorrente conta = new ContaCorrente(dados[0], dados[1], dados[2], Double.parseDouble(dados[3]),
+							dados[4], dados[5], Double.parseDouble(dados[6]), Boolean.parseBoolean(dados[7]));
+					Conta.mapaContas.put(dados[4], conta);
+				} else if (dados[0].equalsIgnoreCase(PessoaEnum.CLIENTE.name())) {
+					//String TIPO_PESSOA, String nome, String cpf, String endereco, String telefone
+					Cliente c = new Cliente(dados[0], dados[1], dados[2], dados[3],dados[4]);
+					Cliente.mapaClientes.put(dados[2], c);
+				} else if (dados[0].equalsIgnoreCase(PessoaEnum.GERENTE.name())) {
 					//String cargo, double salario, String numAgencia, String cpf, String nome
 					Funcionario f = new Funcionario(dados [0], Double.parseDouble(dados[1]), dados[2], dados[3], dados[4]);
-					Funcionario.mapaFuncionarios.put(dados[2], f);
-				} else if (dados[0].equalsIgnoreCase("DIRETOR")) {
+					Funcionario.mapaFuncionarios.put(dados[3], f);
+				} else if (dados[0].equalsIgnoreCase(PessoaEnum.DIRETOR.name())) {
 					Funcionario f = new Funcionario(dados [0], Double.parseDouble(dados[1]), dados[2], dados[3], dados[4]);
-					Funcionario.mapaFuncionarios.put(dados[2], f);
-				} else if (dados[0].equalsIgnoreCase("PRESIDENTE")) {
+					Funcionario.mapaFuncionarios.put(dados[3], f);
+				} else if (dados[0].equalsIgnoreCase(PessoaEnum.PRESIDENTE.name())) {
 					Funcionario f = new Funcionario(dados [0], Double.parseDouble(dados[1]), dados[2], dados[3], dados[4]);
-					Funcionario.mapaFuncionarios.put(dados[2], f);
+					Funcionario.mapaFuncionarios.put(dados[3], f);
 				}
 			} else {
 				break;
