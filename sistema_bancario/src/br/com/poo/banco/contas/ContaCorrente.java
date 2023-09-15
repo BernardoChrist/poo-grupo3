@@ -10,14 +10,15 @@ public class ContaCorrente extends Conta {
 	public ContaCorrente() {
 		super();
 	}
-
+	
 	public ContaCorrente(String tipoConta, String senhaConta, String numeroConta, 
 	Double saldoConta, String cpfConta, Double limiteCredito, boolean chequeEspecial) {
 		super(tipoConta, senhaConta, numeroConta, saldoConta, cpfConta);
 		this.limiteCredito = limiteCredito;
 		this.chequeEspecial = chequeEspecial;
+	
 	}
-
+	
 	public double getLimiteCredito() {
 		return limiteCredito;
 	}

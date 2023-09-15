@@ -13,14 +13,17 @@ public class ContaPoupanca extends Conta {
 	public ContaPoupanca(String tipoConta, String senhaConta, 
 	String numeroConta, Double saldoConta, String cpfConta) {
 		
-		super(tipoConta, senhaConta, numeroConta, saldoConta, cpfConta);
 		
+		super(tipoConta, senhaConta, numeroConta, saldoConta, cpfConta);
+	
 	}
+	
 	
 	public double getRendimento() {
 		return rendimento;
 	}
 	
+
 	//método de calcular o rendimento - com a taxa de 1% ao mês
 	public double calcularRendimento(double valor, double qntdMes) {
 		Double txRendimento = 0.01;
@@ -38,4 +41,5 @@ public class ContaPoupanca extends Conta {
 		
 		saldoConta += rendimento;
 	}
+
 }

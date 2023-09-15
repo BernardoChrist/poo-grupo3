@@ -75,6 +75,8 @@ public class TelaLogin extends JFrame {
 		contentPane.add(TextSenha);
 		
 		JComboBox<String> comboBoxCargo = new JComboBox<>();
+		comboBoxCargo.setSelectedIndex(3);
+		comboBoxCargo.setMaximumRowCount(3);
 		comboBoxCargo.setToolTipText("Cliente\r\nFuncionario\r\nGerente\r\nDiretor\r\nPresidente");
 		List<PessoaEnum> pessoas = Arrays.asList(PessoaEnum.values());
 		comboBoxCargo.addItem("Selecione o cargo");
