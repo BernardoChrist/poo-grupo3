@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaResultadoRendimentosCP extends JFrame {
 
@@ -85,6 +87,10 @@ public class TelaResultadoRendimentosCP extends JFrame {
 		contentPane.add(TextTaxaMensal);
 
 		JButton btnConRen = new JButton("Confirmar Investimento");
+		btnConRen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnConRen.setForeground(new Color(255, 255, 255));
 		btnConRen.setFont(new Font("Lato", Font.BOLD, 14));
 		btnConRen.setBackground(new Color(233, 65, 69));
@@ -105,6 +111,10 @@ public class TelaResultadoRendimentosCP extends JFrame {
 		
 
 		JButton btnSimRen = new JButton("Simular Novamente");
+		btnSimRen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnSimRen.setForeground(new Color(255, 255, 255));
 		btnSimRen.setFont(new Font("Lato", Font.BOLD, 14));
 		btnSimRen.setBackground(new Color(233, 65, 69));
@@ -169,6 +179,14 @@ public class TelaResultadoRendimentosCP extends JFrame {
 		contentPane.add(lblSaldoCP);
 
 		JButton btnSair = new JButton("Sair");
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaLogin log = new TelaLogin();
+				log.setVisible(true);
+				log.setLocationRelativeTo(log);
+			}
+		});
 		btnSair.setForeground(Color.WHITE);
 		btnSair.setFont(new Font("Lato", Font.BOLD, 14));
 		btnSair.setBackground(new Color(233, 65, 69));

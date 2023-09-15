@@ -56,6 +56,10 @@ public class TelaSaque extends JFrame {
 		JButton btnSair = new JButton("Sair");
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaLogin log = new TelaLogin();
+				log.setVisible(true);
+				log.setLocationRelativeTo(log);
 			}
 		});
 		btnSair.setForeground(Color.WHITE);

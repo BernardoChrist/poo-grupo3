@@ -13,6 +13,8 @@ import javax.swing.UIManager;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaGerente extends JFrame {
 
@@ -50,6 +52,10 @@ public class TelaGerente extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnContAge = new JButton("Contas da Agência");
+		btnContAge.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnContAge.setBackground(new Color(233, 65, 69));
 		btnContAge.setForeground(new Color(255, 255, 255));
 		btnContAge.setFont(new Font("Lato", Font.BOLD, 14));
@@ -57,6 +63,14 @@ public class TelaGerente extends JFrame {
 		contentPane.add(btnContAge);
 		
 		JButton btnCadCli = new JButton("Cadastrar Cliente");
+		btnCadCli.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaCadastroCliente cadc = new telaCadastroCliente();
+				cadc.setVisible(true);
+				cadc.setLocationRelativeTo(cadc);
+			}
+		});
 		btnCadCli.setForeground(new Color(255, 255, 255));
 		btnCadCli.setFont(new Font("Lato", Font.BOLD, 14));
 		btnCadCli.setBackground(new Color(233, 65, 69));
@@ -104,6 +118,14 @@ public class TelaGerente extends JFrame {
 		contentPane.add(lblMzBkLogo);
 		
 		JButton btnSair = new JButton("Sair");
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaLogin log = new TelaLogin();
+				log.setVisible(true);
+				log.setLocationRelativeTo(log);
+			}
+		});
 		btnSair.setForeground(Color.WHITE);
 		btnSair.setFont(new Font("Lato", Font.BOLD, 14));
 		btnSair.setBackground(new Color(233, 65, 69));
@@ -122,6 +144,10 @@ public class TelaGerente extends JFrame {
 		contentPane.add(lblStaff);
 		
 		JButton btnRelatorioTotalDe = new JButton("Informações dos Clientes");
+		btnRelatorioTotalDe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnRelatorioTotalDe.setForeground(Color.WHITE);
 		btnRelatorioTotalDe.setFont(new Font("Lato", Font.BOLD, 14));
 		btnRelatorioTotalDe.setBackground(new Color(233, 65, 69));

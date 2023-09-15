@@ -56,6 +56,11 @@ public class TelaDiretor extends JFrame {
 		btnInfoClie.setLayout(null);
 		
 		JButton btnContAge = new JButton("Contas da Agência");
+		btnContAge.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnContAge.setBackground(new Color(233, 65, 69));
 		btnContAge.setForeground(new Color(255, 255, 255));
 		btnContAge.setFont(new Font("Lato", Font.BOLD, 14));
@@ -63,6 +68,14 @@ public class TelaDiretor extends JFrame {
 		btnInfoClie.add(btnContAge);
 		
 		JButton btnCadCli = new JButton("Cadastrar Cliente");
+		btnCadCli.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaCadastroCliente cadc = new TelaCadastroCliente();
+				cadc.setVisible(true);
+				cadc.setLocationRelativeTo(cadc);
+			}
+		});
 		btnCadCli.setForeground(new Color(255, 255, 255));
 		btnCadCli.setFont(new Font("Lato", Font.BOLD, 14));
 		btnCadCli.setBackground(new Color(233, 65, 69));
@@ -70,6 +83,15 @@ public class TelaDiretor extends JFrame {
 		btnInfoClie.add(btnCadCli);
 		
 		JButton btnCadGer = new JButton("Cadastrar Gerente");
+		btnCadGer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaCadastroFunc cadg = new TelaCadastroFunc();
+				cadg.setVisible(true);
+				cadg.setLocationRelativeTo(cadg);
+				
+			}
+		});
 		btnCadGer.setForeground(new Color(255, 255, 255));
 		btnCadGer.setBackground(new Color(233, 65, 69));
 		btnCadGer.setBounds(347, 241, 220, 60);
@@ -117,6 +139,14 @@ public class TelaDiretor extends JFrame {
 		btnInfoClie.add(lblMzBkLogo);
 		
 		JButton btnSair = new JButton("Sair");
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaLogin log = new TelaLogin();
+				log.setVisible(true);
+				log.setLocationRelativeTo(log);
+			}
+		});
 		btnSair.setForeground(Color.WHITE);
 		btnSair.setFont(new Font("Lato", Font.BOLD, 14));
 		btnSair.setBackground(new Color(233, 65, 69));
@@ -135,6 +165,10 @@ public class TelaDiretor extends JFrame {
 		btnInfoClie.add(lblStaff);
 		
 		JButton btnRelatorioTotalDe = new JButton("Informações dos Clientes");
+		btnRelatorioTotalDe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnRelatorioTotalDe.setForeground(Color.WHITE);
 		btnRelatorioTotalDe.setFont(new Font("Lato", Font.BOLD, 14));
 		btnRelatorioTotalDe.setBackground(new Color(233, 65, 69));

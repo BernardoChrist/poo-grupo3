@@ -12,6 +12,8 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaDeposito extends JFrame {
 
@@ -60,6 +62,12 @@ public class TelaDeposito extends JFrame {
 		textValor.setColumns(10);
 		
 		JButton btnConfirmar = new JButton("Confirmar");
+		btnConfirmar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		});
 		btnConfirmar.setForeground(new Color(255, 255, 255));
 		btnConfirmar.setFont(new Font("Lato", Font.BOLD, 14));
 		btnConfirmar.setBackground(new Color(233, 65, 69));

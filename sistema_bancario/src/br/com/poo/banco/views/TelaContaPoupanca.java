@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaContaPoupanca extends JFrame {
 
@@ -33,6 +35,14 @@ public class TelaContaPoupanca extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnSaqueCP = new JButton("Saque");
+		btnSaqueCP.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaSaque saq = new TelaSaque();
+				saq.setVisible(true);
+				saq.setLocationRelativeTo(saq);
+			}
+		});
 		btnSaqueCP.setBackground(new Color(233, 65, 69));
 		btnSaqueCP.setForeground(new Color(255, 255, 255));
 		btnSaqueCP.setFont(new Font("Lato", Font.BOLD, 14));
@@ -40,6 +50,15 @@ public class TelaContaPoupanca extends JFrame {
 		contentPane.add(btnSaqueCP);
 		
 		JButton btnTransCP = new JButton("Tranferencia");
+		btnTransCP.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaTransferencia trans = new TelaTransferencia();
+				trans.setVisible(true);
+				trans.setLocationRelativeTo(trans);
+						
+			}
+		});
 		btnTransCP.setBackground(new Color(233, 65, 69));
 		btnTransCP.setForeground(new Color(255, 255, 255));
 		btnTransCP.setFont(new Font("Lato", Font.BOLD, 14));
@@ -47,6 +66,16 @@ public class TelaContaPoupanca extends JFrame {
 		contentPane.add(btnTransCP);
 		
 		JButton btnDepoCP = new JButton("Deposito");
+		btnDepoCP.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaDeposito dep = new TelaDeposito();
+				dep.setVisible(true);
+				dep.setLocationRelativeTo(dep);
+				
+				
+			}
+		});
 		btnDepoCP.setBackground(new Color(233, 65, 69));
 		btnDepoCP.setForeground(new Color(255, 255, 255));
 		btnDepoCP.setFont(new Font("Lato", Font.BOLD, 14));
@@ -54,6 +83,14 @@ public class TelaContaPoupanca extends JFrame {
 		contentPane.add(btnDepoCP);
 		
 		JButton btnContaCorrente = new JButton("Ir para Corrente");
+		btnContaCorrente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaContaCorrente tcc = new TelaContaCorrente();
+				tcc.setVisible(true);
+				tcc.setLocationRelativeTo(tcc);
+			}
+		});
 		btnContaCorrente.setBackground(new Color(233, 65, 69));
 		btnContaCorrente.setForeground(new Color(255, 255, 255));
 		btnContaCorrente.setFont(new Font("Lato", Font.BOLD, 14));
@@ -61,6 +98,14 @@ public class TelaContaPoupanca extends JFrame {
 		contentPane.add(btnContaCorrente);
 		
 		JButton btnExtRend = new JButton("Extrato");
+		btnExtRend.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaExtratoCC ext = new TelaExtratoCC();
+				ext.setVisible(true);
+				ext.setLocationRelativeTo(ext);
+			}
+		});
 		btnExtRend.setBackground(new Color(233, 65, 69));
 		btnExtRend.setForeground(new Color(255, 255, 255));
 		btnExtRend.setFont(new Font("Lato", Font.BOLD, 14));
@@ -122,6 +167,14 @@ public class TelaContaPoupanca extends JFrame {
 		contentPane.add(TextSaldoCP);
 		
 		JButton btnSair_1 = new JButton("Sair");
+		btnSair_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaLogin log = new TelaLogin();
+				log.setVisible(true);
+				log.setLocationRelativeTo(log);
+			}
+		});
 		btnSair_1.setForeground(Color.WHITE);
 		btnSair_1.setFont(new Font("Lato", Font.BOLD, 14));
 		btnSair_1.setBackground(new Color(233, 65, 69));

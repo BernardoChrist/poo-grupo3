@@ -17,6 +17,8 @@ import javax.swing.border.TitledBorder;
 import javax.swing.JScrollBar;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaExtratoCC extends JFrame {
 
@@ -109,6 +111,14 @@ public class TelaExtratoCC extends JFrame {
 		contentPane.add(lblChequeEsp);
 		
 		JButton btnSair = new JButton("Sair");
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaLogin log = new TelaLogin();
+				log.setVisible(true);
+				log.setLocationRelativeTo(log);
+			}
+		});
 		btnSair.setForeground(Color.WHITE);
 		btnSair.setFont(new Font("Lato", Font.BOLD, 14));
 		btnSair.setBackground(new Color(233, 65, 69));
@@ -165,6 +175,10 @@ public class TelaExtratoCC extends JFrame {
 		});
 		
 		JButton btnImpExtra = new JButton("Imprimir");
+		btnImpExtra.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnImpExtra.setForeground(Color.WHITE);
 		btnImpExtra.setFont(new Font("Lato", Font.BOLD, 14));
 		btnImpExtra.setBackground(new Color(233, 65, 69));
