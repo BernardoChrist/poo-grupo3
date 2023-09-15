@@ -1,21 +1,23 @@
 package br.com.poo.banco.views;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 import java.awt.Color;
+import java.awt.EventQueue;
 import java.awt.Font;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
 
 public class TelaRendimentosCP extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField ValorField;
-	private JTextField duracaoField;
+	private JTextField txtValRen;
+	private JTextField txtDurRen;
 
 	/**
 	 * Launch the application.
@@ -37,51 +39,139 @@ public class TelaRendimentosCP extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaRendimentosCP() {
-		setTitle("Tela Rendmentos");
+		setResizable(false);
+		setTitle("Rendimentos Conta Poupança");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 930, 630);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(85, 106, 95));
+		contentPane.setBackground(new Color(235, 235, 235));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel TextRendimentos = new JLabel("Rendimentos");
-		TextRendimentos.setFont(new Font("Tahoma", Font.BOLD, 12));
-		TextRendimentos.setBounds(158, 10, 90, 13);
-		contentPane.add(TextRendimentos);
+		JLabel lblNumAge = new JLabel("1234-5");
+		lblNumAge.setForeground(Color.WHITE);
+		lblNumAge.setFont(new Font("Lato", Font.BOLD, 13));
+		lblNumAge.setBackground(Color.WHITE);
+		lblNumAge.setBounds(201, 158, 54, 27);
+		contentPane.add(lblNumAge);
+		
+		JLabel lblNumConta = new JLabel("321654-7");
+		lblNumConta.setForeground(Color.WHITE);
+		lblNumConta.setFont(new Font("Lato", Font.BOLD, 13));
+		lblNumConta.setBackground(Color.WHITE);
+		lblNumConta.setBounds(80, 158, 66, 27);
+		contentPane.add(lblNumConta);
+		
+		JLabel lblAgncia = new JLabel("Agência:");
+		lblAgncia.setForeground(Color.WHITE);
+		lblAgncia.setFont(new Font("Lato", Font.BOLD, 13));
+		lblAgncia.setBackground(Color.WHITE);
+		lblAgncia.setBounds(149, 158, 54, 27);
+		contentPane.add(lblAgncia);
+		
+		JLabel lblConta = new JLabel("Conta:");
+		lblConta.setForeground(Color.WHITE);
+		lblConta.setFont(new Font("Lato", Font.BOLD, 13));
+		lblConta.setBackground(Color.WHITE);
+		lblConta.setBounds(38, 158, 46, 27);
+		contentPane.add(lblConta);
+
 		
 		JLabel TextTaxaMensal = new JLabel("Taxa: 0,60% a.m");
-		TextTaxaMensal.setForeground(new Color(0, 0, 160));
-		TextTaxaMensal.setBounds(55, 53, 80, 13);
+		TextTaxaMensal.setFont(new Font("Lato", Font.BOLD, 14));
+		TextTaxaMensal.setForeground(new Color(233, 65, 69));
+		TextTaxaMensal.setBounds(401, 259, 100, 21);
 		contentPane.add(TextTaxaMensal);
 		
-		JButton SimularRendimentosButton = new JButton("Simular Rendimentos");
-		SimularRendimentosButton.setBounds(55, 183, 131, 21);
-		contentPane.add(SimularRendimentosButton);
+		JButton btnSimRen = new JButton("Simular Rendimentos");
+		btnSimRen.setForeground(new Color(255, 255, 255));
+		btnSimRen.setFont(new Font("Lato", Font.BOLD, 14));
+		btnSimRen.setBackground(new Color(233, 65, 69));
+		btnSimRen.setBounds(347, 435, 220, 60);
+		contentPane.add(btnSimRen);
 		
-		ValorField = new JTextField();
-		ValorField.setBounds(55, 95, 96, 19);
-		contentPane.add(ValorField);
-		ValorField.setColumns(10);
+		txtValRen = new JTextField();
+		txtValRen.setBounds(314, 309, 286, 20);
+		contentPane.add(txtValRen);
+		txtValRen.setColumns(10);
 		
-		duracaoField = new JTextField();
-		duracaoField.setColumns(10);
-		duracaoField.setBounds(55, 140, 96, 19);
-		contentPane.add(duracaoField);
+		txtDurRen = new JTextField();
+		txtDurRen.setColumns(10);
+		txtDurRen.setBounds(314, 354, 286, 20);
+		contentPane.add(txtDurRen);
 		
 		JLabel TextValorInvestido = new JLabel("Valor investido");
-		TextValorInvestido.setBounds(55, 76, 67, 13);
+		TextValorInvestido.setFont(new Font("Lato", Font.BOLD, 14));
+		TextValorInvestido.setBounds(407, 288, 99, 20);
 		contentPane.add(TextValorInvestido);
 		
-		JLabel TextDuracao = new JLabel("Duraçao (em dias)");
-		TextDuracao.setBounds(55, 124, 96, 13);
+		JLabel TextDuracao = new JLabel("Duração (em dias)");
+		TextDuracao.setFont(new Font("Lato", Font.BOLD, 14));
+		TextDuracao.setBounds(401, 332, 111, 20);
 		contentPane.add(TextDuracao);
 		
-		JButton VoltarButton = new JButton("Voltar");
-		VoltarButton.setBounds(164, 232, 85, 21);
-		contentPane.add(VoltarButton);
+		JLabel TextNovoCadastro = new JLabel("Rendimentos da Poupança");
+		TextNovoCadastro.setForeground(new Color(255, 255, 255));
+		TextNovoCadastro.setBackground(new Color(255, 255, 255));
+		TextNovoCadastro.setBounds(365, 161, 184, 30);
+		TextNovoCadastro.setFont(new Font("Lato", Font.BOLD, 15));
+		contentPane.add(TextNovoCadastro);
+
+		JLabel textLinhaVermelha = new JLabel("__________________________________");
+		textLinhaVermelha.setForeground(new Color(198, 43, 26));
+		textLinhaVermelha.setFont(new Font("Tahoma", Font.PLAIN, 46));
+		textLinhaVermelha.setBackground(UIManager.getColor("Button.background"));
+		textLinhaVermelha.setBounds(32, 50, 850, 53);
+		contentPane.add(textLinhaVermelha);
+		
+		JLabel lblMazeBank = new JLabel("MAZE BANK");
+		lblMazeBank.setFont(new Font("Sylfaen", Font.PLAIN, 40));
+		lblMazeBank.setBackground(UIManager.getColor("Button.background"));
+		lblMazeBank.setBounds(94, 30, 236, 53);
+		contentPane.add(lblMazeBank);
+		
+		JLabel lblOfPetrpolisCity = new JLabel("OF PETRÓPOLIS CITY");
+		lblOfPetrpolisCity.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblOfPetrpolisCity.setBackground(UIManager.getColor("Button.background"));
+		lblOfPetrpolisCity.setBounds(96, 62, 150, 16);
+		contentPane.add(lblOfPetrpolisCity);
+		
+		JLabel TextUsuarioCP = new JLabel("(Usuario)");
+		TextUsuarioCP.setForeground(Color.WHITE);
+		TextUsuarioCP.setFont(new Font("Lato", Font.BOLD, 18));
+		TextUsuarioCP.setBackground(Color.WHITE);
+		TextUsuarioCP.setBounds(37, 133, 180, 30);
+		contentPane.add(TextUsuarioCP);
+		
+		JLabel lblMzBkLogo = new JLabel("logo");
+		lblMzBkLogo.setIcon(new ImageIcon("C:\\mazebanklogo.png"));
+		lblMzBkLogo.setForeground(new Color(0, 0, 0));
+		lblMzBkLogo.setFont(new Font("Tahoma", Font.PLAIN, 5));
+		lblMzBkLogo.setBounds(32, 23, 60, 60);
+		contentPane.add(lblMzBkLogo);
+		
+		JLabel lblSaldoCP = new JLabel("Saldo: R$10.000,00");
+		lblSaldoCP.setForeground(Color.BLACK);
+		lblSaldoCP.setFont(new Font("Lato", Font.BOLD, 15));
+		lblSaldoCP.setBackground(Color.WHITE);
+		lblSaldoCP.setBounds(704, 64, 192, 30);
+		contentPane.add(lblSaldoCP);
+		
+		JButton btnSair = new JButton("Sair");
+		btnSair.setForeground(Color.WHITE);
+		btnSair.setFont(new Font("Lato", Font.BOLD, 14));
+		btnSair.setBackground(new Color(233, 65, 69));
+		btnSair.setBounds(760, 145, 100, 30);
+		contentPane.add(btnSair);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon("C:\\mazebankbarra.png"));
+		lblNewLabel.setBounds(32, 127, 850, 60);
+		contentPane.add(lblNewLabel);
 	}
 
 }

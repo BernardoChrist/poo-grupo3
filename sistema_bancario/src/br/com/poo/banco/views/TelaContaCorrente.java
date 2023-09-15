@@ -12,6 +12,8 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaContaCorrente extends JFrame {
 
@@ -70,7 +72,10 @@ public class TelaContaCorrente extends JFrame {
 		contentPane.add(btnDepositoCC);
 		
 		JButton btnConPou = new JButton("Ir para Poupança");
-		btnConPou.setEnabled(false);
+		btnConPou.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnConPou.setForeground(new Color(255, 255, 255));
 		btnConPou.setBackground(new Color(233, 65, 69));
 		btnConPou.setFont(new Font("Lato", Font.BOLD, 14));
@@ -152,12 +157,34 @@ public class TelaContaCorrente extends JFrame {
 		btnSair.setBounds(760, 145, 100, 30);
 		contentPane.add(btnSair);
 		
-		JLabel lblConta = new JLabel("Conta: 123456-7");
+		JLabel lblNumAge = new JLabel("1234-5");
+		lblNumAge.setForeground(Color.WHITE);
+		lblNumAge.setFont(new Font("Lato", Font.BOLD, 13));
+		lblNumAge.setBackground(Color.WHITE);
+		lblNumAge.setBounds(201, 158, 54, 27);
+		contentPane.add(lblNumAge);
+		
+		JLabel lblNumConta = new JLabel("321654-7");
+		lblNumConta.setForeground(Color.WHITE);
+		lblNumConta.setFont(new Font("Lato", Font.BOLD, 13));
+		lblNumConta.setBackground(Color.WHITE);
+		lblNumConta.setBounds(80, 158, 66, 27);
+		contentPane.add(lblNumConta);
+		
+		JLabel lblAgncia = new JLabel("Agência:");
+		lblAgncia.setForeground(Color.WHITE);
+		lblAgncia.setFont(new Font("Lato", Font.BOLD, 13));
+		lblAgncia.setBackground(Color.WHITE);
+		lblAgncia.setBounds(149, 158, 54, 27);
+		contentPane.add(lblAgncia);
+		
+		JLabel lblConta = new JLabel("Conta:");
 		lblConta.setForeground(Color.WHITE);
 		lblConta.setFont(new Font("Lato", Font.BOLD, 13));
 		lblConta.setBackground(Color.WHITE);
-		lblConta.setBounds(38, 155, 165, 30);
+		lblConta.setBounds(38, 158, 46, 27);
 		contentPane.add(lblConta);
+
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon("C:\\mazebankbarra.png"));

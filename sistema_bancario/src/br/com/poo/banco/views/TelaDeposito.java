@@ -16,7 +16,7 @@ import javax.swing.JButton;
 public class TelaDeposito extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField ValorField;
+	private JTextField textValor;
 
 	/**
 	 * Launch the application.
@@ -51,27 +51,20 @@ public class TelaDeposito extends JFrame {
 		
 		JLabel TextDigiteoValor = new JLabel("Digite o valor que deseja depositar:");
 		TextDigiteoValor.setFont(new Font("Lato", Font.BOLD, 20));
-		TextDigiteoValor.setBounds(291, 284, 321, 30);
+		TextDigiteoValor.setBounds(296, 284, 321, 30);
 		contentPane.add(TextDigiteoValor);
 		
-		ValorField = new JTextField();
-		ValorField.setBounds(291, 325, 321, 25);
-		contentPane.add(ValorField);
-		ValorField.setColumns(10);
+		textValor = new JTextField();
+		textValor.setBounds(296, 325, 321, 25);
+		contentPane.add(textValor);
+		textValor.setColumns(10);
 		
 		JButton btnConfirmar = new JButton("Confirmar");
 		btnConfirmar.setForeground(new Color(255, 255, 255));
 		btnConfirmar.setFont(new Font("Lato", Font.BOLD, 14));
 		btnConfirmar.setBackground(new Color(233, 65, 69));
-		btnConfirmar.setBounds(565, 471, 220, 60);
+		btnConfirmar.setBounds(347, 471, 220, 60);
 		contentPane.add(btnConfirmar);
-		
-		JButton btnVoltar = new JButton("Voltar");
-		btnVoltar.setForeground(new Color(255, 255, 255));
-		btnVoltar.setFont(new Font("Lato", Font.BOLD, 14));
-		btnVoltar.setBackground(new Color(233, 65, 69));
-		btnVoltar.setBounds(130, 472, 220, 60);
-		contentPane.add(btnVoltar);
 		
 		JLabel TextNovoCadastro = new JLabel("Conta Corrente");
 		TextNovoCadastro.setForeground(new Color(255, 255, 255));
@@ -127,12 +120,34 @@ public class TelaDeposito extends JFrame {
 		btnSair.setBounds(760, 145, 100, 30);
 		contentPane.add(btnSair);
 		
-		JLabel lblConta = new JLabel("Conta: 123456-7");
+		JLabel lblNumAge = new JLabel("1234-5");
+		lblNumAge.setForeground(Color.WHITE);
+		lblNumAge.setFont(new Font("Lato", Font.BOLD, 13));
+		lblNumAge.setBackground(Color.WHITE);
+		lblNumAge.setBounds(201, 158, 54, 27);
+		contentPane.add(lblNumAge);
+		
+		JLabel lblNumConta = new JLabel("321654-7");
+		lblNumConta.setForeground(Color.WHITE);
+		lblNumConta.setFont(new Font("Lato", Font.BOLD, 13));
+		lblNumConta.setBackground(Color.WHITE);
+		lblNumConta.setBounds(80, 158, 66, 27);
+		contentPane.add(lblNumConta);
+		
+		JLabel lblAgncia = new JLabel("Agência:");
+		lblAgncia.setForeground(Color.WHITE);
+		lblAgncia.setFont(new Font("Lato", Font.BOLD, 13));
+		lblAgncia.setBackground(Color.WHITE);
+		lblAgncia.setBounds(149, 158, 54, 27);
+		contentPane.add(lblAgncia);
+		
+		JLabel lblConta = new JLabel("Conta:");
 		lblConta.setForeground(Color.WHITE);
 		lblConta.setFont(new Font("Lato", Font.BOLD, 13));
 		lblConta.setBackground(Color.WHITE);
-		lblConta.setBounds(38, 155, 165, 30);
+		lblConta.setBounds(38, 158, 46, 27);
 		contentPane.add(lblConta);
+
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon("C:\\mazebankbarra.png"));
