@@ -13,7 +13,7 @@ public class ContaCorrente extends Conta {
 	
 	public ContaCorrente(String tipoConta, String senhaConta, String numeroConta, 
 	Double saldoConta, String cpfConta, String numAgencia ,Double limiteCredito, boolean chequeEspecial) {
-		super(tipoConta, senhaConta, numeroConta, saldoConta, cpfConta, numAgencia);
+		super(tipoConta, numeroConta, numAgencia, cpfConta, saldoConta, senhaConta);
 		this.limiteCredito = limiteCredito;
 		this.chequeEspecial = chequeEspecial;
 	

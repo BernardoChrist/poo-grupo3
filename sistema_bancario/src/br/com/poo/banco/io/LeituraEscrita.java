@@ -41,23 +41,23 @@ public class LeituraEscrita {
 					Conta.mapaContas.put(dados[2], cp);
 					System.out.println(cp);
 				} else if (dados[0].equalsIgnoreCase("CORRENTE")) {
-					//String tipoConta, String senhaConta, String numeroConta, double saldoConta, String cpfConta
-					Conta conta = new Conta(dados[0], dados[1], dados[2], Double.parseDouble(dados[3]), dados[4],
+					//String tipoConta, String numeroConta, String numAgencia, String cpfConta, Double saldoConta, String senhaConta
+					Conta conta = new Conta(dados[0], dados[1], dados[2], dados[3], Double.parseDouble(dados[4]),
 							dados[5]);
 					Conta.mapaContas.put(dados[1], conta);
 				} else if (dados[0].equalsIgnoreCase("CLIENTE")) {
-					//String TIPO_PESSOA, String nome, String cpf, Integer senha
-					Cliente c = new Cliente(dados [0], dados[1], dados[2], Integer.parseInt(dados[3]));
+					//String TIPO_PESSOA, String nome, String cpf, String endereco, String telefone, Integer senha
+					Cliente c = new Cliente(dados [0], dados[1], dados[2], dados[3],dados[4] ,Integer.parseInt(dados[5]));
 					Cliente.mapaClientes.put(dados [2], c);
 				} else if (dados[0].equalsIgnoreCase("GERENTE")) {
-					//String cargo, String nome, String cpf, double salario
-					Funcionario f = new Funcionario(dados [0], dados[1], dados[2], Double.parseDouble(dados[3]));
+					//String cargo, double salario, String numAgencia, String cpf, String nome
+					Funcionario f = new Funcionario(dados [0], Double.parseDouble(dados[1]), dados[2], dados[3], dados[4]);
 					Funcionario.mapaFuncionarios.put(dados[2], f);
 				} else if (dados[0].equalsIgnoreCase("DIRETOR")) {
-					Funcionario f = new Funcionario(dados [0], dados[1], dados[2], Double.parseDouble(dados[3]));
+					Funcionario f = new Funcionario(dados [0], Double.parseDouble(dados[1]), dados[2], dados[3], dados[4]);
 					Funcionario.mapaFuncionarios.put(dados[2], f);
 				} else if (dados[0].equalsIgnoreCase("PRESIDENTE")) {
-					Funcionario f = new Funcionario(dados [0], dados[1], dados[2], Double.parseDouble(dados[3]));
+					Funcionario f = new Funcionario(dados [0], Double.parseDouble(dados[1]), dados[2], dados[3], dados[4]);
 					Funcionario.mapaFuncionarios.put(dados[2], f);
 				}
 			} else {

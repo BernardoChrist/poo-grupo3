@@ -14,7 +14,7 @@ public class ContaPoupanca extends Conta {
 	String numeroConta, Double saldoConta, String cpfConta, String numAgencia) {
 		
 		
-		super(tipoConta, senhaConta, numeroConta, saldoConta, cpfConta, numAgencia);
+		super(tipoConta, numeroConta, numAgencia, cpfConta, saldoConta, senhaConta);
 	
 	}
 	
