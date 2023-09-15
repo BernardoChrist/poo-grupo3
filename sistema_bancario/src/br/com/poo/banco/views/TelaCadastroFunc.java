@@ -13,6 +13,8 @@ import java.awt.Color;
 import javax.swing.JPasswordField;
 import javax.swing.UIManager;
 import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaCadastroFunc extends JFrame {
 
@@ -106,6 +108,11 @@ public class TelaCadastroFunc extends JFrame {
 		contentPane.add(TextNome_4_1);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		btnVoltar.setForeground(new Color(255, 255, 255));
 		btnVoltar.setFont(new Font("Lato", Font.BOLD, 16));
 		btnVoltar.setBackground(new Color(233, 65, 69));

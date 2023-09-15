@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
@@ -54,34 +55,33 @@ public class TelaTransferencia extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
 
 		txtValor = new JTextField();
 		txtValor.setColumns(10);
 		txtValor.setBounds(314, 354, 286, 20);
 		contentPane.add(txtValor);
-		
+
 		JLabel lblNumAge = new JLabel("1234-5");
 		lblNumAge.setForeground(Color.WHITE);
 		lblNumAge.setFont(new Font("Lato", Font.BOLD, 13));
 		lblNumAge.setBackground(Color.WHITE);
 		lblNumAge.setBounds(201, 158, 54, 27);
 		contentPane.add(lblNumAge);
-		
+
 		JLabel lblNumConta = new JLabel("321654-7");
 		lblNumConta.setForeground(Color.WHITE);
 		lblNumConta.setFont(new Font("Lato", Font.BOLD, 13));
 		lblNumConta.setBackground(Color.WHITE);
 		lblNumConta.setBounds(80, 158, 66, 27);
 		contentPane.add(lblNumConta);
-		
+
 		JLabel lblAgncia = new JLabel("Agência:");
 		lblAgncia.setForeground(Color.WHITE);
 		lblAgncia.setFont(new Font("Lato", Font.BOLD, 13));
 		lblAgncia.setBackground(Color.WHITE);
 		lblAgncia.setBounds(149, 158, 54, 27);
 		contentPane.add(lblAgncia);
-		
+
 		JLabel lblConta = new JLabel("Conta:");
 		lblConta.setForeground(Color.WHITE);
 		lblConta.setFont(new Font("Lato", Font.BOLD, 13));
@@ -140,7 +140,8 @@ public class TelaTransferencia extends JFrame {
 		contentPane.add(TextUsuarioCC);
 
 		JLabel lblMzBkLogo = new JLabel("logo");
-		lblMzBkLogo.setIcon(new ImageIcon("C:\\\\dev\\\\POO\\\\Workspace\\\\poo-grupo3\\\\sistema_bancario\\\\imagens maze bank\\\\mazebanklogo.png"));
+		lblMzBkLogo.setIcon(new ImageIcon(
+				"C:\\\\dev\\\\POO\\\\Workspace\\\\poo-grupo3\\\\sistema_bancario\\\\imagens maze bank\\\\mazebanklogo.png"));
 		lblMzBkLogo.setForeground(new Color(0, 0, 0));
 		lblMzBkLogo.setFont(new Font("Tahoma", Font.PLAIN, 5));
 		lblMzBkLogo.setBounds(32, 23, 60, 60);
@@ -156,6 +157,13 @@ public class TelaTransferencia extends JFrame {
 		JButton btnSair = new JButton("Sair");
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação de Saída",
+						JOptionPane.YES_NO_OPTION);
+				if (resposta == JOptionPane.YES_OPTION) {
+//						dispose();
+//						TelaContaCorrente contaC = new TelaContaCorrente();
+//						contaC.setVisible(true);
+				}
 			}
 		});
 		btnSair.setForeground(Color.WHITE);
@@ -163,32 +171,33 @@ public class TelaTransferencia extends JFrame {
 		btnSair.setBackground(new Color(233, 65, 69));
 		btnSair.setBounds(760, 145, 100, 30);
 		contentPane.add(btnSair);
-		
+
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\\\dev\\\\POO\\\\Workspace\\\\poo-grupo3\\\\sistema_bancario\\\\imagens maze bank\\\\mazebankbarra.png"));
+		lblNewLabel.setIcon(new ImageIcon(
+				"C:\\\\dev\\\\POO\\\\Workspace\\\\poo-grupo3\\\\sistema_bancario\\\\imagens maze bank\\\\mazebankbarra.png"));
 		lblNewLabel.setBounds(32, 127, 850, 60);
 		contentPane.add(lblNewLabel);
-		
+
 		texNumConDes = new JTextField();
 		texNumConDes.setColumns(10);
 		texNumConDes.setBounds(314, 261, 286, 20);
 		contentPane.add(texNumConDes);
-		
+
 		JLabel lblNmeroDaAgncia = new JLabel("Número da Agência:");
 		lblNmeroDaAgncia.setFont(new Font("Lato", Font.BOLD, 14));
 		lblNmeroDaAgncia.setBounds(391, 291, 135, 20);
 		contentPane.add(lblNmeroDaAgncia);
-		
+
 		JLabel TextNumeroConta_1_1 = new JLabel("Valor da Transferência:");
 		TextNumeroConta_1_1.setFont(new Font("Lato", Font.BOLD, 14));
 		TextNumeroConta_1_1.setBounds(382, 336, 150, 20);
 		contentPane.add(TextNumeroConta_1_1);
-		
+
 		JLabel TextNumeroConta_1_1_1 = new JLabel("Digite a senha:");
 		TextNumeroConta_1_1_1.setFont(new Font("Lato", Font.BOLD, 14));
 		TextNumeroConta_1_1_1.setBounds(410, 385, 94, 20);
 		contentPane.add(TextNumeroConta_1_1_1);
-		
+
 		passwordField = new JPasswordField();
 		passwordField.setBounds(314, 402, 286, 20);
 		contentPane.add(passwordField);

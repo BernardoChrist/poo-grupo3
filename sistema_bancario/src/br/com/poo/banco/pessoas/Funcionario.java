@@ -10,25 +10,26 @@ public class Funcionario{
 	private String cpf;
 	private double salario;
 	private String numAgencia;
+	private String senha;
 
+	
+	
 	@Override
 	public String toString() {
-		return " [nome =" + nome + ", cpf =" + cpf + "]";
+		return "Funcionario [cargo=" + cargo + ", nome=" + nome + ", cpf=" + cpf + ", salario=" + salario
+				+ ", numAgencia=" + numAgencia + ", senha=" + senha + "]";
 	}
-	
+
 	public static Map<String, Funcionario> mapaFuncionarios = new HashMap<>();
 
-	public Funcionario(String cargo, double salario, String numAgencia, String cpf, String nome) {
+	public Funcionario(String cargo, double salario, String numAgencia, String cpf, String nome, String senha) {
 		super();
 		this.cargo = cargo;
 		this.nome = nome;
 		this.cpf = cpf;
 		this.salario = salario;
 		this.numAgencia = numAgencia;
-	}
-
-	public Funcionario() {
-		super();
+		this.senha = senha;
 	}
 
 	public String getNome() {
@@ -53,6 +54,10 @@ public class Funcionario{
 
 	public String getCargo() {
 		return cargo;
+	}
+	
+	public String getSenha() {
+		return senha;
 	}
 
 }

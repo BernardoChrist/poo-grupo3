@@ -1,18 +1,22 @@
 package br.com.poo.banco.views;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.Color;
-import javax.swing.JLabel;
+import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JTextField;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
 
 public class TelaPresidente extends JFrame {
 
@@ -87,6 +91,15 @@ public class TelaPresidente extends JFrame {
 		contentPane.add(lblMzBkLogo);
 		
 		JButton btnSair = new JButton("Sair");
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação de Saída", JOptionPane.YES_NO_OPTION);
+                if (resposta == JOptionPane.YES_OPTION) {
+						dispose();
+						TelaLogin login = new TelaLogin();
+						login.setVisible(true);
+						}
+		}});
 		btnSair.setForeground(Color.WHITE);
 		btnSair.setFont(new Font("Lato", Font.BOLD, 14));
 		btnSair.setBackground(new Color(233, 65, 69));
@@ -116,6 +129,12 @@ public class TelaPresidente extends JFrame {
 		contentPane.add(btnContAge);
 		
 		JButton btnCadCli = new JButton("Cadastrar Cliente");
+		btnCadCli.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaCadastroCliente CadastroCli = new TelaCadastroCliente();
+				CadastroCli.setVisible(true);
+			}
+		});
 		btnCadCli.setForeground(Color.WHITE);
 		btnCadCli.setFont(new Font("Lato", Font.BOLD, 14));
 		btnCadCli.setBackground(new Color(233, 65, 69));
@@ -123,6 +142,33 @@ public class TelaPresidente extends JFrame {
 		contentPane.add(btnCadCli);
 		
 		JButton btnLisDire = new JButton("Lista de Diretores");
+		btnLisDire.addActionListener(new ActionListener() {
+			static final String PATH_BASICO = "./temp/";
+			static final String EXTENSAO = ".txt";
+		            public void actionPerformed(ActionEvent e) {
+		                try {
+		                    // Use BufferedReader para ler o conteúdo do arquivo
+		                    BufferedReader reader = new BufferedReader(new FileReader(PATH_BASICO+ "banco" +EXTENSAO));
+		                    StringBuilder relatorio = new StringBuilder("Lista de Diretores:\n");
+
+		                    String line;
+		                    while ((line = reader.readLine()) != null) {
+		                        // Verifique se a linha começa com "Diretor:"
+		                        if (line.startsWith("Diretor;")) {
+		                            relatorio.append(line).append("\n");
+		                        }
+		                    }
+		                    reader.close();
+
+		                    // Exiba o relatório em um JOptionPane
+		                    JOptionPane.showMessageDialog(null, relatorio.toString(), "Relatório de Diretores", JOptionPane.INFORMATION_MESSAGE);
+		                } catch (IOException ex) {
+		                    ex.printStackTrace();
+		                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo.", "Erro", JOptionPane.ERROR_MESSAGE);
+		                }
+		            }
+			
+		});
 		btnLisDire.setForeground(Color.WHITE);
 		btnLisDire.setFont(new Font("Lato", Font.BOLD, 14));
 		btnLisDire.setBackground(new Color(233, 65, 69));
@@ -130,6 +176,12 @@ public class TelaPresidente extends JFrame {
 		contentPane.add(btnLisDire);
 		
 		JButton btnCadGer = new JButton("Cadastrar Gerente");
+		btnCadGer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaCadastroFunc gerente = new TelaCadastroFunc();
+				gerente.setVisible(true);
+			}
+		});
 		btnCadGer.setForeground(Color.WHITE);
 		btnCadGer.setFont(new Font("Lato", Font.BOLD, 14));
 		btnCadGer.setBackground(new Color(233, 65, 69));
@@ -137,6 +189,12 @@ public class TelaPresidente extends JFrame {
 		contentPane.add(btnCadGer);
 		
 		JButton btnCadDir = new JButton("Cadastrar Diretor");
+		btnCadDir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaCadastroFunc Diretor = new TelaCadastroFunc();
+				Diretor.setVisible(true);
+			}
+		});
 		btnCadDir.setForeground(Color.WHITE);
 		btnCadDir.setFont(new Font("Lato", Font.BOLD, 14));
 		btnCadDir.setBackground(new Color(233, 65, 69));

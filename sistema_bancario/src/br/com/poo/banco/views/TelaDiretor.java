@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
@@ -63,6 +64,12 @@ public class TelaDiretor extends JFrame {
 		btnInfoClie.add(btnContAge);
 		
 		JButton btnCadCli = new JButton("Cadastrar Cliente");
+		btnCadCli.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaCadastroCliente Cadastro = new TelaCadastroCliente();
+				Cadastro.setVisible(true);
+			}
+		});
 		btnCadCli.setForeground(new Color(255, 255, 255));
 		btnCadCli.setFont(new Font("Lato", Font.BOLD, 14));
 		btnCadCli.setBackground(new Color(233, 65, 69));
@@ -70,6 +77,12 @@ public class TelaDiretor extends JFrame {
 		btnInfoClie.add(btnCadCli);
 		
 		JButton btnCadGer = new JButton("Cadastrar Gerente");
+		btnCadGer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaCadastroFunc gerenteCad = new TelaCadastroFunc();
+				gerenteCad.setVisible(true);
+			}
+		});
 		btnCadGer.setForeground(new Color(255, 255, 255));
 		btnCadGer.setBackground(new Color(233, 65, 69));
 		btnCadGer.setBounds(347, 241, 220, 60);
@@ -117,6 +130,16 @@ public class TelaDiretor extends JFrame {
 		btnInfoClie.add(lblMzBkLogo);
 		
 		JButton btnSair = new JButton("Sair");
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação de Saída", JOptionPane.YES_NO_OPTION);
+                if (resposta == JOptionPane.YES_OPTION) {
+						dispose();
+						TelaLogin login = new TelaLogin();
+						login.setVisible(true);
+						}
+		}});
+		
 		btnSair.setForeground(Color.WHITE);
 		btnSair.setFont(new Font("Lato", Font.BOLD, 14));
 		btnSair.setBackground(new Color(233, 65, 69));

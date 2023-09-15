@@ -1,44 +1,39 @@
 package br.com.poo.banco.views;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.UIManager;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
+import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import java.awt.Color;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
+
+import br.com.poo.banco.contas.Conta;
+import br.com.poo.banco.pessoas.Cliente;
 
 public class TelaContaCorrente extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaContaCorrente frame = new TelaContaCorrente();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
 	 */
-	public TelaContaCorrente() {
+	public TelaContaCorrente(boolean cc, boolean cp, Cliente cliente, Conta contaPoupanca, Conta contaCorrente) {
 		setResizable(false);
 		setTitle("Conta Corrente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -57,14 +52,14 @@ public class TelaContaCorrente extends JFrame {
 		btnSaqueCP.setBounds(540, 240, 320, 60);
 		contentPane.add(btnSaqueCP);
 		
-		JButton btnTransferenciaCC = new JButton("Tranferencia");
+		JButton btnTransferenciaCC = new JButton("Transferência");
 		btnTransferenciaCC.setForeground(new Color(255, 255, 255));
 		btnTransferenciaCC.setBackground(new Color(233, 65, 69));
 		btnTransferenciaCC.setFont(new Font("Lato", Font.BOLD, 14));
 		btnTransferenciaCC.setBounds(54, 340, 320, 60);
 		contentPane.add(btnTransferenciaCC);
 		
-		JButton btnDepositoCC = new JButton("Deposito");
+		JButton btnDepositoCC = new JButton("Depósito");
 		btnDepositoCC.setForeground(new Color(255, 255, 255));
 		btnDepositoCC.setBackground(new Color(233, 65, 69));
 		btnDepositoCC.setFont(new Font("Lato", Font.BOLD, 14));
@@ -151,6 +146,15 @@ public class TelaContaCorrente extends JFrame {
 		contentPane.add(lblChequeEsp);
 		
 		JButton btnSair = new JButton("Sair");
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação de Saída", JOptionPane.YES_NO_OPTION);
+                if (resposta == JOptionPane.YES_OPTION) {
+						dispose();
+						TelaLogin login = new TelaLogin();
+						login.setVisible(true);
+						}
+		}});
 		btnSair.setForeground(Color.WHITE);
 		btnSair.setFont(new Font("Lato", Font.BOLD, 14));
 		btnSair.setBackground(new Color(233, 65, 69));
