@@ -91,7 +91,7 @@ public class LeituraEscrita {
 	}
 
 	// compreovante de saque
-	public static void comprovanteSaque(Conta conta, Double valor) throws IOException {
+	public static void comprovanteSaque(Conta conta, Conta conta1, Double valor) throws IOException {
 
 		String path = conta.getTipoConta() + "_" + conta.getCpfConta();
 		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + path + EXTENSAO, true));

@@ -68,7 +68,44 @@ public class TelaDeposito extends JFrame {
 		JButton btnConfirmar = new JButton("Confirmar");
 		btnConfirmar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				realizarDeposito();
+				try {
+					String linha;
+					BufferedReader reader = new BufferedReader(new FileReader("banco.txt"));
+					while ((linha = reader.readLine()) != null) {
+						String[] dados = linha.split(";");
+						double valorDeposito = Double.parseDouble(textValor.getText());
+						Conta contaCorrente = new ContaCorrente();
+						contaCorrente.depositar(valorDeposito);
+		
+						// Atualiza o arquivo txt com o novo saldo
+						List<String> linhas = new ArrayList<>();
+		
+						String numeroConta = dados[2];
+						ContaEnum tipoConta = ContaEnum.valueOf(dados[0]); // Converte a string para o Enum
+						double saldoConta = Double.parseDouble(dados[6]);
+		
+						if (tipoConta == ContaEnum.CORRENTE && numeroConta.equals(contaCorrente.getNumeroConta())) {
+							saldoConta += valorDeposito;
+						}
+		
+						dados[6] = String.valueOf(saldoConta);
+						linhas.add(String.join(";", dados)); // Reconstroi a linha com os valores atualizados
+					}
+		
+					reader.close();
+		
+					// Agora, escreva as linhas atualizadas de volta no arquivo "banco.txt"
+					BufferedWriter writer = new BufferedWriter(new FileWriter("banco.txt"));
+					for (String linhaAtualizada : dados) {
+						writer.write(linhaAtualizada);
+						writer.newLine();
+					}
+		
+					writer.close();
+				} catch (IOException e1) {
+		
+					e1.printStackTrace();
+				}
 				}
 			
 		});
@@ -178,44 +215,44 @@ public class TelaDeposito extends JFrame {
 		contentPane.add(lblNewLabel);
 	}
 
-	public void realizarDeposito() {
-		try {
-			String linha;
-			BufferedReader reader = new BufferedReader(new FileReader("banco.txt"));
-			while ((linha = reader.readLine()) != null) {
-				String[] dados = linha.split(";");
-				double valorDeposito = Double.parseDouble(textValor.getText());
-				Conta contaCorrente = new ContaCorrente();
-				contaCorrente.depositar(valorDeposito);
-
-				// Atualiza o arquivo txt com o novo saldo
-				List<String> linhas = new ArrayList<>();
-
-				String numeroConta = dados[2];
-				ContaEnum tipoConta = ContaEnum.valueOf(dados[0]); // Converte a string para o Enum
-				double saldoConta = Double.parseDouble(dados[6]);
-
-				if (tipoConta == ContaEnum.CORRENTE && numeroConta.equals(contaCorrente.getNumeroConta())) {
-					saldoConta += valorDeposito;
-				}
-
-				dados[6] = String.valueOf(saldoConta);
-				linhas.add(String.join(";", dados)); // Reconstroi a linha com os valores atualizados
-			}
-
-			reader.close();
-
-			// Agora, escreva as linhas atualizadas de volta no arquivo "banco.txt"
-			BufferedWriter writer = new BufferedWriter(new FileWriter("banco.txt"));
-			for (String linhaAtualizada : dados) {
-				writer.write(linhaAtualizada);
-				writer.newLine();
-			}
-
-			writer.close();
-		} catch (IOException e) {
-
-			e.printStackTrace();
-		}
-	}
+//	public void realizarDeposito() {
+//		try {
+//			String linha;
+//			BufferedReader reader = new BufferedReader(new FileReader("banco.txt"));
+//			while ((linha = reader.readLine()) != null) {
+//				String[] dados = linha.split(";");
+//				double valorDeposito = Double.parseDouble(textValor.getText());
+//				Conta contaCorrente = new ContaCorrente();
+//				contaCorrente.depositar(valorDeposito);
+//
+//				// Atualiza o arquivo txt com o novo saldo
+//				List<String> linhas = new ArrayList<>();
+//
+//				String numeroConta = dados[2];
+//				ContaEnum tipoConta = ContaEnum.valueOf(dados[0]); // Converte a string para o Enum
+//				double saldoConta = Double.parseDouble(dados[6]);
+//
+//				if (tipoConta == ContaEnum.CORRENTE && numeroConta.equals(contaCorrente.getNumeroConta())) {
+//					saldoConta += valorDeposito;
+//				}
+//
+//				dados[6] = String.valueOf(saldoConta);
+//				linhas.add(String.join(";", dados)); // Reconstroi a linha com os valores atualizados
+//			}
+//
+//			reader.close();
+//
+//			// Agora, escreva as linhas atualizadas de volta no arquivo "banco.txt"
+//			BufferedWriter writer = new BufferedWriter(new FileWriter("banco.txt"));
+//			for (String linhaAtualizada : dados) {
+//				writer.write(linhaAtualizada);
+//				writer.newLine();
+//			}
+//
+//			writer.close();
+//		} catch (IOException e) {
+//
+//			e.printStackTrace();
+//		}
+//	}
 }

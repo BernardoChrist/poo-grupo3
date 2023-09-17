@@ -8,4 +8,8 @@ public class Diretor extends Funcionario {
 	}
 	private int senha;
 	private String atributosExclusivos;
+	public static Cliente mapaFuncionarios() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
