@@ -29,12 +29,13 @@ public class ContaCorrente extends Conta {
 	//Método para depositar dinheiro
 	public void depositar(double valor) {
 		Double txDepositar = 0.10;
-		Double valorDeposito;
-		double saldoConta = this.getSaldoConta();
 		
-		valorDeposito = valor - txDepositar;
 		
-		saldoConta += valorDeposito;
+		valor -= txDepositar;
+		
+		Double saldoConta = this.getSaldoConta();
+		
+		super.depositar(valor);
 	}
 	
 	

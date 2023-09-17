@@ -4,13 +4,23 @@ import java.awt.BorderLayout;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import br.com.poo.banco.pessoas.Funcionario;
+
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
+import javax.swing.JButton;
+import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.JSeparator;
 
 public class TelaRelatorioClientes extends JFrame {
 
@@ -21,12 +31,13 @@ public class TelaRelatorioClientes extends JFrame {
 	 */
 	static final String PATH_BASICO = "./temp/";
 	static final String EXTENSAO = ".txt";
+	private final JButton btnOk = new JButton("OK");
 
 	public TelaRelatorioClientes() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(new EmptyBorder(5, 5, 65, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout()); // Use um gerenciador de layout
@@ -42,44 +53,44 @@ public class TelaRelatorioClientes extends JFrame {
 			StringBuilder relatorio = new StringBuilder("Lista de Clientes:\n");
 
 			String line;
-			String agenciaTemp = ""; // Variável temporária para armazenar a agência
-			String nome = "";
-			String cpf = "";
-			String agencia = "";
+			Map<String, String> clienteAgenciaMap = new HashMap<>(); // Mapa para armazenar a agência de cada cliente
 
 			while ((line = reader.readLine()) != null) {
 				String[] dados = line.split(";");
 
 				if (dados.length >= 3 && dados[0].equalsIgnoreCase("Cliente")) {
-					nome = dados[1];
-					cpf = dados[2];
+					String nome = dados[1];
+					String cpf = dados[2];
+					relatorio.append("\nNome: ").append(nome);
+					relatorio.append("\nCPF: ").append(cpf);
+					if (clienteAgenciaMap.containsKey(cpf)) {
+						relatorio.append("\nAgência: ").append(clienteAgenciaMap.get(cpf));
+					}
 				} else if (dados.length >= 6
 						&& (dados[0].equalsIgnoreCase("Poupanca") || dados[0].equalsIgnoreCase("Corrente"))) {
-					agenciaTemp = dados[5]; // Armazena temporariamente a agência
-					cpf = dados[4];
-				}
-
-				if (!nome.isEmpty()) {
-					relatorio.append("\nNome: ").append(nome);
-				}
-				if (!cpf.isEmpty()) {
-					relatorio.append("\nCPF: ").append(cpf);
-				}
-
-				if (!agenciaTemp.isEmpty()) {
-					agencia = agenciaTemp; // Atribui a agência temporária ao cliente
-					relatorio.append("\nAgência: ").append(agencia);
-					agenciaTemp = ""; // Limpa a variável temporária
+					String cpf = dados[4];
+					String agencia = dados[5];
+					clienteAgenciaMap.put(cpf, agencia); // Armazena a agência do cliente no mapa
 				}
 			}
 			reader.close();
 
 			textArea.setText(relatorio.toString());
+			btnOk.setForeground(new Color(0, 0, 0));
+			contentPane.add(btnOk, BorderLayout.SOUTH);
+			btnOk.setBackground(new Color(192, 192, 192));
+			btnOk.setVerticalAlignment(SwingConstants.BOTTOM);
+			
+			btnOk.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					dispose();
+					TelaPresidente tP = new TelaPresidente(null);
+					tP.setVisible(true);
+				}
+			});
 
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
-
-		setVisible(true);
 	}
 }

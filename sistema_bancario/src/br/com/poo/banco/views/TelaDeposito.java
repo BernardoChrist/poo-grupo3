@@ -1,14 +1,10 @@
 package br.com.poo.banco.views;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import br.com.poo.banco.contas.Conta;
-import br.com.poo.banco.contas.ContaCorrente;
-import br.com.poo.banco.enums.ContaEnum;
 import br.com.poo.banco.pessoas.Cliente;
 
 import java.awt.Color;
@@ -67,45 +63,43 @@ public class TelaDeposito extends JFrame {
 
 		JButton btnConfirmar = new JButton("Confirmar");
 		btnConfirmar.addActionListener(new ActionListener() {
+			static final String PATH_BASICO = "./temp/";
+			static final String EXTENSAO = ".txt";
 			public void actionPerformed(ActionEvent e) {
-				try {
-					String linha;
-					BufferedReader reader = new BufferedReader(new FileReader("banco.txt"));
-					while ((linha = reader.readLine()) != null) {
-						String[] dados = linha.split(";");
-						double valorDeposito = Double.parseDouble(textValor.getText());
-						Conta contaCorrente = new ContaCorrente();
-						contaCorrente.depositar(valorDeposito);
-		
-						// Atualiza o arquivo txt com o novo saldo
-						List<String> linhas = new ArrayList<>();
-		
-						String numeroConta = dados[2];
-						ContaEnum tipoConta = ContaEnum.valueOf(dados[0]); // Converte a string para o Enum
-						double saldoConta = Double.parseDouble(dados[6]);
-		
-						if (tipoConta == ContaEnum.CORRENTE && numeroConta.equals(contaCorrente.getNumeroConta())) {
-							saldoConta += valorDeposito;
-						}
-		
-						dados[6] = String.valueOf(saldoConta);
-						linhas.add(String.join(";", dados)); // Reconstroi a linha com os valores atualizados
-					}
-		
-					reader.close();
-		
-					// Agora, escreva as linhas atualizadas de volta no arquivo "banco.txt"
-					BufferedWriter writer = new BufferedWriter(new FileWriter("banco.txt"));
-					for (String linhaAtualizada : dados) {
-						writer.write(linhaAtualizada);
-						writer.newLine();
-					}
-		
-					writer.close();
-				} catch (IOException e1) {
-		
-					e1.printStackTrace();
-				}
+				 try {
+					 	double valor = 0.0;
+				        String linha;
+				        List<String> linhas = new ArrayList<>(); // Lista para armazenar as linhas atualizadas
+
+				        BufferedReader reader = new BufferedReader(new FileReader(PATH_BASICO+"banco"+EXTENSAO));
+				        while ((linha = reader.readLine()) != null) {
+				            String[] dados = linha.split(";");
+				            String numeroConta = dados[2];
+
+				     
+				            double saldoConta = Double.parseDouble(dados[5]);
+
+				            if (numeroConta.equals(contaCorrente.getNumeroConta())) {
+				                saldoConta += valor;
+				            }
+
+				            dados[6] = String.valueOf(saldoConta);
+				            linhas.add(String.join(";", dados)); // Reconstroi a linha com os valores atualizados
+				        }
+
+				        reader.close();
+
+				        // Agora, escreva as linhas atualizadas de volta no arquivo "banco.txt"
+				        BufferedWriter writer = new BufferedWriter(new FileWriter("banco.txt"));
+				        for (String linhaAtualizada : linhas) {
+				            writer.write(linhaAtualizada);
+				            writer.newLine();
+				        }
+
+				        writer.close();
+				    } catch (IOException ex) {
+				        ex.printStackTrace();
+				    }
 				}
 			
 		});
