@@ -51,6 +51,9 @@ public class Conta {
 	}
 
 	public Double getSaldoConta() {
+		if (saldoConta == null) {
+	        return 0.0;
+	    }
 		return saldoConta;
 	}
 

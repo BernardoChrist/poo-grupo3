@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import br.com.poo.banco.contas.Conta;
+import br.com.poo.banco.contas.ContaCorrente;
+import br.com.poo.banco.enums.ContaEnum;
 import br.com.poo.banco.pessoas.Cliente;
 
 import java.awt.Color;
@@ -19,6 +21,13 @@ import javax.swing.UIManager;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class TelaDeposito extends JFrame {
@@ -29,7 +38,7 @@ public class TelaDeposito extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textValor;
-
+	private String[] dados;
 
 	/**
 	 * Create the frame.
@@ -59,9 +68,9 @@ public class TelaDeposito extends JFrame {
 		JButton btnConfirmar = new JButton("Confirmar");
 		btnConfirmar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
-			}
+				realizarDeposito();
+				}
+			
 		});
 		btnConfirmar.setForeground(new Color(255, 255, 255));
 		btnConfirmar.setFont(new Font("Lato", Font.BOLD, 14));
@@ -103,8 +112,7 @@ public class TelaDeposito extends JFrame {
 		contentPane.add(TextUsuarioCC);
 
 		JLabel lblMzBkLogo = new JLabel("logo");
-		lblMzBkLogo.setIcon(new ImageIcon(
-				"./imagens maze bank/mazebanklogo.png"));
+		lblMzBkLogo.setIcon(new ImageIcon("./imagens maze bank/mazebanklogo.png"));
 		lblMzBkLogo.setForeground(new Color(0, 0, 0));
 		lblMzBkLogo.setFont(new Font("Tahoma", Font.PLAIN, 5));
 		lblMzBkLogo.setBounds(32, 23, 60, 60);
@@ -123,10 +131,10 @@ public class TelaDeposito extends JFrame {
 				int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação de Saída",
 						JOptionPane.YES_NO_OPTION);
 				if (resposta == JOptionPane.YES_OPTION) {
-						dispose();
-						TelaContaCorrente conta = new TelaContaCorrente(cp, cp, cliente, contaCorrente, contaCorrente);
-						conta.setLocationRelativeTo(conta);
-						conta.setVisible(true);   
+					dispose();
+					TelaContaCorrente conta = new TelaContaCorrente(cp, cp, cliente, contaCorrente, contaCorrente);
+					conta.setLocationRelativeTo(conta);
+					conta.setVisible(true);
 				}
 			}
 		});
@@ -165,9 +173,49 @@ public class TelaDeposito extends JFrame {
 		contentPane.add(lblConta);
 
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(
-				"./imagens maze bank/mazebankbarra.png"));
+		lblNewLabel.setIcon(new ImageIcon("./imagens maze bank/mazebankbarra.png"));
 		lblNewLabel.setBounds(32, 127, 850, 60);
 		contentPane.add(lblNewLabel);
+	}
+
+	public void realizarDeposito() {
+		try {
+			String linha;
+			BufferedReader reader = new BufferedReader(new FileReader("banco.txt"));
+			while ((linha = reader.readLine()) != null) {
+				String[] dados = linha.split(";");
+				double valorDeposito = Double.parseDouble(textValor.getText());
+				Conta contaCorrente = new ContaCorrente();
+				contaCorrente.depositar(valorDeposito);
+
+				// Atualiza o arquivo txt com o novo saldo
+				List<String> linhas = new ArrayList<>();
+
+				String numeroConta = dados[2];
+				ContaEnum tipoConta = ContaEnum.valueOf(dados[0]); // Converte a string para o Enum
+				double saldoConta = Double.parseDouble(dados[6]);
+
+				if (tipoConta == ContaEnum.CORRENTE && numeroConta.equals(contaCorrente.getNumeroConta())) {
+					saldoConta += valorDeposito;
+				}
+
+				dados[6] = String.valueOf(saldoConta);
+				linhas.add(String.join(";", dados)); // Reconstroi a linha com os valores atualizados
+			}
+
+			reader.close();
+
+			// Agora, escreva as linhas atualizadas de volta no arquivo "banco.txt"
+			BufferedWriter writer = new BufferedWriter(new FileWriter("banco.txt"));
+			for (String linhaAtualizada : dados) {
+				writer.write(linhaAtualizada);
+				writer.newLine();
+			}
+
+			writer.close();
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
 	}
 }

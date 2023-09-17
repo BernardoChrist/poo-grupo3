@@ -197,8 +197,38 @@ public class TelaPresidente extends JFrame {
 		
 		JButton btnInfoClie = new JButton("Informações dos Clientes");
 		btnInfoClie.addActionListener(new ActionListener() {
+			static final String PATH_BASICO = "/.temp/";
+			static final String EXTENSAO = ".txt";
 			public void actionPerformed(ActionEvent e) {
-			}
+				try {
+		            // Use BufferedReader para ler o conteúdo do arquivo
+		            BufferedReader reader = new BufferedReader(new FileReader(PATH_BASICO + "banco" + EXTENSAO));
+		            StringBuilder relatorio = new StringBuilder("Lista de Clientes:\n");
+
+		            String line;
+		            while ((line = reader.readLine()) != null) {
+		                String[] dados = line.split(";");
+		                if (dados.length >= 3 && dados[0].equalsIgnoreCase("Cliente")) {
+		                    String nome = dados[1];
+		                    String cpf = dados[2];
+		                    
+		                    // Aqui você pode adicionar mais informações do cliente, se necessário,
+		                    // fazendo a leitura das outras partes do array "dados"
+		                    
+		                    // Adicione as informações do cliente ao relatório
+		                    relatorio.append("\nNome: " + nome + "\nCPF: " + cpf + "\n");
+		                }
+		            }
+		            reader.close();
+
+		            // Exiba o relatório em um JOptionPane
+		            JOptionPane.showMessageDialog(null, relatorio.toString(), "Relatório de Clientes", JOptionPane.INFORMATION_MESSAGE);
+		        } catch (IOException ex) {
+		            ex.printStackTrace();
+		            JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo.", "Erro", JOptionPane.ERROR_MESSAGE);
+		        }
+		    }
+			
 		});
 		btnInfoClie.setForeground(Color.WHITE);
 		btnInfoClie.setFont(new Font("Lato", Font.BOLD, 14));
