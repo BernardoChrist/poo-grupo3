@@ -8,4 +8,8 @@ public class Gerente extends Funcionario {
 	}
 	private int senha;
 	private int numeroFuncionarios;
+	public Cliente mapaFuncionarios() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

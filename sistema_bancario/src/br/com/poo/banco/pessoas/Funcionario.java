@@ -60,4 +60,8 @@ public class Funcionario{
 		return senha;
 	}
 
+	public String getNumAgencia() {
+		return numAgencia;
+	}
+
 }

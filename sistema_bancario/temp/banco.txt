@@ -49,7 +49,7 @@ Cliente;Carolina Fernandes;976.132.485-60;Avenida do Rio, 890 - Bairro Beira Rio
 Cliente;André Almeida;461.709.823-37;Travessa das Borboletas, 432 - Bairro Borboletário, Fortaleza, CE;(85)90123-4567;
 Cliente;Inês Ferreira;728.346.195-82;Alameda dos Beija-Flores, 765 - Bairro Beija-Flor, Manaus, AM;(92)90456-7890;
 Cliente;Miguel Barbosa;394.268.751-09;Rua da Primavera, 321 - Bairro Primavera,Florianópolis, SC;(48)90234-5678;
-Cliente;Beatriz Carvalho;507.982.634-12;Praça dos Pássaros, 876 - Bairro Pássaro Azul, Goiânia, GO;(62)90567-8901;4
+Cliente;Beatriz Carvalho;507.982.634-12;Praça dos Pássaros, 876 - Bairro Pássaro Azul, Goiânia, GO;(62)90567-8901;
 Cliente;Guilherme Sousa;128.654.379-56;Rua das Montanhas, 543 - Bairro Montanha Verde, Natal, RN;(84)90678-9012;
 Cliente;Laura Martins;943.216.578-34;Alameda das Marés, 210 - Bairro Maré Alta, Vitória, ES;(27)90890-1234;
 Cliente;Diogo Rocha;276.981.345-70;Travessa do Lago, 987 - Bairro Lago Azul, Curitiba, PR;(41)90123-4567;
@@ -74,8 +74,8 @@ Gerente;10000.00;1328-4;362.518.704-96;Pedro Silva;1234;
 Gerente;10000.00;1274-3;207.946.583-12;Ana Pereira;1234;
 Gerente;10000.00;8963-2;514.329.687-27;João Santos;1234;
 Gerente;10000.00;1739-1;695.182.734-58;Maria Fernandes;1234;
-Diretor;25000.00;9876-6;178.463.925-63;André Oliveira;1234;
 Diretor;25000.00;1597-7;426.759.318-20;Carolina Rodrigues;1234;
+Diretor;25000.00;9876-6;178.463.925-63;André Oliveira;1234;
 Presidente;50000.00;1345-9;983.726.514-37;Daniel Sousa;1234;
 Cliente;Irineu;123.333.554-92;Rua Castelanea;(11)232342487-44;
 Poupanca;4321;753198-4;83745.36;123.333.554-92;5971-7;

@@ -19,14 +19,15 @@ import javax.swing.UIManager;
 
 import javax.swing.border.EmptyBorder;
 
+import br.com.poo.banco.contas.Conta;
+import br.com.poo.banco.enums.ContaEnum;
+import br.com.poo.banco.enums.PessoaEnum;
 import br.com.poo.banco.pessoas.Cliente;
 import br.com.poo.banco.pessoas.Funcionario;
-
 
 public class TelaPresidente extends JFrame {
 
 	private JPanel contentPane;
-
 
 	/**
 	 * Create the frame.
@@ -137,32 +138,36 @@ public class TelaPresidente extends JFrame {
 		
 		JButton btnLisDire = new JButton("Lista de Diretores");
 		btnLisDire.addActionListener(new ActionListener() {
-			static final String PATH_BASICO = "./temp/";
-			static final String EXTENSAO = ".txt";
-		            public void actionPerformed(ActionEvent e) {
-		                try {
-		                    // Use BufferedReader para ler o conteúdo do arquivo
-		                    BufferedReader reader = new BufferedReader(new FileReader(PATH_BASICO+ "banco" +EXTENSAO));
-		                    StringBuilder relatorio = new StringBuilder("Lista de Diretores:\n");
+		    static final String PATH_BASICO = "./temp/";
+		    static final String EXTENSAO = ".txt";
 
-		                    String line;
-		                    while ((line = reader.readLine()) != null) {
-		                        // Verifique se a linha começa com "Diretor:"
-		                        if (line.startsWith("Diretor;")) {
-		                            relatorio.append(line).append("\n");
-		                        }
-		                    }
-		                    reader.close();
+		    public void actionPerformed(ActionEvent e) {
+		        try {
+		            // Use BufferedReader para ler o conteúdo do arquivo
+		            BufferedReader reader = new BufferedReader(new FileReader(PATH_BASICO + "banco" + EXTENSAO));
+		            StringBuilder relatorio = new StringBuilder("Lista de Diretores:\n");
 
-		                    // Exiba o relatório em um JOptionPane
-		                    JOptionPane.showMessageDialog(null, relatorio.toString(), "Relatório de Diretores", JOptionPane.INFORMATION_MESSAGE);
-		                } catch (IOException ex) {
-		                    ex.printStackTrace();
-		                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo.", "Erro", JOptionPane.ERROR_MESSAGE);
+		            String line;
+		            while ((line = reader.readLine()) != null) {
+		                // Verifique se a linha começa com "Diretor:"
+		                String[] dados = line.split(";");
+		                if (dados[0].equalsIgnoreCase(PessoaEnum.DIRETOR.name())) {
+		                    Funcionario f = new Funcionario(dados[0], Double.parseDouble(dados[1]), dados[2], dados[3],
+		                            dados[4], dados[5]);
+		                        relatorio.append("\n"+f.getNome() + "\nAgência: " + f.getNumAgencia());
 		                }
 		            }
-			
+		            reader.close();
+
+		            // Exiba o relatório em um JOptionPane
+		            JOptionPane.showMessageDialog(null, relatorio.toString(), "Relatório de Diretores", JOptionPane.INFORMATION_MESSAGE);
+		        } catch (IOException ex) {
+		            ex.printStackTrace();
+		            JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo.", "Erro", JOptionPane.ERROR_MESSAGE);
+		        }
+		    }
 		});
+
 		btnLisDire.setForeground(Color.WHITE);
 		btnLisDire.setFont(new Font("Lato", Font.BOLD, 14));
 		btnLisDire.setBackground(new Color(233, 65, 69));
@@ -171,7 +176,8 @@ public class TelaPresidente extends JFrame {
 		
 		JButton btnCadGer = new JButton("Cadastrar Gerente");
 		btnCadGer.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+
+	public void actionPerformed(ActionEvent e) {
 				TelaCadastroFunc gerente = new TelaCadastroFunc(funcionario);
 				gerente.setVisible(true);
 			}
@@ -197,8 +203,11 @@ public class TelaPresidente extends JFrame {
 		
 		JButton btnInfoClie = new JButton("Informações dos Clientes");
 		btnInfoClie.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
+		    public void actionPerformed(ActionEvent e) {
+		    	TelaRelatorioClientes trC = new TelaRelatorioClientes();
+		    	trC.setVisible(true);
+		    	trC.setLocationRelativeTo(trC);
+		    }
 		});
 		btnInfoClie.setForeground(Color.WHITE);
 		btnInfoClie.setFont(new Font("Lato", Font.BOLD, 14));
