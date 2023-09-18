@@ -1,0 +1,6 @@
+***************** SAQUE *****************
+CPF: null
+Conta: null
+Valor do Saque: 50.0
+Operação realizada em: 13/09/2023 15:18:35
+***************** FIM SAQUE *****************
